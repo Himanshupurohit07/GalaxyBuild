@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<!-- ====================================================================== 
+  Desc: Simple Change Framework
+
+  Date:   23/July/2020
+  Author: OLIVIER FRANCHET
+
+  Changes
+  =============
+  Reason for Change         |  Date            |  Author
+  =====================================================================
+  Document Creation         | 14/August/2018   | OLIVIER FRANCHET
+
+    ====================================================================== -->
+<project name="Packaging" default="package" xmlns:ac="antlib:net.sf.antcontrib" >
+
+	<property name="distrib.home" value="../../" />
+	<property name="delivery.home" value="../../../Delivery" />
+
+	<property file="${distrib.home}/build.properties" />
+	<property file="${distrib.home}/ant/release.properties" />
+
+	<property name="distrib.version" value="${version}_${sic.version}" />
+	<property name="distrib.full.name" value="SCF_${component.name}_${distrib.version}" />
+
+	<!-- ================================= 
+	               target: package              
+	              ================================= -->
+	<target name="package" description="Packager">
+
+		<fixcrlf srcdir="${distrib.home}/"
+		         eol="lf" eof="remove">
+			<include name="**"/>
+			<exclude name="**/*.jar"/>
+			<exclude name="**/*.zip"/>
+			<exclude name="**/*.xlsx"/>
+			<exclude name="**/*.docx"/>
+			<exclude name="**/*.doc"/>
+			<exclude name="**/*.pdf"/>
+			<exclude name="**/*.asm"/>
+			<exclude name="**/*.prt"/>
+			<exclude name="**/*.pptx"/>
+			<exclude name="**/*.class"/>
+			<exclude name="**/*.lnk"/>
+			<exclude name="**/*.bat"/>
+			<exclude name="**/*.ps1"/>
+			<exclude name="**/*.py"/>
+			<exclude name="**/*.sql"/>
+			<exclude name="**/*.csv"/>
+			<exclude name="**/*.sample"/>
+			<exclude name="**/*.gif"/>
+			<exclude name="**/*.png"/>
+			<exclude name="**/*.jpg"/>
+		</fixcrlf>
+
+		<toUpperCase string="${distrib.full.name}" to="uppercase.distrib.full.name" />
+
+		<tar compression="none" destfile="${delivery.home}/${uppercase.distrib.full.name}.tar">
+			<tarfileset dir="${distrib.home}/." filemode="666" username="wtadmin" group="wtadmin">
+				<include name="**"/>
+			</tarfileset>
+		</tar>
+
+		<zip destfile="${delivery.home}/${uppercase.distrib.full.name}.zip">
+			<tarfileset src="${delivery.home}/${uppercase.distrib.full.name}.tar"/>
+		</zip>
+		<delete file="${delivery.home}/${uppercase.distrib.full.name}.tar"/>
+
+	</target>
+
+	<!--
+	        toUpperCase
+	        Converts the given "string" into a lower case string and puts the result into the specified user property.
+	        Attributes:
+	            string                  The string to convert
+	            to      Name of the property to store the result in
+	    -->
+	<macrodef name="toUpperCase">
+		<attribute name="string" />
+		<attribute name="to" />
+
+		<sequential>
+			<var name="thestring" unset="true" />
+			<property name="thestring" value="@{string}"/>
+			<var name="theto" unset="true" />
+			<property name="theto" value="@{to}"/>
+
+			<groovy>
+				def string = ant.project.getProperty("thestring");
+				def targetProperty = ant.project.getProperty("theto");
+
+				def result = string.toUpperCase();
+				
+				ant.project.setProperty(targetProperty,result);
+			</groovy>
+			<echo message="Origin String: @{string}" />
+			<echo message="Updated String: Prop[@{to}] = ${@{to}}" />
+		</sequential>
+	</macrodef>
+
+</project>

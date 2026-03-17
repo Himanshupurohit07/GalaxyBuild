@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		          |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!-- V0.10 include AGVR Load   |  June 17, 2019       | OLIVIER FRANCHET    -->
+<!-- V1.0 change auth and include more commands |  Feb 14, 2020  | OLIVIER FRANCHET    -->
+<!-- V1.1 include modelupdate as macrodef |  June 11, 2020  | OLIVIER FRANCHET    -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Load Utilities" xmlns:if="ant:if" xmlns:unless="ant:unless" >
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: loadFileSet
+        This Macrodef execute the winchill wt.load.LoadFileSet command
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadFileSet">
+		<attribute name="loadfileset" />
+		<attribute name="enforce" default="false" />
+
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadFileSet" />
+				</then>
+				<else>
+					<if>
+						<available file="@{loadfileset}" />
+						<then>
+
+							<exec-cmd executable="${wc_cmd}" failonerror="true" action="loadFileSet" enforce="@{enforce}" checksumreference="@{loadfileset}" parameters="[loadfileset=@{loadfileset}|enforce=@{enforce}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="wt.load.LoadFileSet" />
+									<arg value="-file" />
+									<arg value="@{loadfileset}" />
+									<arg line="${username.and.password}" />
+									<arg value="-Unattended" />
+									<arg value="-NOServerStop" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadFileSet]" />
+							<log message="  with parameters" />
+							<log message="    [loadfileset=@{loadfileset}|enforce=@{enforce}]" />
+							<log message=" - File @{loadfileset} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadFileSet ${csv.sep} [loadfileset=@{loadfileset}|enforce=@{enforce}] ${csv.sep} File @{loadfileset} does not exist !" error="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: loadFromFile
+        This Macrodef execute the winchill wt.load.LoadFromFile command
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadFromFile">
+		<attribute name="loadfile" />
+		<attribute name="enforce" default="false" />
+		<attribute name="contpath" default="/" />
+
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadFromFile" />
+				</then>
+				<else>
+					<if>
+						<available file="@{loadfile}" />
+						<then>
+							<exec-cmd executable="${wc_cmd}" failonerror="true" action="loadFromFile" enforce="@{enforce}" checksumreference="@{loadfile}" parameters="[loadfile=@{loadfile}|contpath=@{contpath}|enforce=@{enforce}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="wt.load.LoadFromFile" />
+									<arg value="-d" />
+									<arg value="@{loadfile}" />
+									<arg line="${username.and.password}" />
+									<arg value="-CONT_PATH" />
+									<arg value="@{contpath}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadFromFile]" />
+							<log message="  with parameters" />
+							<log message="    [loadfile=@{loadfile}|contpath=@{contpath}|enforce=@{enforce}]" />
+							<log message=" - File @{loadfile} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadfile ${csv.sep} [loadfile=@{loadfile}|contpath=@{contpath}|enforce=@{enforce}] ${csv.sep} File @{loadfile} does not exist !" error="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: loadCSVLoadFile
+        This Macrodef execute the winchill wt.load.LoadFromFile command using both a map file and a csv file
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadCSVLoadFile">
+		<attribute name="mapfile" />
+		<attribute name="loadfile" />
+		<attribute name="contpath" default="/" />
+
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadFromFile" />
+				</then>
+				<else>
+					<if>
+						<and>
+							<available file="@{mapfile}" />
+							<available file="@{loadfile}" />
+						</and>
+						<then>
+							<exec-cmd executable="${wc_cmd}" failonerror="true" action="loadFromFile" checksumreference="@{loadfile}" parameters="[loadfile=@{loadfile}|mapfile=@{mapfile}|contpath=@{contpath}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="wt.load.LoadFromFile" />
+									<arg value="-m" />
+									<arg value="@{mapfile}" />
+									<arg value="-g" />
+									<arg value="create" />
+									<arg value="-d" />
+									<arg value="@{loadfile}" />
+									<arg line="${username.and.password}" />
+									<arg value="-CONT_PATH" />
+									<arg value="@{contpath}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadCSVLoadFile]" />
+							<log message="  with parameters" />
+							<log message="    [loadfile=@{loadfile}|mapfile=@{mapfile}|contpath=@{contpath}]" />
+							<log message=" - File Loadfile [@{loadfile}] or Mapfile [@{mapfile}] does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadfile ${csv.sep} [loadfile=@{loadfile}|mapfile=@{mapfile}|contpath=@{contpath}] ${csv.sep} File @{loadfile} does not exist !" error="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: loadFileBasedSeries
+	         This Macrodef execute the windchill wt.series.LoadFileBasedSeries command
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadFileBasedSeries">
+		<attribute name="file" />
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadFileBasedSeries" />
+				</then>
+				<else>
+					<if>
+						<available file="@{file}" />
+						<then>
+							<exec-cmd executable="${wc_cmd}" failonerror="true" action="loadFileBasedSeries" checksumreference="@{file}" parameters="[file=@{file}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="wt.series.LoadFileBasedSeries" />
+									<arg value="@{file}" />
+									<arg value="-load" />
+									<arg line="${username.and.password}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadFileBasedSeries]" />
+							<log message="  with parameters" />
+							<log message="    [file=@{file}]" />
+							<log message=" - File @{file} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadFileBasedSeries ${csv.sep} [file=@{file}] ${csv.sep} File @{file} does not exist !" error="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: importBAC
+	         This Macrodef execute the windchill wt.scm.client.SCMCMD import 
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="importBAC">
+		<attribute name="file" />
+		<attribute name="conflictResolutionFile" default="" />
+		<attribute name="mapFile" default="" />
+
+		<sequential>
+
+			<if>
+				<available file="${wt.bin.dir}${dir.sep}customizationTools${dir.sep}templates${dir.sep}defaultConflictResolution.xml" type="file" />
+				<then>
+					<var name="aConflictResolutionFile" unset="true"/>
+					<property name="aConflictResolutionFile" value="${wt.bin.dir}${dir.sep}customizationTools${dir.sep}templates${dir.sep}defaultConflictResolution.xml" />
+					<log message="Default ConflictResolution.xml file found. Using it." />
+				</then>
+				<else>
+					<if>
+						<available file="@{conflictResolutionFile}" type="file" />
+						<then>
+							<var name="aConflictResolutionFile" unset="true"/>
+							<property name="aConflictResolutionFile" value="@{conflictResolutionFile}" />
+						</then>
+						<else>
+							<var name="aConflictResolutionFile" unset="true"/>
+							<property name="aConflictResolutionFile" value="" />
+
+						</else>
+					</if>
+				</else>
+			</if>
+
+			<if>
+				<available file="@{mapFile}" type="file" />
+				<then>
+					<var name="aMapFile" unset="true"/>
+					<property name="aMapFile" value="@{mapFile}" />
+				</then>
+				<else>
+					<var name="aMapFile" unset="true"/>
+					<property name="aMapFile" value="" />
+				</else>
+			</if>
+
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadBAC" />
+				</then>
+				<else>
+					<if>
+						<available file="@{file}" />
+						<then>
+							<enableBACLoggers />
+							<exec-cmd executable="${wc_cmd}" failonerror="true" action="importBAC" checksumreference="@{file}" parameters="[file=@{file}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="wt.scm.client.SCMCMD" />
+									<arg value="import" />
+									<arg value="-u" />
+									<arg value="${wcadmin.username}" />
+									<arg value="-p" unless:blank="${wcadmin.password}" />
+									<arg value="${wcadmin.password}" unless:blank="${wcadmin.password}" />
+									<arg value="-f" />
+									<arg value="@{file}" />
+									<arg value="-c" unless:blank="${aConflictResolutionFile}" />
+									<arg value="${aConflictResolutionFile}" unless:blank="${aConflictResolutionFile}" />
+									<arg value="-m" unless:blank="${aMapFile}" />
+									<arg value="${aMapFile}" unless:blank="${aMapFile}" />
+									<arg value="-d" />
+									<arg value="-o" />
+									<arg value="${installer.logs.dir}" />
+								</args>
+							</exec-cmd>
+							<disableBACLoggers />
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [importBAC]" />
+							<log message="  with parameters" />
+							<log message="    [file=@{file}]" />
+							<log message=" - File @{file} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} importBAC ${csv.sep} [file=@{file}] ${csv.sep} File @{file} does not exist !" error="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: enableBACLoggers
+	         This Macrodef Increase BAC Log Levels command
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="enableBACLoggers">
+		<sequential>
+			<setLogLevel logger="com.ptc.windchill.bac" loglevel="ALL" />
+			<setLogLevel logger="com.ptc.windchill.rd" loglevel="ALL" />
+			<setLogLevel logger="wt.queue" loglevel="ALL" />
+			<setLogLevel logger="com.ptc.windchill.bac.thread.BACThreadDumpLogger" loglevel="ALL" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: disableBACLoggers
+	         This Macrodef Re-Init BAC Log Levels command
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="disableBACLoggers">
+		<sequential>
+			<setLogLevel logger="com.ptc.windchill.bac" loglevel="ERROR" />
+			<setLogLevel logger="com.ptc.windchill.rd" loglevel="ERROR" />
+			<setLogLevel logger="wt.queue" loglevel="ERROR" />
+			<setLogLevel logger="com.ptc.windchill.bac.thread.BACThreadDumpLogger" loglevel="ERROR" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: loadPreferences
+	         This Macrodef execute the windchill wt.preference.ImportPreferences command
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadPreferences">
+		<attribute name="file" />
+		<attribute name="level" default="" />
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadPreferences" />
+				</then>
+				<else>
+					<if>
+						<available file="@{file}" />
+						<then>
+							<exec-cmd executable="${wc_cmd}" failonerror="true" action="loadPreferences" checksumreference="@{file}" parameters="[file=@{file}|level=@{level}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="wt.preference.ImportPreferences" />
+									<arg line="@{level}" />
+									<arg value="-overwriteValueConflicts" />
+									<arg value="-skipUnresolvedConflicts" />
+									<arg value="-importfile=&quot;@{file}&quot;" />
+									<arg line="${username.and.password}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadPreferences]" />
+							<log message="  with parameters" />
+							<log message="    [file=@{file}|level=@{level}]" />
+							<log message=" - File @{file} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadPreferences ${csv.sep} [file=@{file}|level=@{level}] ${csv.sep} File @{file} does not exist !" error="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: deleteBusinessRules
+	         This Macrodef execute the windchill wt.businessRules.DeleteBusinessRuleObjects command
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="deleteBusinessRules">
+		<attribute name="ruleset" />
+		<attribute name="contpath" default="/" />
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping deleteBusinessRules" />
+				</then>
+				<else>
+
+					<exec-cmd executable="${wc_cmd}" failonerror="true" action="deleteBusinessRules" parameters="[ruleset=@{ruleset}|contpath=@{contpath}]">
+						<args>
+							<arg line="${extra.java.args}" />
+							<arg value="wt.businessRules.DeleteBusinessRuleObjects" />
+							<arg value="&quot;BusinessRuleSet:@{ruleset}:/@{contpath}&quot;" />
+							<arg line="${username.and.password}" />
+						</args>
+					</exec-cmd>
+
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!-- ===============================  -->
+	<!--    COGNOS Specific Macrodefs     -->
+	<!-- ===============================  -->
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: modelupdate
+		 This Macrodef execute the modelupdate of Cognos Reports
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="modelupdate">
+		<sequential>
+			<log message="= = = = = = = = = = = = = = = = =" />
+			<log message="  Executing modelupdate" />
+			<log message="= = = = = = = = = = = = = = = = =" />
+			<ant antfile="${wt.home}/installer/wnc/wbr_actions.xml" target="modelupdate" inheritrefs="true" />
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      target: modelupdate
+		 This Target execute the modelupdate of Cognos Reports
+	     = = = = = = = = = = = = = = = = = -->
+	<target name="modelupdate" description="Execute Cognos Model Update">
+		<modelupdate/>
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: loadCognosReports
+		 This Macrodef execute the loading of Cognos Reports
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadCognosReports">
+		<attribute name="folderpath" />
+
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadCognosReports" />
+				</then>
+				<else>
+					<if>
+						<available file="@{folderpath}" type="dir" />
+						<then>
+
+
+							<modelupdate />
+
+							<exec-cmd executable="${wc_cmd}" failonerror="true" action="loadCognosReports" parameters="[folderpath=@{folderpath}]">
+								<args>
+									<arg value="com.ptc.windchill.cognos.CognosProxy" />
+									<arg value="loadreports" />
+									<arg value="@{folderpath}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadCognosReports]" />
+							<log message="  with parameters" />
+							<log message="    [folderpath=@{folderpath}]" />
+							<log message=" - Folder @{folderpath} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadCognosReports ${csv.sep} [folderpath=@{folderpath}] ${csv.sep} Folder @{folderpath} does not exist !" error="true"/>
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+
+
+	<!-- ===============================  -->
+	<!--    Flex Specific Macrodefs       -->
+	<!-- ===============================  -->
+
+	<!--    = = = = = = = = = = = = = = = = =
+      macrodef: loadAGVR Rules
+         This Macrodef execute the windchill com.lcs.wc.load.LoadAGAR command
+     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadAGVR">
+		<attribute name="loadfile" />
+		<attribute name="delimiter" default="," />
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadAGVR" />
+				</then>
+				<else>
+					<if>
+						<available file="@{loadfile}" />
+						<then>
+							<exec-cmd executable="${wc_cmd}" failonerror="true" inputstring="Y&#xA;" action="loadAGVR" checksumreference="@{loadfile}" parameters="[loadfile=@{loadfile}|delimiter=@{delimiter}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="com.lcs.wc.load.LoadAGAR" />
+									<arg line="${username.and.password}" />
+									<arg value="-d" />
+									<arg value="@{delimiter}" />
+									<arg value="-f" />
+									<arg value="@{loadfile}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadAGVR]" />
+							<log message="  with parameters" />
+							<log message="    [loadfile=@{loadfile}|delimiter=@{delimiter}]" />
+							<log message=" - File @{loadfile} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadAGVR ${csv.sep} [loadfile=@{loadfile}|delimiter=@{delimiter}] ${csv.sep} File @{loadfile} does not exist !" error="true" />
+						</else>
+					</if>
+
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: loadABSR Rules
+	         This Macrodef execute the windchill com.lcs.wc.load.LoadABSR command
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadABSR">
+		<attribute name="loadfile" />
+		<attribute name="delimiter" default="," />
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadABSR" />
+				</then>
+				<else>
+					<if>
+						<available file="@{loadfile}" />
+						<then>
+							<exec-cmd executable="${wc_cmd}" failonerror="true" inputstring="Y&#xA;" action="loadABSR" checksumreference="@{loadfile}" parameters="[loadfile=@{loadfile}|delimiter=@{delimiter}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="com.lcs.wc.load.LoadABSR" />
+									<arg line="${username.and.password}" />
+									<arg value="-d" />
+									<arg value="@{delimiter}" />
+									<arg value="-f" />
+									<arg value="@{loadfile}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadABSR]" />
+							<log message="  with parameters" />
+							<log message="    [loadfile=@{loadfile}|delimiter=@{delimiter}]" />
+							<log message=" - File @{loadfile} does not exist !" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadABSR ${csv.sep} [loadfile=@{loadfile}|delimiter=@{delimiter}] ${csv.sep} File @{loadfile} does not exist !" error="true" />
+						</else>
+					</if>
+
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+	      macrodef: loadLCSLoadFile
+		 This Macrodef execute the loading of LCS Load Files
+		   using mapfile and loadfile
+	     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadLCSLoadFile">
+		<attribute name="mapfile" />
+		<attribute name="datafile" />
+		<attribute name="delimiter" default="TAB"/>
+		<sequential>
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping loadLCSLoadFile" />
+				</then>
+				<else>
+					<if>
+						<and>
+							<available file="@{mapfile}" />
+							<available file="@{datafile}" />
+						</and>
+						<then>
+							<exec-cmd executable="${wc_cmd}" failonerror="true" inputstring="Y&#xA;" action="loadLCSLoadFile" checksumreference="@{datafile}" parameters="[mapfile=@{mapfile}|datafile=@{datafile}|delimiter=@{delimiter}]">
+								<args>
+									<arg line="${extra.java.args}" />
+									<arg value="com.lcs.wc.load.LCSLoadFile" />
+									<arg line="${username.and.password}" />
+									<arg value="-d" />
+									<arg value="@{delimiter}" />
+									<arg value="-m" />
+									<arg value="@{mapfile}" />
+									<arg value="@{datafile}" />
+								</args>
+							</exec-cmd>
+						</then>
+						<else>
+							<var name="errorLCS" value=""/>
+							<if>
+								<not>
+									<available file="@{mapfile}" />
+								</not>
+								<then>
+									<var name="errorLCS" value="${errorLCS}MapFile @{mapfile} does not exist ! "/>
+								</then>
+							</if>
+							<if>
+								<not>
+									<available file="@{datafile}" />
+								</not>
+								<then>
+									<var name="errorLCS" value="${errorLCS}DataFile @{datafile} does not exist ! "/>
+								</then>
+							</if>
+
+							<log />
+							<log />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<log message="Cannot Execute [loadLCSLoadFile]" />
+							<log message="  with parameters" />
+							<log message="    [mapfile=@{mapfile}|datafile=@{datafile}|delimiter=@{delimiter}]" />
+							<log message=" - ${errorLCS}" />
+							<log message="= = = = = = = = = = = = = = = =" />
+							<append.to.file message="ERROR ${csv.sep} loadLCSLoadFile ${csv.sep} [mapfile=@{mapfile}|datafile=@{datafile}|delimiter=@{delimiter}] ${csv.sep} ${errorLCS}" error="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+		      macrodef: loadLCSLoadFile
+			 This Macrodef execute the loading of a Set of LCS Load Files
+			    using an XML Input file containing filenames for all pairs mapFile,dataFile
+		     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadLCSLoadFileSet" description="Load LCSLoadFile using XML FileList">
+		<attribute name="xmlinputfile" />
+
+		<sequential>
+			<if>
+				<available file="@{xmlinputfile}" />
+				<then>
+					<log />
+					<log message="------------------------------" />
+					<log message=" Loading a set of Flex LCS Load File" />
+					<log message="    XML Input file [@{xmlinputfile}]" />
+					<log message="------------------------------" />
+					<log />
+
+					<var name="currentxmlinputfilee" unset="true" />
+					<property name="currentxmlinputfilee" value="@{xmlinputfile}"/>
+
+					<groovy>
+		                def xmlInputFile = ant.project.getProperty("currentxmlinputfilee");
+		                def lcsLoadFileSet  = new XmlParser().parse(xmlInputFile);
+		                
+		                for (def lcsloadfile: lcsLoadFileSet.LCSLoadFile)
+		                {
+							mapfile = lcsloadfile.mapFile.'@filename';
+							datafile = lcsloadfile.dataFile.'@filename';
+							delim = lcsloadfile.'@delimiter';
+							if (delim == null) {
+								delim = "TAB";
+							}
+							ant.loadLCSLoadFile("mapfile": mapfile, "datafile": datafile, "delimiter": delim);
+						}
+						
+		            </groovy>
+
+				</then>
+				<else>
+					<log />
+					<log />
+					<log message="= = = = = = = = = = = = = = = =" />
+					<log message="Cannot Execute [loadLCSLoadFileSet]" />
+					<log message="  with parameters" />
+					<log message="    [xmlinputfile=@{xmlinputfile}]" />
+					<log message=" - File @{xmlinputfile} does not exist !" />
+					<log message="= = = = = = = = = = = = = = = =" />
+					<append.to.file message="ERROR ${csv.sep} loadLCSLoadFileSet ${csv.sep} [xmlinputfile=@{xmlinputfile}] ${csv.sep} File @{xmlinputfile} does not exist !" error="true" />
+				</else>
+			</if>
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+		      macrodef: installPackageSet
+			 This Macrodef execute the Installation of a Set of Simple Change Package
+			    using an XML Input file containing Package details
+		     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="installPackageSet" description="Install a Set of Simple Change Package">
+		<attribute name="xmlinputfile" />
+
+		<sequential>
+			<if>
+				<available file="@{xmlinputfile}" />
+				<then>
+					<log />
+					<log message="------------------------------" />
+					<log message=" Loading a set of Simple Change Package" />
+					<log message="    XML Input file [@{xmlinputfile}]" />
+					<log message="------------------------------" />
+					<log />
+
+					<var name="currentxmlinputfilee" unset="true" />
+					<property name="currentxmlinputfilee" value="@{xmlinputfile}"/>
+
+					<groovy>
+		                def xmlInputFile = ant.project.getProperty("currentxmlinputfilee");
+		                def packageList  = new XmlParser().parse(xmlInputFile);
+		                
+		                for (def pack: packageList.Package)
+		                {
+							folder = pack.'@foldername';
+						    confirmBeforeInstallation = pack.'@confirmbeforeinstallation';
+							buildFile = pack.'@buildFile';
+							if (buildFile == null) {
+								buildFile = "build.xml";
+							}
+							target = pack.'@target';
+							if (target == null) {
+								target = "install";
+							}
+							ant.installPackage("folder": folder, "ask-confirmation": confirmBeforeInstallation, "build.file": buildFile, "target": target );
+						}
+		            </groovy>
+				</then>
+				<else>
+					<log />
+					<log />
+					<log message="= = = = = = = = = = = = = = = =" />
+					<log message="Cannot Execute [installPackageSet]" />
+					<log message="  with parameters" />
+					<log message="    [xmlinputfile=@{xmlinputfile}]" />
+					<log message=" - File @{xmlinputfile} does not exist !" />
+					<log message="= = = = = = = = = = = = = = = =" />
+					<append.to.file message="ERROR ${csv.sep} installPackageSet ${csv.sep} [xmlinputfile=@{xmlinputfile}] ${csv.sep} File @{xmlinputfile} does not exist !" error="true" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+		      macrodef: installPackage
+			 This Macrodef execute the Installation of a Simple Change Package 
+		     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="installPackage" description="Install Package located on a given Folder">
+		<attribute name="folder" />
+		<attribute name="build.file" default="build.xml" />
+		<attribute name="target" default="install" />
+		<attribute name="ask-confirmation" default="true" />
+
+		<sequential>
+
+			<var name="loaded" unset="true"/>
+			<var name="installer.basedir" unset="true"/>
+			<var name="package.name" unset="true"/>
+			<var name="package.name" unset="true"/>
+			<var name="installation.log" unset="true"/>
+			<var name="verbose.log" unset="true"/>
+			<var name="info.log" unset="true"/>
+
+			<property name="main.basedir" value="${basedir}"/>
+
+			<var name="basedir" unset="true"/>
+			<property name="basedir" value="@{folder}"/>
+
+			<if>
+				<istrue value="@{ask-confirmation}"/>
+				<then>
+					<var name="confirm.install" unset="true"/>
+					<input message="Do you want to install Build located on folder [@{folder}] ?" defaultvalue="true" validargs="true,false" addproperty="confirm.install" />
+				</then>
+				<else>
+					<property name="confirm.install" value="true"/>
+				</else>
+			</if>
+
+			<if>
+				<istrue value="${confirm.install}"/>
+				<then>
+					<trycatch property="antexecfail">
+						<try >
+							<ant antfile="@{folder}/@{build.file}" target="@{target}" inheritall="false" />
+							<copy.folder.contents source="@{folder}/logs" target="${main.basedir}/logs" />
+						</try>
+						<catch>
+							<log/>
+							<log message="ERROR"/>
+							<log message="${antexecfail}"/>
+							<log/>
+							<log message="WARNING ::: Problem found with Package on folder [@{folder}], check Installation Logs [@{folder}/logs]" />
+							<append.to.file message="WARNING ${csv.sep} installPackage ${csv.sep} [folder=@{folder}] ${csv.sep} Problem found with Package on folder [@{folder}] - check Installation Logs [${main.basedir}/logs]" error="true" />
+							<log/>
+						</catch>
+					</trycatch>
+					<log/>
+					<log message="Installation of Package from folder [@{folder}] end, please check Installation Logs [@{folder}/logs]" />
+					<append.to.file message="SUCCESS ${csv.sep} installPackage ${csv.sep} [folder=@{folder}] ${csv.sep} Installation of Package from folder [@{folder}] Completed - check Installation Logs [${main.basedir}/logs]" />
+					<log/>
+				</then>
+				<else>
+					<log/>
+					<log message="Installation of Package from folder [@{folder}] skipped !" />
+					<append.to.file message="SKIPPED ${csv.sep} installPackage ${csv.sep} [folder=@{folder}] ${csv.sep} Installation Skipped by End User" />
+					<log/>
+				</else>
+			</if>
+		</sequential>
+
+	</macrodef>
+</project>

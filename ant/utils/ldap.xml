@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities 								-->
+<!-- 																		-->
+<!-- Date: 10 August 2021 													-->
+<!-- Author: OLIVIER FRANCHET 												-->
+<!-- 																		-->
+<!-- Changes 																-->
+<!-- ============= 															-->
+<!-- Reason for Change | Date | Author 										-->
+<!-- =====================================================================  -->
+<!-- Document Creation | August 10, 2021                | OLIVIER FRANCHET  -->
+<!-- 																		-->
+<!-- ********************************************************************** -->
+
+<project name="LDAP Utilities">
+	
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: ldif.import
+	        This Macrodef execute the LDAPImport command
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="ldif.import" >
+		<attribute name="dir" default="${wt.home}"/>
+		<attribute name="ldif.file" />
+		<sequential>
+			<exec-cmd executable="${wc_cmd}" failonerror="true" action="LDIF Import" parameters="[dir=@{dir}|ldif.file=@{ldif.file}]">
+				<args>
+					<arg line="${extra.java.args}" />
+					<arg value="com.infoengine.util.LDAPImport" />
+					<arg value="-dir" />
+					<arg value="@{dir}" />
+					<arg value="-ldiffile" />
+					<arg value="@{ldif.file}" />
+				</args>
+			</exec-cmd>
+		</sequential>
+	</macrodef>
+	
+</project>

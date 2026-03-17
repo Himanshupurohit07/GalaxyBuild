@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20250626-060257/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_0.xml"/>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20250626-060257/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_1.xml"/>
+</loadFileList>

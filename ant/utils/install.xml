@@ -1,0 +1,1704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		          |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!-- V0.9 Windows Compatibility|  June 07, 2019       | OLIVIER FRANCHET    -->
+<!-- V0.10 Stop Seq for Windows|  June 24, 2019       | OLIVIER FRANCHET    -->
+<!-- V0.11 site.xconf link and |  					                        -->
+<!--    MS ready detection     |  July 05, 2019       | BARTOSZ SIEMIASZKO  -->
+<!-- V0.12 provide task to delete files | Oct 4, 2019	| NATASCHA SCHWARZ  -->
+<!-- V1.0 remove username and password | Feb 14, 2020	| OLIVIER FRANCHET  -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Install Utilities" xmlns:if="ant:if" xmlns:unless="ant:unless" >
+
+	<property name="installation.unix.user" value="wtadmin" />
+	<property name="register.component" value="false" />
+
+	<!-- - - - - - - - - - - - - - - - - - 
+        Private Target used to setup the installation type  
+         - - - - - - - - - - - - - - - - - -->
+	<target name="initUnix" if="isUnix">
+		<init.installation />
+		<if>
+			<equals arg1="${user}" arg2="${installation.unix.user}" />
+			<then>
+				<prepare.installation />
+			</then>
+			<else>
+				<var name="installation.type" unset="true" />
+				<property name="installation.type" value="66" />
+			</else>
+		</if>
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+        Private Target used to setup the installation type 
+         - - - - - - - - - - - - - - - - - -->
+	<target name="initWindows" if="isWindows">
+
+		<init.installation />
+
+		<prepare.installation />
+
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: init.installation
+        Reinitialize installation.type if equals to 99
+        Create or Cleanup installation logs dir before installation
+        Setup the environment.type based on wt.rmi.server.hostname windchill property
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="init.installation">
+		<sequential>
+
+			<tstamp>
+				<format property="nowts" pattern="yyyy/MM/dd - hh:mm:ss aa z" />
+			</tstamp>
+
+			<if>
+				<equals arg1="${installation.type}" arg2="99" />
+				<then>
+					<var name="installation.type" unset="true" />
+				</then>
+			</if>
+
+			<var name="currentInstDate" unset="true" />
+			<tstamp>
+				<format property="currentInstDate" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+			<if>
+				<available file="${installer.basedir}" type="dir" />
+				<then>
+					<echo message="Installer Temp Directory already exist [${installer.basedir}]" />
+					<if>
+						<available file="${installer.logs.dir}" type="dir" />
+						<then>
+							<!-- Archive previous installation Logs -->
+							<jar destfile="${installer.logs.dir}/Logs_${currentInstDate}.jar" update="true">
+								<fileset dir="${installer.logs.dir}" >
+									<include name="*.*" />
+									<exclude name="*.jar" />
+								</fileset>
+							</jar>
+							<delete verbose="false" failonerror="false">
+								<fileset dir="${installer.logs.dir}" >
+									<include name="*.*" />
+									<exclude name="*.jar" />
+								</fileset>
+							</delete>
+						</then>
+						<else>
+							<mkdir dir="${installer.logs.dir}" />
+							<chmod dir="${installer.logs.dir}" perm="o+w" verbose="true" />
+							<echo message="Installer Logs Directory created : [${installer.logs.dir}]" />
+						</else>
+					</if>
+				</then>
+				<else>
+					<echo message="Creating Installer Temp Directory : [${installer.basedir}]" />
+					<mkdir dir="${installer.basedir}" />
+					<chmod dir="${installer.basedir}" perm="o+w" verbose="true" />
+					<echo message="Creating Installer Logs Directory : [${installer.basedir}]" />
+					<mkdir dir="${installer.logs.dir}" />
+					<chmod dir="${installer.logs.dir}" perm="o+w" verbose="true" />
+				</else>
+			</if>
+
+			<set_property name="environment.type" from="${wt.rmi.server.hostname}" />
+
+			<if>
+				<isset property="environment.type" />
+				<then>
+					<echo message="Environment Type set to [${environment.type}]" />
+				</then>
+				<else>
+					<echo message="No mapping found for ${wt.rmi.server.hostname}" />
+				</else>
+			</if>
+
+			<get.component.version/>
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: prepare.installation
+       Ask for the prepare.installation if not already set
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="prepare.installation">
+		<sequential>
+
+			<print.installation.header />
+
+			<log />
+			<log message="Provide the Installation Type:" />
+			<log message="  1 - All          [Copy Files, Compile, Restart Server, Load Files]" />
+			<log message="  2 - Load Only    [Copy Files, Load Files] (No Compile, No Restart Server)" />
+			<log message="  3 - Copy Only    [Copy Files] (No Compile, No Restart Server, No Load Files)" />
+			<log message="  4 - Deploy Only  [Copy Files, Compile, Restart Server] (No Load Files)" />
+			<log message="  5 - Print Package Content" />
+			<log message="  6 - Abort (Quit)" />
+
+			<input message="Installation Type" defaultvalue="2" validargs="1,2,3,4,5,6" addproperty="installation.type" />
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+          macrodef: print.installation.header
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="print.installation.header">
+		<sequential>
+
+			<start.log.recorders />
+
+			<log />
+			<display.scf.header />
+			<log />
+
+			<print.separator.large/>
+			<log />
+			<log message="  Starting Installation at [${nowts}]" />
+			<log message="   by [${user}] on ${oslabel} Server [${hostname}]" />
+			<log />
+			<print.separator.large/>
+
+		</sequential>
+	</macrodef>
+
+
+	<!-- ================================= 
+        Execute Installation Steps
+              ================================= -->
+	<target name="install" description="Install Configuration Changes" depends="initWindows, initUnix">
+		<log />
+		<print.separator />
+		<log message="       Installation started " />
+		<log />
+		<log message="       Installation Type [${installation.type}]" />
+		<log />
+		<print.separator />
+
+		<switch value="${installation.type}">
+			<case value="1">
+				<install.option.all />
+				<install.end.log />
+			</case>
+			<case value="2">
+				<install.option.loadonly />
+				<install.end.log />
+			</case>
+			<case value="3">
+				<install.option.copyonly />
+				<install.end.log />
+			</case>
+			<case value="4">
+				<install.option.deployonly />
+				<install.end.log />
+			</case>
+			<case value="44">
+				<install.option.buildimage />
+				<install.end.log />
+			</case>
+			<case value="5">
+				<install.option.listcontent />
+				<install.end.log />
+			</case>
+			<case value="6">
+				<install.option.abort />
+			</case>
+			<case value="52">
+				<install.option.tp.deployonly.norestart />
+				<install.end.log />
+			</case>
+			<case value="54">
+				<install.option.tp.deployonly.restart />
+				<install.end.log />
+			</case>
+			<case value="50">
+				<install.option.tp />
+				<install.end.log />
+			</case>
+			<case value="66">
+				<install.option.abort.user />
+			</case>
+			<case value="77">
+				<install.option.upgrademandatory />
+				<install.end.log />
+			</case>
+			<case value="99">
+				<install.option.abort />
+			</case>
+			<default>
+				<install.option.abort />
+			</default>
+		</switch>
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	        Execute Installation Steps - Option 1 - All
+	              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.all" description="Install Configuration Changes - Option 1 - All">
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<!-- If Executed on Windows, the server needs to be stopped before starting deployment -->
+			<if>
+				<os family="windows" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<antcall target="copy.files" />
+
+			<antcall-if-exists target="pre.deploy" />
+			<antcall-if-exists target="delete.files" />
+
+			<antcall target="deploy.xconf" />
+
+			<compile.src />
+			<gen.schema />
+			<install.siteMod.changes />
+			<compile.rbinfos />
+			<make.jars />
+
+			<antcall-if-exists target="post.deploy" />
+
+			<register.custom.component />
+			<register.temp.patch tp.name="${tp.name}" tp.sequence="${tp.sequence}" />
+
+			<if>
+				<os family="unix" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<cleancache />
+			<cleanlogs />
+
+			<check.server.status action="started" />
+			<log />
+			<print.separator.large />
+
+			<waitForWindchill />
+			<apply.schema />
+
+			<antcall-if-exists target="pre.load" />
+
+			<log />
+			<print.separator />
+			<log message="   Verifying Authentication               " />
+			<print.separator />
+
+			<checkAuth />
+
+			<if>
+				<istrue value="${login.fail}" />
+				<then>
+					<log message="Authentication fail - Cannot Execute Load Sequence" />
+					<log message="   Retry installation with installation.type = 2" />
+				</then>
+				<else>
+					<backupExistingLWCTypeImpExpFiles />
+					<if>
+						<istrue value="${auto.disable.prime.type.cache}" />
+						<then>
+							<disablePrimeTypeCache />
+						</then>
+					</if>
+
+					<antcall target="load.files" />
+
+					<loadLWCTypeImpExpFiles />
+
+					<if>
+						<istrue value="${auto.disable.prime.type.cache}" />
+						<then>
+							<enablePrimeTypeCache />
+						</then>
+					</if>
+				</else>
+			</if>
+
+			<antcall-if-exists target="post.load" />
+
+			<close.package.content />
+
+		</sequential>
+	</macrodef>
+
+	<macrodef name="install.option.upgrademandatory" description="Install Configuration Changes - Option 77 - Upgrade Mandatory">
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<!-- If Executed on Windows, the server needs to be stopped before starting deployment -->
+			<if>
+				<os family="windows" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<antcall target="copy.files" />
+
+			<antcall-if-exists target="pre.deploy" />
+			<antcall-if-exists target="delete.files" />
+
+			<antcall target="deploy.xconf" />
+
+			<compile.src />
+			<gen.schema />
+			<install.siteMod.changes />
+			<compile.rbinfos />
+			<make.jars />
+
+			<antcall-if-exists target="post.deploy" />
+
+			<register.custom.component />
+			<register.temp.patch tp.name="${tp.name}" tp.sequence="${tp.sequence}" />
+
+			<if>
+				<os family="unix" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<cleancache />
+			<cleanlogs />
+
+			<check.server.status action="started" />
+			<log />
+			<print.separator.large />
+
+			<waitForWindchill />
+			<apply.schema />
+
+			<close.package.content />
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps - Option 2 - LoadOnly
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.loadonly" description="Install Configuration Changes - Option 2 - LoadOnly">
+
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<antcall target="copy.files" />
+			<antcall-if-exists target="delete.files" />
+
+			<check.server.status action="started" />
+			<log />
+			<print.separator.large />
+
+			<waitForWindchill />
+			<apply.schema />
+
+			<antcall-if-exists target="pre.load" />
+
+			<log />
+			<print.separator />
+			<log message="   Verifying Authentication" />
+			<print.separator />
+
+			<checkAuth />
+
+			<if>
+				<istrue value="${login.fail}" />
+				<then>
+					<log message="Authentication fail - Cannot Execute Load Sequence" />
+					<log message="   Retry installation with installation.type = 2" />
+				</then>
+				<else>
+					<backupExistingLWCTypeImpExpFiles />
+					<if>
+						<istrue value="${auto.disable.prime.type.cache}" />
+						<then>
+							<disablePrimeTypeCache />
+						</then>
+					</if>
+
+					<antcall target="load.files" />
+
+					<loadLWCTypeImpExpFiles />
+
+					<if>
+						<istrue value="${auto.disable.prime.type.cache}" />
+						<then>
+							<enablePrimeTypeCache />
+						</then>
+					</if>
+				</else>
+			</if>
+
+			<antcall-if-exists target="post.load" />
+
+			<close.package.content />
+
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps - Option 3 - Copy Only
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.copyonly" description="Install Configuration Changes - Option 3 - Copy Only">
+		<sequential>
+			<init.package.content />
+			<list.package.content />
+
+			<antcall target="copy.files" />
+			<antcall-if-exists target="pre.deploy" />
+			<antcall-if-exists target="delete.files" />
+
+			<close.package.content />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	        Execute Installation Steps - Option 4 - Deploy Only
+	              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.deployonly" description="Install Configuration Changes - Option 4 - Deploy Only">
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<!-- If Executed on Windows, the server needs to be stopped before starting deployment -->
+			<if>
+				<os family="windows" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<antcall target="copy.files" />
+
+			<antcall-if-exists target="pre.deploy" />
+
+			<antcall-if-exists target="delete.files" />
+
+			<antcall target="deploy.xconf" />
+
+			<compile.src />
+			<gen.schema />
+			<install.siteMod.changes />
+			<compile.rbinfos />
+			<make.jars />
+
+			<antcall-if-exists target="post.deploy" />
+
+			<register.custom.component />
+			<register.temp.patch tp.name="${tp.name}" tp.sequence="${tp.sequence}" />
+
+			<if>
+				<os family="unix" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<cleancache />
+			<cleanlogs />
+
+			<check.server.status action="started" />
+			<log />
+			<print.separator.large />
+
+			<waitForWindchill />
+			<apply.schema />
+
+			<antcall-if-exists target="pre.load" />
+			<antcall-if-exists target="post.load" />
+
+			<close.package.content />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	        Execute Installation Steps - Option 44 - Build Custom Container Image
+	              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.buildimage" description="Install Configuration Changes - Option 44 - Build Image">
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<antcall target="copy.files" />
+
+			<antcall-if-exists target="pre.deploy" />
+
+			<antcall-if-exists target="delete.files" />
+
+			<antcall target="deploy.xconf" />
+
+
+			<compile.src />
+			<gen.schema />
+			<install.siteMod.changes />
+			<compile.rbinfos />
+			<make.jars />
+
+			<antcall-if-exists target="post.deploy" />
+
+			<register.custom.component />
+			<register.temp.patch tp.name="${tp.name}" tp.sequence="${tp.sequence}" />
+
+			<close.package.content />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps for TP - Option 50
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.tp" description="Install Temp Patch Unattended - Option 50 - TempPatch Installation">
+		<sequential>
+			<init.package.content />
+			<list.package.content />
+
+			<antcall target="copy.files" />
+
+			<install.ptc.tmppatch tp.name="${tp.name}" />
+
+			<close.package.content />
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps for TP - Option 52 - Deploy Only - No Restart
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.tp.deployonly.norestart" description="Install Configuration Changes for TP - Option 52 - Deploy Only - No Restart">
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<antcall target="copy.files" />
+
+			<antcall-if-exists target="pre.deploy" />
+
+			<antcall-if-exists target="delete.files" />
+
+			<antcall-if-exists target="post.deploy" />
+
+			<register.temp.patch tp.name="${tp.name}" tp.sequence="${tp.sequence}" />
+
+			<log message="" />
+			<log message="========= Installation Completed, Patch will take effect after Server restart ==========" />
+
+			<close.package.content />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps for TP - Option 54 - Deploy Only - Restart
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.tp.deployonly.restart" description="Install Configuration Changes for TP - Option 54 - Deploy Only - Restart">
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<!-- If Executed on Windows, the server needs to be stopped before starting deployment -->
+			<if>
+				<os family="windows" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<antcall target="copy.files" />
+
+			<antcall-if-exists target="pre.deploy" />
+
+			<antcall-if-exists target="delete.files" />
+
+			<antcall-if-exists target="post.deploy" />
+
+			<register.temp.patch tp.name="${tp.name}" tp.sequence="${tp.sequence}" />
+
+			<if>
+				<os family="unix" />
+				<then>
+					<check.server.status action="stopped" />
+				</then>
+			</if>
+
+			<cleancache />
+			<cleanlogs />
+
+			<if>
+				<istrue value="${server.was.started}" />
+				<then>
+					<check.server.status action="started" />
+					<log message="" />
+					<log message="========= Installation Completed, Please wait for Server restart ==========" />
+				</then>
+				<else>
+					<log message="" />
+					<log message="========= Installation Completed, Patch will take effect after Server restart ==========" />
+				</else>
+			</if>
+
+			<close.package.content />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps - Option 5 - List Package Content
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.listcontent" description="Install Configuration Changes - Option 5 - List Package Content">
+		<sequential>
+
+			<init.package.content />
+			<list.package.content />
+
+			<property name="list.content.only" value="true" />
+			<!-- 
+					When list.content.only is true, deploy xconf target is executed to list xconf changes 
+				     No xconf changes will be applied
+			    -->
+			<antcall target="deploy.xconf" />
+
+			<close.package.content />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps - Option 6 - Abort Installation
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.abort" description="Install Configuration Changes - Option 6 - Abort Installation">
+		<sequential>
+			<log message="Installation aborted by User" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Execute Installation Steps - Option 66 - Installation aborted because launched by wrong User
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.option.abort.user" description="Install Configuration Changes - Option 66 - Installation aborted because launched by wrong User">
+		<sequential>
+			<install.end.abort.log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+        Installation End Message when Installation aborted because of User
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.end.abort.log" description="Install Configuration Changes - Display end of Installation Message while aborted because launched by wrong User">
+		<sequential>
+			<var name="currentDate" unset="true" />
+			<tstamp>
+				<format property="currentDate" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+
+			<log />
+			<display.scf.header />
+			<log />
+
+			<print.separator.large />
+			<log message="   Installation has been Aborted" />
+			<print.separator.large />
+
+			<log message=" Installation must be executed as Linux User [${installation.unix.user}] !" />
+			<log />
+			<if>
+				<not>
+					<equals arg1="${installer.basedir}" arg2="${basedir}" />
+				</not>
+				<then>
+					<log message=" These Failed installation Logs have been moved to folder [${installer.basedir}_${user}_${currentDate}] " />
+				</then>
+			</if>
+			<log />
+			<log message=" How to relaunch installation ?" />
+			<log />
+			<log message="  1- Current Installation folder [${basedir}] must be owned by [${installation.unix.user}]." />
+			<log message="    - As Linux User [${user}], switch folder ownership" />
+			<log message="         cd .." />
+			<log message="         sudo chown -R ${installation.unix.user}:${installation.unix.user} ${basedir}" />
+			<log message="       Provide the expected password." />
+			<log />
+			<log message="  2- Once completed, re-start package installation as [${installation.unix.user}]:" />
+			<log message="    - Do following:" />
+			<log message="         sudo su - ${installation.unix.user}" />
+			<log message="         cd ${basedir}" />
+			<log message="         ant" />
+			<log />
+			<print.separator.large />
+
+			<stop.log.recorders />
+
+			<!-- Installer base dir when different from current basedir need to be moved to another location to avoid file ownership problem when installation will be restarted by the correct user -->
+			<if>
+				<not>
+					<equals arg1="${installer.basedir}" arg2="${basedir}" />
+				</not>
+				<then>
+					<move todir="${installer.basedir}_${user}_${currentDate}" failonerror="false" >
+						<fileset dir="${installer.basedir}">
+							<include name="**"/>
+						</fileset>
+					</move>
+				</then>
+			</if>
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+       Installation End Message
+              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.end.log" description="Installation End Messsage">
+		<sequential>
+
+			<log />
+			<print.separator.large />
+			<log message="   Installation Completed" />
+			<print.separator.large />
+			<log />
+			<log message="Log File Generated on File [${installation.log}]" />
+			<log message="Uninstaller Archive File Generated on File [${uninstaller.jar}]" />
+			<log message="Delivery Note Generated on File [${delivery.note}]" />
+			<log />
+
+			<read.error.log />
+
+			<stop.log.recorders />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	        Display Errors post-installation 
+	              = = = = = = = = = = = = = = = = = -->
+	<macrodef name="read.error.log">
+		<sequential>
+			<if>
+				<available file="${error.log}" type="file"/>
+				<then>
+					<log />
+					<print.separator.large />
+					<log message="   Installation Failures" />
+					<print.separator.large />
+					<log message="see the error log for details: ${error.log}"/>
+					<log />
+					<loadfile property="file" srcfile="${error.log}"/>
+					<for param="line" list="${file}" delimiter="${line.separator}">
+						<sequential>
+							<log message="@{line}"/>
+						</sequential>
+					</for>
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!-- - - - - - - - - - - - - - - - - -  
+	       Default Target used to Propagate Xconf to Windchill
+	              - - - - - - - - - - - - - - - - - -->
+	<target name="default.deploy.xconf">
+		<log />
+		<print.separator />
+		<log message="   Deploying Xconf" />
+		<print.separator />
+		<!-- Propagate Xconf Changes -->
+		<xconf.p force="false" />
+	</target>
+
+	<!-- ================================= 
+	        Execute SiteMod Deployment Step
+	              ================================= -->
+	<target name="force.deploy.sitemod" description="Deploy wtSafeArea/siteMod files to the Windchill home directory.">
+		<log />
+		<print.separator />
+		<log message="   Deploy files from wtSafeArea to ${wt.home}" />
+		<print.separator />
+
+		<copy.folder.contents source="${basedir}/wtSafeArea" target="${wt.wtSafeArea.dir}" />
+		<install.siteMod.changes />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: install.siteMod.changes
+        This Macrodef execute the winchill OOTB installSiteChanges command
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.siteMod.changes" description="Deploy wtSafeArea/siteMod files to the Windchill home directory.">
+		<sequential>
+			<if>
+				<available file="${basedir}/wtSafeArea/siteMod" type="dir" />
+				<then>
+					<ant antfile="${wt.bin.dir}/swmaint.xml" dir="${wt.home}" target="installSiteChanges" />
+				</then>
+				<else>
+					<log message="No wtSafeArea/siteMod folder -> installSiteChanges skipped" />
+					<print.separator />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!-- ================================= 
+		        Execute Actions/ActionModels Reload action
+		              ================================= -->
+	<target name="force.reload.actions" description="Reload Action/ActionModels.">
+		<reload.actions />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: install.siteMod.changes
+        This Macrodef execute the winchill OOTB installSiteChanges command
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="reload.actions" description="Reload Action/ActionModels.">
+		<sequential>
+			<print.separator />
+			<log message="-  Reloading Action/ActionModels" />
+			<log message="-" />
+			<exec failonerror="false" executable="${wc_cmd}">
+				<arg value="com.ptc.netmarkets.util.misc.NmActionServiceHelper" />
+			</exec>
+			<log message=" Actions/ActionModels reloaded -> Verify Method Server Logs in case of any issue" />
+			<print.separator />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: make.jars
+        This Macrodef Rebuild Windchill application Jar files
+           Should not be required anymore on newer release of Windchill having no Applets
+             Will be skipped by default for Windchill Release Greater than 12.x
+               Can be re-enforced by adding property force.makejar=true in build.properties 
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="make.jars">
+		<sequential>
+			<log />
+			<print.separator />
+			<isgreaterthan arg1="${wnc.major}" arg2="12" strict="false" to="isgreaterthan12"/>
+			<if>
+				<and>
+					<istrue value="${isgreaterthan12}"/>
+					<not>
+						<istrue value="${force.makejar}"/>
+					</not>
+				</and>
+				<then>
+					<log message=" Skipping Rebuild Jars" />
+				</then>
+				<else>
+					<log message="   Rebuild Jars" />
+					<print.separator />
+					<ant antfile="${wt.home}/codebase/MakeJar.xml" dir="${wt.home}/codebase" target="custUpdate" inheritrefs="true" />
+					<log message="--" />
+					<log message="Jars Rebuild" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: xconf.i
+	        This Macrodef execute the xconfmanager -i
+	          Include an xconf file to reference on declaration.xconf
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="xconf.i">
+		<attribute name="filetoinclude" />
+		<sequential>
+			<log message="Xconf File: [@{filetoinclude}] referenced to [declaration.xconf]" />
+			<append.to.file message="Xconf - Reference in declaration.xconf${csv.sep}CHG_ID${csv.sep}Xconf File: [@{filetoinclude}] referenced to [declaration.xconf]" />
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping xconf.i" />
+				</then>
+				<else>
+					<exec failonerror="false" executable="${xconf_cmd}">
+						<arg value="-i" />
+						<arg value="@{filetoinclude}" />
+						<arg value="-p" />
+					</exec>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: xconf.l
+	        This Macrodef Reference a given xconf file to site.xconf via ConfigurationRef
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="xconf.l">
+		<attribute name="filetoinclude" />
+		<sequential>
+			<log message="Xconf File: [@{filetoinclude}] referenced to [site.xconf]" />
+			<append.to.file message="Xconf - Reference in site.xconf${csv.sep}CHG_ID${csv.sep}Xconf File: [@{filetoinclude}] referenced to [site.xconf]" />
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping xconf.l" />
+				</then>
+				<else>
+					<condition property="referenceFound">
+						<resourcecontains resource="${wt.home}/site.xconf" substring="@{filetoinclude}" />
+					</condition>
+					<if>
+						<equals arg1="${referenceFound}" arg2="true" />
+						<then>
+							<log message="Xconf File: [@{filetoinclude}] was already referenced to [site.xconf]" />
+						</then>
+						<else>
+							<property name="tab" value="&#x0009;" />
+							<replace file="${wt.home}/site.xconf">
+								<replacefilter token="&lt;/Configuration&gt;" value="${tab}&lt;ConfigurationRef xlink:href=&quot;@{filetoinclude}&quot;/&gt;${line.separator}&lt;/Configuration&gt;" />
+							</replace>
+						</else>
+					</if>
+					<var name="referenceFound" unset="true" />
+				</else>
+			</if>
+			<xconf.p force="false" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: xconf.a
+	        This Macrodef execute the xconfmanager "- -add"
+	           Add a Property Value to a Multivalued Property
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="xconf.a">
+		<attribute name="property" />
+		<attribute name="value" />
+		<sequential>
+			<log message="Xconf Property Value [@{value}] added to Multivalued property [@{property}] to [site.xconf]" />
+			<append.to.file message="Xconf - Add to Property${csv.sep}CHG_ID${csv.sep}Property Value [@{value}] added to Multivalued property [@{property}] to [site.xconf]" />
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping xconf.s" />
+				</then>
+				<else>
+					<exec failonerror="false" executable="${xconf_cmd}">
+						<arg value="--add" />
+						<arg value="@{property}=@{value}" />
+						<arg value="-p" />
+					</exec>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: xconf.s
+	        This Macrodef execute the xconfmanager -s
+	           Declare a Property Value for a dedicated Target file on the site.xconf
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="xconf.s">
+		<attribute name="property" />
+		<attribute name="value" />
+		<attribute name="targetfile" />
+		<sequential>
+			<log message="Xconf Property [@{property}] added to [site.xconf]" />
+			<append.to.file message="Xconf - Set Property value${csv.sep}CHG_ID${csv.sep}Property: [@{property}] added to [site.xconf]" />
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping xconf.s" />
+				</then>
+				<else>
+					<exec failonerror="false" executable="${xconf_cmd}">
+						<arg value="-s" />
+						<arg value="@{property}=@{value}" />
+						<arg value="-t" />
+						<arg value="@{targetfile}" />
+						<arg value="-p" />
+					</exec>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: xconf.r
+	        This Macrodef execute the xconfmanager -remove
+	           Remove a Value from an existing Multivalued Property for a dedicated Target file on the site.xconf
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="xconf.r">
+		<attribute name="property" />
+		<attribute name="value" />
+		<sequential>
+			<log message="Xconf Property Value [@{value}] removed from Property[@{property}] in [site.xconf]" />
+			<append.to.file message="Xconf - Remove Value from Property${csv.sep}CHG_ID${csv.sep}Property Value [@{value}] removed from Property[@{property}] in [site.xconf]" />
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping xconf.r" />
+				</then>
+				<else>
+					<exec failonerror="false" executable="${xconf_cmd}">
+						<arg value="--remove" />
+						<arg value="@{property}=@{value}" />
+						<arg value="-p" />
+					</exec>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+		              macrodef: xconf.p
+		        This Macrodef execute the xconfmanager -p
+		             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="xconf.p">
+		<attribute name="force" default="true" />
+		<sequential>
+			<log message="Xconf Propagation" />
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping xconf.p" />
+				</then>
+				<else>
+					<exec failonerror="false" executable="${xconf_cmd}">
+						<arg value="-Fp" if:true="@{force}" />
+						<arg value="-p" unless:true="@{force}" />
+					</exec>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: antcall-if-exists
+	        Execute a target only if the target exists
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="antcall-if-exists">
+		<attribute name="target" />
+		<sequential>
+			<targetExists targetname="@{target}" property="@{target}-exists" />
+			<if>
+				<istrue value="${@{target}-exists}" />
+				<then>
+					<antcall target="@{target}" />
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!-- - - - - - - - - - - - - - - - - -  
+	       Target used to manually register a component based on build.properties data 
+	              - - - - - - - - - - - - - - - - - -->
+	<target name="force.register.custom.component" description="Force register custom component based on build.properties values">
+		<register.custom.component />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+                  macrodef: register.custom.component
+            This Macrodef executes the Registration of a Custom Component
+                 = = = = = = = = = = = = = = = = = -->
+	<macrodef name="register.custom.component">
+		<sequential>
+			<if>
+				<istrue value="${register.component}" />
+				<then>
+					<print.separator />
+					<echo message="Registering Component [${component.name}]" />
+					<print.separator />
+					<toLowerCase string="${component.name}" to="lowercase.component.name" />
+					<remove.existing.ia.file lower.component.name="${lowercase.component.name}" />
+					<create.registration.file lower.component.name="${lowercase.component.name}" />
+					<update.installation.registry lower.component.name="${lowercase.component.name}" />
+				</then>
+				<else>
+					<print.separator />
+					<echo message="Ignore Component [${component.name}] Registration" />
+					<print.separator />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: create.registration.file
+        This Macrodef creates the registration (.ia) file
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="create.registration.file" description="Create component.ia  file for server registration">
+		<attribute name="lower.component.name" />
+		<sequential>
+			<echo message="------------------------------" />
+			<echo message="Create @{lower.component.name}.ia file for server registration" />
+			<echo message="------------------------------" />
+
+			<exec failonerror="false" executable="${wc_cmd}">
+				<arg value="com.ptc.windchill.instassm.InstalledAssemblyForSimpleChange" />
+				<arg value="-d" />
+				<!-- Destination ($WT_HOME/Windchill/installer/instreg) -->
+				<arg path="${installregistry.dir}" />
+				<arg value="-r" />
+				<!-- Name Version -->
+				<arg value="@{lower.component.name}.${version}" />
+				<arg value="-s" />
+				<!-- Install Sequence -->
+				<arg value="${install.sequence}" />
+				<arg value="-c" />
+				<!-- Windchill Maintenance Release DateCode (M030-CPS05) -->
+				<arg value="${windchill.datecode}" />
+				<arg value="-n" />
+				<!-- Windchill Release Version (11.1) -->
+				<arg value="${windchill.releasenumber}" />
+				<arg value="-N" />
+				<!-- Component Display Name (Application Display Name . Major.Minor)-->
+				<arg value="${component.displayname}" />
+				<arg value="-v" />
+				<!-- Code Version -->
+				<arg value="@{lower.component.name}.${version}" />
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: update.installation.registry
+        This Macrodef registers build package
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="update.installation.registry" description="Update Installation Registry">
+		<attribute name="lower.component.name" />
+		<sequential>
+
+			<print.separator />
+			<log message="  Update Installation Registry" />
+			<print.separator />
+
+			<exec failonerror="false" executable="${wc_cmd}">
+				<arg value="com.ptc.windchill.instassm.UpdateInstallationRegistry" />
+				<arg value="--isWindchillRoot" />
+				<arg value="--installDirectory=${wt.home}" />
+				<arg path="${installregistry.dir}/@{lower.component.name}.ia" />
+
+			</exec>
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: remove.existing.ia.file
+        This Macrodef remove the existing .ia file
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="remove.existing.ia.file">
+		<attribute name="lower.component.name" />
+		<sequential>
+			<delete file="${installregistry.dir}/@{lower.component.name}.ia" failonerror="false" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: install.ptc.tmppatch
+        This Macrodef install a PTC TempPatch
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="install.ptc.tmppatch">
+		<attribute name="tp.name" />
+		<attribute name="ignoreWtSafeArea" default="true" />
+		<sequential>
+
+			<check.server.status action="stopped" />
+			<cleancache />
+			<cleanlogs />
+
+			<if>
+				<and>
+					<available file="${wt.wtSafeArea.dir}" type="dir" />
+					<istrue value="${ignoreWtSafeArea}" />
+				</and>
+				<then>
+					<log />
+					<print.separator />
+					<log message=" Ignore wtSafeArea " />
+					<log message="    Rename [${wt.wtSafeArea.dir}] into [${wt.wtSafeArea.dir}_@{tp.name}]" />
+					<print.separator />
+					<move todir="${wt.wtSafeArea.dir}_@{tp.name}">
+						<fileset dir="${wt.wtSafeArea.dir}" />
+					</move>
+				</then>
+			</if>
+
+			<log />
+			<print.separator />
+			<log message=" Starting Patch installation " />
+			<log message="    Execute command [java -jar ${tempPatch.dir}${file.separator}@{tp.name}.jar --install ${wt.home}] " />
+			<print.separator />
+
+			<trycatch property="tempPatchInstallationStatus">
+				<try>
+					<exec output="${installer.logs.dir}${file.separator}@{tp.name}-installation.log" failonerror="true" executable="java">
+						<arg value="-jar" />
+						<arg value="${tempPatch.dir}${file.separator}@{tp.name}.jar" />
+						<arg value="--install" />
+						<arg value="${wt.home}" />
+					</exec>
+				</try>
+				<catch>
+					<log />
+					<log message="TempPatch Installation Fails, check Installation Logs on file:" />
+					<log message="${installer.logs.dir}${file.separator}@{tp.name}-installation.log" />
+					<log />
+				</catch>
+			</trycatch>
+
+			<log />
+			<print.separator />
+			<log message=" Patch installation ends " />
+			<log message="    Log File Generated on [${wt.home}/installer/logs/@{tp.name}_PtcInstall.log" />
+			<print.separator />
+			<log />
+
+			<if>
+				<available file="${wt.wtSafeArea.dir}_@{tp.name}" type="dir" />
+				<then>
+					<print.separator />
+					<log message=" Restore wtSafeArea " />
+					<log message="    Rename [${wt.wtSafeArea.dir}_@{tp.name}] into [${wt.wtSafeArea.dir}]" />
+					<print.separator />
+					<move todir="${wt.wtSafeArea.dir}">
+						<fileset dir="${wt.wtSafeArea.dir}_@{tp.name}" />
+					</move>
+				</then>
+			</if>
+
+			<check.server.status action="started" />
+			<log />
+			<print.separator.large />
+
+			<waitForWindchill />
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+                  macrodef: register.temp.patch
+            This Macrodef executes the Registration of a TempPatch
+                 = = = = = = = = = = = = = = = = = -->
+
+	<macrodef name="register.temp.patch">
+		<attribute name="tp.name" default="${tp.name}" />
+		<attribute name="tp.sequence" default="${tp.sequence}" />
+		<sequential>
+			<if>
+				<equals arg1="${register.temppatch}" arg2="true" />
+				<then>
+					<toLowerCase string="@{tp.name}.tp" to="lowercase.tp.name" />
+					<remove.existing.tp.file tp.name="${lowercase.tp.name}" />
+					<create.tp.registration.file tp.name="@{tp.name}" tp.sequence="@{tp.sequence}" />
+					<update.tp.installation.registry tp.name="${lowercase.tp.name}" />
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: create.tp.registration.file
+        This Macrodef creates the registration (.tp) file for a TempPatch
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="create.tp.registration.file" description="Create TempPatchName.tp file for server registration">
+		<attribute name="tp.name" />
+		<attribute name="tp.sequence" />
+
+		<sequential>
+			<print.separator />
+			<log message="  Create @{tp.name}.tp file for server registration" />
+			<print.separator />
+
+			<exec failonerror="false" executable="${wc_cmd}">
+				<arg value="com.ptc.windchill.instassm.InstalledTempPatch" />
+				<!-- Destination ($WT_HOME/Windchill/installer/instreg) -->
+				<arg path="${installregistry.dir}" />
+				<!-- Temp Patch Name -->
+				<arg value="@{tp.name}" />
+				<!-- Install Sequence -->
+				<arg value="@{tp.name} [Seq @{tp.sequence}]" />
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: update.tp.installation.registry
+        This Macrodef register component as a TempPatch
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="update.tp.installation.registry" description="Update Installation Registry">
+		<attribute name="tp.name" />
+
+		<sequential>
+			<print.separator />
+			<log message="  Update TempPatch Installation Registry" />
+			<print.separator />
+
+			<exec failonerror="false" executable="${wc_cmd}">
+				<arg value="com.ptc.windchill.instassm.UpdateInstallationRegistry" />
+				<arg value="--isWindchillRoot" />
+				<arg value="--installDirectory=${wt.home}" />
+				<arg path="${installregistry.dir}/@{tp.name}" />
+
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: remove.existing.tp.file
+        This Macrodef remove the existing .tp file
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="remove.existing.tp.file">
+		<attribute name="tp.name" />
+		<sequential>
+
+			<delete file="${installregistry.dir}/@{tp.name}" failonerror="false" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: merge.content.cache.server.bom
+	        This Macrodef merge the .includes file of a TemPatch with the OOTB ${wt_home}/CCSTools/CcsDsuBom.include
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="merge.content.cache.server.bom">
+		<attribute name="includes.file" default="${wt.home}/installer/wnc/CcsDsuBom.include" />
+		<sequential>
+			<print.separator />
+			<log message="  START: Rebuilding Content Cache Server jars..." />
+			<print.separator />
+
+			<property name="wt_home" value="${wt.home}" />
+			<property name="ccsdsubom_include" location="@{includes.file}" />
+
+			<ant antfile="${wt_home}/bin/CCSTools/create_ccsdsu.xml" target="-buildBomFile" />
+
+			<print.separator />
+			<log message="  END: Rebuilding of Content Cache Server jars complete." />
+			<print.separator />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: set_property
+        This Macrodef allows to set a properties based on the value of another property
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="set_property">
+		<attribute name="name" />
+		<attribute name="from" />
+		<sequential>
+			<if>
+				<isset property="@{from}" />
+				<then>
+					<property name="@{name}" value="${@{from}}" />
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!-- ================================= 
+        Display SCF version
+              ================================= -->
+	<target name="version" description="Display SCF Version">
+		<get.component.version />
+		<display.scf.header />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: display.scf.header
+        This Macrodef allows to set a properties based on the value of another property
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="display.scf.header">
+		<sequential>
+			<print.separator />
+			<print.logo />
+			<print.separator />
+			<print.windchill.details />
+			<print.separator />
+			<print.package.details />
+			<print.separator />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: print.logo
+        This Macrodef Display the SCF Logo
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="print.logo">
+		<sequential>
+			<log message="                  _.-._               " />
+			<log message="              _.-|_|_|_|-._           " />
+			<log message="          _.-|`-._ `-|_|_|_|-._       " />
+			<log message="      _.-|_|_|_|-'  _  `-|_|   |-._   " />
+			<log message="     |_|_|_|-'  _.-' `-._      |-|_|             _            " />
+			<log message="     |_|-'   .-'         `-.   |-|_|         _.-'             " />
+			<log message="     |      |`-._       _.-'|  |-|_|        |_       _.-      " />
+			<log message="     |_.-|  |    `-._.-'    |  |-|_|      _   `-._.-'   _     " />
+			<log message="     |_|-|  |       |       |  |-|_|     | `-._     _.-' |    " />
+			<log message="     |_|-|  |       |       |  |-' |     |_    |   |          " />
+			<log message="     |_|-|  |_      |      _|     _|       `-._    |_.-|      " />
+			<log message="     |_|-|    `-._  |  _.-'   _.-|_|     |_    |   |     .    " />
+			<log message="     |_|-|   ._   `-|-'   _.-|_|_|_|       `-._|   |          " />
+			<log message="       `-|   |_|-._     -|_|_|_|-'    " />
+			<log message="          `-.|_|_|_|-._  `_|-'        " />
+			<log message="               `-|_|_|_|-'            " />
+			<log message="                   `-'                " />
+			<log message=" " />
+			<log message="                Simple Change Framework ${sic.version}"  />
+			<log message="                               Sequence ${sic.version.hotfix}"  />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: print.package.details
+        This Macrodef Display the Package details
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="print.package.details">
+		<sequential>
+			<log message=" - Package Details: "  />
+			<log message="              Name: [${package.name}]"  />
+			<log message="    Component Name: [${component.name}]"  />
+			<log message="           Version: [${version}], sequence: [${install.sequence}]"  />
+			<log message="      Display Name: [${component.displayname}]"  />
+			<if>
+				<isset property="tp.name"/>
+				<then>
+					<print.separator />
+					<log message=" - Temp Patch Details: "  />
+					<log message="              Name: [${tp.name}]"  />
+					<log message="          Sequence: [${tp.sequence}]"  />
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: print.windchill.details
+        This Macrodef Display the Windchill components details
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="print.windchill.details">
+		<sequential>
+			<get.component.version component="wnc"/>
+			<display.component.version component="wnc" />
+			<get.component.version component="flexplm"/>
+			<if>
+				<istrue value="${flexplm.installed}"/>
+				<then>
+					<print.separator />
+					<display.component.version component="flexplm" ignore.if.not.installed="true"/>
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: print.separator
+        This Macrodef Display a Line full of Minus sign
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="print.separator">
+		<sequential>
+			<log message="-----------------------------------------------------------------" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: print.separator
+        This Macrodef Display a Line full of Equal sign
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="print.separator.large">
+		<sequential>
+			<log message="=================================================================" />
+		</sequential>
+	</macrodef>
+
+	<!--
+	        toLowerCase
+	        Converts the given "string" into a lower case string and puts the result into the specified user property.
+	        Attributes:
+	            string                  The string to convert
+	            to      Name of the property to store the result in
+	    -->
+	<macrodef name="toLowerCase">
+		<attribute name="string" />
+		<attribute name="to" />
+
+		<sequential>
+			<var name="thestring" unset="true" />
+			<property name="thestring" value="@{string}"/>
+			<var name="theto" unset="true" />
+			<property name="theto" value="@{to}"/>
+
+			<groovy>
+				def string = ant.project.getProperty("thestring");
+				def targetProperty = ant.project.getProperty("theto");
+
+				def result = string.toLowerCase();
+
+				ant.project.setProperty(targetProperty,result);
+			</groovy>
+			<echo message="Origin String: @{string}" />
+			<echo message="Updated String: Prop[@{to}] = ${@{to}}" />
+		</sequential>
+	</macrodef>
+
+	<!--
+	        toUpperCase
+	        Converts the given "string" into a lower case string and puts the result into the specified user property.
+	        Attributes:
+	            string                  The string to convert
+	            to      Name of the property to store the result in
+	    -->
+	<macrodef name="toUpperCase">
+		<attribute name="string" />
+		<attribute name="to" />
+
+		<sequential>
+			<var name="thestring" unset="true" />
+			<property name="thestring" value="@{string}"/>
+			<var name="theto" unset="true" />
+			<property name="theto" value="@{to}"/>
+
+			<groovy>
+				def string = ant.project.getProperty("thestring");
+				def targetProperty = ant.project.getProperty("theto");
+
+				def result = string.toUpperCase();
+				
+				ant.project.setProperty(targetProperty,result);
+			</groovy>
+			<echo message="Origin String: @{string}" />
+			<echo message="Updated String: Prop[@{to}] = ${@{to}}" />
+		</sequential>
+	</macrodef>
+
+	<!--
+		replaceChar
+		Replaces occurrences of "pattern" in the given "string" by "replacement" and puts the result into the specified user property.
+		Attributes:
+			string				The original string
+			pattern				The string to find, may be a regular expression pattern
+			replacement			The replacement for occurrences of pattern
+			to					Name of the property to store the result in
+	-->
+	<macrodef name="replaceChar">
+		<attribute name="string" />
+		<attribute name="pattern" />
+		<attribute name="replacement" />
+		<attribute name="to" />
+
+		<sequential>
+			<var name="thestring" unset="true" />
+			<property name="thestring" value="@{string}"/>
+			<var name="thepattern" unset="true" />
+			<property name="thepattern" value="@{pattern}"/>
+			<var name="thereplacement" unset="true" />
+			<property name="thereplacement" value="@{replacement}"/>
+			<var name="theto" unset="true" />
+			<property name="theto" value="@{to}"/>
+
+			<groovy>
+				def string = ant.project.getProperty("thestring");
+				def pattern = ant.project.getProperty("thepattern");
+				def replacement = ant.project.getProperty("thereplacement");
+				def targetProperty = ant.project.getProperty("theto");
+
+				def result = string.replaceAll(pattern, replacement);
+
+				ant.project.setProperty(targetProperty,result);
+			</groovy>
+			<echo message="Origin String: @{string}" />
+			<echo message="Pattern: @{pattern}" />
+			<echo message="replacement char: @{replacement}" />
+			<echo message="Updated String: Prop[@{to}] = ${@{to}}" />
+		</sequential>
+	</macrodef>
+
+	<!--
+	        targetExists
+	        set given Property to true in case given Target Exists in the project.
+	        Attributes:
+	            targetname      The TargetName to search
+	            property        The Property on which set if Target Exist
+	    -->
+	<macrodef name="targetExists">
+		<attribute name="targetname" />
+		<attribute name="property" />
+
+		<sequential>
+			<var name="thetargetname" unset="true" />
+			<property name="thetargetname" value="@{targetname}"/>
+			<var name="theproperty" unset="true" />
+			<property name="theproperty" value="@{property}"/>
+
+			<groovy>
+				def targetname = ant.project.getProperty("thetargetname");
+				def targetProperty = ant.project.getProperty("theproperty");
+
+				if(ant.project.getTargets().containsKey(targetname)) {
+					ant.project.setProperty(targetProperty,"true");
+				}
+			</groovy>
+			<echo message="Target: @{targetname} exist ? [${@{property}}]" />
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: isgreaterthan
+        This Macrodef verify if a number (arg1) is greater than another (arg2).
+			If parameter "strict" = false, it will verify if the number (arg1) is greater or equal to the other (arg2)
+			The result (either true or false) is sent to the parameter called "to" 
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="isgreaterthan">
+		<attribute name="arg1" />
+		<attribute name="arg2" />
+		<attribute name="strict" default="true" />
+		<attribute name="to" default="isgreaterthan"/>
+		<sequential>
+			<var name="arg1" unset="true" />
+			<property name="arg1" value="@{arg1}"/>
+			<var name="arg2" unset="true" />
+			<property name="arg2" value="@{arg2}"/>
+			<var name="to" unset="true" />
+			<property name="to" value="@{to}"/>
+			<var name="strict" unset="true" />
+			<property name="strict" value="@{strict}"/>
+			<groovy>
+	                    def arg1 = ant.project.getProperty("arg1");
+	                    def arg2 = ant.project.getProperty("arg2");
+	                    def to = ant.project.getProperty("to");
+	                    def strict = ant.project.getProperty("strict");
+	                    def number1 = Integer.parseInt(arg1);
+	                    def number2 = Integer.parseInt(arg2);
+	                    def result = "false";
+	                    println(number1+"-"+number2+"-"+strict)
+	                    if (strict=="true") {
+	                            if (number1 > number2) {
+	                                    result="true";
+	                            }
+	                    } else {
+	                            if (number1 >= number2 ) {
+	                                    result="true";
+	                            }
+	                    }
+	                    ant.project.setProperty(to,result);
+	            </groovy>
+		</sequential>
+	</macrodef>
+
+</project>

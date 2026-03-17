@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		      |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!-- V0.11 add copy overwrite  |  October 24, 2019    | OLIVIER FRANCHET    -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Copy Utilities">
+
+	<!--  - - - - - - - - - - - - - - - - -  
+	        Default Target used to copy Configuration Files to Windchill
+	               - - - - - - - - - - - - - - - - - -->
+	<target name="default.copy.files">
+		<log />
+		<log message="------------------------------------------" />
+		<log message="   Copy files to ${wt.home}" />
+		<log message="------------------------------------------" />
+
+		<copy.folder.contents source="${basedir}/loadFiles" target="${wt.loadfiles.dir}" />
+		<copy.folder.contents source="${basedir}/loadXMLFiles" target="${wt.loadxmlfiles.dir}" />
+		<copy.folder.contents source="${basedir}/codebase" target="${wt.codebase.dir}" />
+		<copy.folder.contents source="${basedir}/wtCustom" target="${wt.wtCustom.dir}" />
+		<copy.folder.contents source="${basedir}/tasks" target="${wt.tasks.dir}" />
+		<copy.folder.contents source="${basedir}/srclib" target="${wt.srclib.dir}" />
+		<copy.folder.contents source="${basedir}/lib" target="${wt.lib.dir}" />
+		<copy.folder.contents source="${basedir}/wtSafeArea" target="${wt.wtSafeArea.dir}" />
+		<copy.folder.contents source="${basedir}/db" target="${wt.db.dir}" />
+		<copy.folder.contents source="${basedir}/installer" target="${wt.installer.dir}" />
+		<copy.folder.contents source="${basedir}/ant/lib" target="${wt.lib.dir}" />
+		<copy.folder.contents source="${basedir}/conf" target="${wt.conf.dir}" />
+
+		<log message="--" />
+		<log message="Files copied" />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+                      macrodef: Copy Folder Contents
+                This Macrodef copy files from source to target folder
+                     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="copy.folder.contents">
+		<attribute name="source" />
+		<attribute name="target" />
+		<attribute name="copy.verbose" default="${copy.verbose}" />
+		<attribute name="copy.overwrite" default="true" />
+		<attribute name="faileonerror" default="false" />
+		<sequential>
+			<if>
+				<available file="@{source}" type="dir" />
+				<then>
+					<fileset id="filesToCopy" dir="@{source}">
+						<include name="**/*" />
+						<exclude name="**/*.sicsample.*" />
+						<exclude name="**/*_sicsample/**" />
+						<exclude name="**/.svn" />
+						<exclude name="**/.settings" />
+						<exclude name="**/.classpath" />
+						<exclude name="**/.project" />
+						<exclude name="**/.externalToolBuilders/**" />
+						<exclude name="xmltask-1.16.jar" />
+					</fileset>
+					<copy overwrite="@{copy.overwrite}" verbose="@{copy.verbose}" todir="@{target}" failonerror="@{failonerror}">
+						<fileset refid="filesToCopy" />
+					</copy>
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+
+	<!--	= = = = = = = = = = = = = = = = =
+			macrodef: create.dir
+			This Macrodef Creates Directories
+			= = = = = = = = = = = = = = = = = -->
+	<macrodef name="create.dir">
+		<attribute name="dirpath" />
+		<attribute name="dirroot" default="${wt.home}" />
+		<sequential>
+			<log message="Creating dir [@{dirpath}] under root [@{dirroot}]" />
+			<mkdir dir="@{dirroot}/@{dirpath}" />
+		</sequential>
+	</macrodef>
+
+	<!--	= = = = = = = = = = = = = = = = =
+			macrodef: createDir
+			This Macrodef Creates Directories   - Deprecated
+			= = = = = = = = = = = = = = = = = -->
+	<macrodef name="createDir">
+		<attribute name="dirpath" />
+		<attribute name="dirroot" default="${wt.home}" />
+		<sequential>
+			<create.dir dirpath="@{dirpath}" dirroot="@{dirroot}" />
+		</sequential>
+	</macrodef>
+
+</project>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** --><!-- Desc: Simple Change Installer                                          --><!--                                                                        --><!-- Date:   31 January 2019                                                --><!-- Author: OLIVIER FRANCHET                                               --><!--                                                                        --><!-- Changes                                                                --><!-- =============                                                          --><!-- Reason for Change         |  Date		          |  Author             --><!-- =====================================================================  --><!-- Document Creation	       | December 20, 2018    | OLIVIER FRANCHET    --><!-- Update for Simple Change  | January  31, 2019    | OLIVIER FRANCHET    --><!-- V0.12 provide task to delete files | Oct 4, 2019 | NATASCHA SCHWARZ    --><!-- V0.13 task to import Preferences  | Feb 10, 2020 | NATASCHA SCHWARZ    --><!-- V1.0  Add pre/post hooks  | April 1, 2020        | Olivier Franchet    --><!--                                                                        --><!--                                                                        --><!-- ********************************************************************** --><project default="install" name="Simple Change Installer">
+
+
+	<!-- Do not Remove these import lines -->
+	<import file="${basedir}/ant/deployutils.xml"/>
+	  <import file="${basedir}/ant/extensions/preAndPostOperations.xml"/>
+
+	  <!-- Declare Custom Extensions here after -->
+	<!-- EXAMPLES :    
+		
+		<import file="${basedir}/ant/extensions/MyCustomOperations.xml"/>   
+	-->
+
+
+	<!-- ================================= 
+        Copy to Windchill all Files provided with this distribution
+              ================================= -->
+	<target depends="default.copy.files" description="Copy Configuration Files"
+           name="copy.files">
+		<!--   Copy File Section  -->
+		<!-- EXAMPLES :  
+	        By default folders ./loadFiles, ./loadXMLFiles, ./codebase, ./wtCustom, ./tasks, 
+	        	                   ./srclib, ./lib, ./wtSafeArea, ./db, ./installer, ./ant/lib and ./conf
+	        	         are automatically copied to $WT_HOME without additions. 
+	        	     ref: Target default.copy.files on file /ant/utils/copy.xml
+	        	     
+	         Any files or folder not on this list has to be declared here after as follows:
+	         
+	      <copy.folder.contents source="${basedir}/somedirectory" target="${wt.home}/somedirectory" />
+		    or
+		  <copy overwrite="true" verbose="${copy.verbose}" todir="${wt.home}/somedirectory" failonerror="false" >
+				<fileset dir="./somedirectory">
+					<include name="**/*"/>
+					<exclude name="**/.svn"/>
+					<exclude name="**/*.settings"/>
+					<exclude name="**/*.classpath"/>
+					<exclude name="**/*.project"/>
+				</fileset>
+	      </copy>
+		-->
+		<!-- ADD The specific copyFile declarations here after -->
+		
+
+	</target>
+
+	  <!-- ================================= 
+        Declare files to be deleted permanently
+  			================================= -->
+	<target description="Delete Files" name="delete.files">
+		<!-- This is called after copy.files during installation and it is always executed. 
+			Files deleted using these macrodefs are kept on an Archive called uninstaller_package.name_deletedFiles.jar -->
+		<!-- EXAMPLES :
+		   - Delete from wt.home
+		       	<deleteFile filename="codebase/xxx.properties"/>
+		   - Delete from a given directory
+		       	<deleteFile filename="xxx.properties"  filepath="${wt.home}/codebase" />
+		   - Delete a set of files (File named as *xx.bak on the given folder)
+		       	<deleteFile filename="*xx.bak"  filepath="${wt.home}/codebase" />
+		   - Delete a set of files (File named as *xx.bak on all folders recursively)
+		       	<deleteFile filename="**/*xx.bak"  filepath="${wt.home}/codebase" />
+		   - Delete a Folder
+		       	<deleteFolder dir="${wt.home}/codebase/acustomfolder" />
+		-->
+		<!-- ADD The specific delete declarations here after -->
+		
+	</target>
+
+	  <!-- ================================= 
+        Declare all Xconf modification to apply with this distribution
+              ================================= -->
+	<target depends="default.deploy.xconf" description="Deploy Xconf Files and Properties"
+           name="deploy.xconf">
+		<!--   XCONF Section  -->
+		<!-- EXAMPLES: 
+           - Reference (include) an xconf file to declarations.xconf
+       	<xconf.i filetoinclude="codebase/com/customer/customer_default_configuration.xconf" />
+           - Reference (link) an xconf file to site.xconf
+       	<xconf.l filetoinclude="codebase/com/customer/customer.xconf" />
+           - Substitute a property value via site.xconf
+       	<xconf.s property="publish.copyforwardallrepresentationsoncopy" 
+       		 value="false" 	
+       		 targetfile="codebase/WEB-INF/conf/wvs.properties" />
+        	- Add a property value to a Multiple Values property
+        <xconf.a property="com.lcs.wc.util.LCSProperties.additionalProperties" 
+        	 value="/myPropertyFile.properties" />
+           - Propagate Xconf Changes (executed by default by all other xconf.* targets)
+		<xconf.p/>
+		-->
+		<!-- ADD The specific XConf declarations here after -->
+
+		<xconf.s property="com.sparc.webservice" 
+       		 value="ext.addcolumn.RestUtil,com.sparc.wc.integration.SparcRestIntegration" 	
+       		 targetfile="codebase/com/ptc/windchill/rest/rest.properties"/>
+
+	</target>
+
+	  <!-- ================================= 
+        Declare all Global Enumeration LoadFiles to be Loaded within this distribution
+              ================================= -->
+	<target description="Load Enumerations" name="load.files.enumerations">
+		<!-- Global Enumerations Section -->
+		<!-- EXAMPLES: 
+		   - LoadSet at Site Level
+			   <loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/MaterialGroup_yyyymmdd-hhmmss_sicsample/MaterialGroup_LoadSet.xml" />
+		   If No _LoadSet.xml file exist, please declare the xml file(s) as followed
+           - LoadFromFile at Site Level
+               <loadFromFile loadfile="${wt.loadfiles.dir}/sic/enumerations/MaterialGroup_yyyymmdd-hhmmss_sicsample/MaterialGroup_0.xml" />
+           - LoadFromFile at Org Level
+               <loadFromFile loadfile="${wt.loadfiles.dir}/sic/enumerations/MaterialGroup_yyyymmdd-hhmmss_sicsample/MaterialGroup_0.xml" contpath="/wt.inf.container.OrgContainer=${org.name}" />
+		-->
+		<!-- ADD The Global Enumerations loadFromFile here after -->
+		<!-- <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/Enums/AllEnums_0.xml" />
+	    <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/typeManager/FullConfig_LoadSet.xml" />
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20250624-065707/scbrandassetpartner_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20250624-065749/sccreationtrackcust_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250701-014625/scsizerangeFTW_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroDryInstructions_20250728-062530/scAeroDryInstructions_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroWashInstructions_20250728-062408/scAeroWashInstructions_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20250728-062715/scbrandassetpartner_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250728-062154/scsizerangeFTW_LoadSet.xml"/>	
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20250729-051050/sccreationtrackcust_LoadSet.xml"/>	
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scdistchannel_20250929-052631/scdistchannel_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scShippingPort_20250929-052951/scShippingPort_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250929-053222/scsizerangeFTW_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20250929-053457/scbrandassetpartner_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroDepartment_20250929-055011/scAeroDepartment_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroSubDepartment_20250929-055029/scAeroSubDepartment_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAdditionalBuy_20251003-044801/scAdditionalBuy_LoadSet.xml"/>
+		-->
+		
+		
+   </target>
+
+	  <!-- ================================= 
+        Declare all SoftTypes LoadFiles to be Loaded within this distribution
+              ================================= -->
+	<target description="Load SoftTypes" name="load.files.types">
+		<!-- SoftType Section -->
+	<!-- EXAMPLES:  
+		   - LoadSet executed at Site Level
+			   <loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/wt.part.WTPart_yyyymmdd-hhmmss_sicsample/wt.part.WTPart_LoadSet.xml" />
+          If No _LoadSet.xml file exist, please declare all the xml file(s) as followed: (The number of files may varies by object type)
+          - LoadFromFile at Site Level
+               <loadFromFile loadfile="${wt.loadfiles.dir}/sic/types/wt.part.WTPart_yyyymmdd-hhmmss_sicsample/wt.part.WTPart_0.xml" />
+               <loadFromFile loadfile="${wt.loadfiles.dir}/sic/types/wt.part.WTPart_yyyymmdd-hhmmss_sicsample/wt.part.WTPart_1.xml" />
+               <loadFromFile loadfile="${wt.loadfiles.dir}/sic/types/wt.part.WTPart_yyyymmdd-hhmmss_sicsample/wt.part.WTPart_2.xml" />
+               <loadFromFile loadfile="${wt.loadfiles.dir}/sic/types/wt.part.WTPart_yyyymmdd-hhmmss_sicsample/wt.part.WTPart_3.xml" />
+        -->
+		<!-- ADD The SoftTypes loadFileSet here after -->	
+		<!-- <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/types/FullConfig_LoadSet.xml" /> 
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20250626-060257/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.product.LCSProduct_20250728-070442/com.lcs.wc.product.LCSProduct_LoadSet.xml"/>
+     	<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20251003-044714/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.material.LCSMaterial_20250929-054732/com.lcs.wc.material.LCSMaterial_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
+		-->
+	</target>
+
+	  <!-- ================================= 
+        Declare all Workflows LoadFiles to be Loaded within this distribution
+              ================================= -->
+	<target description="Load Workflows" name="load.files.workflows">
+		<!-- Workflows Section -->
+		<!-- EXAMPLES:  
+		   - Load at Site Level
+		       	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/workflows/CustomOneLevelRouting_WF.sicsample.xml" />
+		   - Load at Org Level
+		       	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/workflows/CustomOneLevelRouting_WF.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+		   - Load at Product/Library/Project Level
+		       	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/workflows/CustomOneLevelRouting_WF.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}/wt.pdmlink.PDMLinkProduct=PRODUCTNAME" />
+		      	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/workflows/CustomOneLevelRouting_WF.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}/wt.inf.library.WTLibrary=LIBRARYNAME" />
+		      	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/workflows/CustomOneLevelRouting_WF.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}/wt.projmgmt.admin.Project2=PROJECTNAME" />
+		-->
+		<!-- ADD The Workflows loadFromFile here after -->
+		
+	</target>
+
+	  <!-- ================================= 
+        Declare all Lifecycles LoadFiles to be Loaded within this distribution
+              ================================= -->
+	<target description="Load Lifecycles" name="load.files.lifecycles">
+		<!-- Lifecycles Section  -->
+		<!-- EXAMPLES: 
+		   - Load at Site Level
+			<loadFromFile loadfile="${wt.loadfiles.dir}/sic/lifecycles/SampleBasicLFC.sicsample.xml" />
+		   - Load at Org Level
+			<loadFromFile loadfile="${wt.loadfiles.dir}/sic/lifecycles/SampleBasicLFC.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+		   - Load at Product/Library/Project Level 
+		       	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/lifecycles/SampleBasicLFC.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}/wt.pdmlink.PDMLinkProduct=PRODUCTNAME" />
+		      	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/lifecycles/SampleBasicLFC.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}/wt.inf.library.WTLibrary=LIBRARYNAME" />
+		      	<loadFromFile loadfile="${wt.loadfiles.dir}/sic/lifecycles/SampleBasicLFC.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}/wt.projmgmt.admin.Project2=PROJECTNAME" />
+		-->
+		<!-- ADD The Lifecycles loadFromFile here after -->
+
+	</target>
+
+	  <!-- ================================= 
+        Declare all OIRs LoadFiles to be Loaded within this distribution
+              ================================= -->
+	<target description="Load OIRS (Object Initialization Rules)" name="load.files.oirs">
+		<!-- OIR Section  -->
+		<!-- EXAMPLES: 
+		   - Load at Site Level
+			<loadFromFile loadfile="${wt.loadfiles.dir}/sic/oirs/AllSampleParts-OIR.sicsample.xml" />
+		   - Load at Org Level
+			<loadFromFile loadfile="${wt.loadfiles.dir}/sic/oirs/AllSampleParts-OIR.sicsample.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+		-->
+		<!-- ADD The OIRs loadFromFile here after -->
+		
+	</target>
+
+	  <!-- ================================= 
+        Declare LoadFiles that are not part of SimpleChange
+        	It's important to take care of LoadFiles dependancies when adding entries in that section.
+              ================================= -->
+	<target depends="isServerStarted,load.files.enumerations, load.files.types, load.files.workflows, load.files.lifecycles, load.files.oirs"
+           description="Load Files"
+           name="load.files">
+		<!--   Enumerations, Types, Workflows, Lifecycles and OIR loaders have their respective Target  -->
+		<!-- ADD Other Configuration Load Files here after -->	
+		<!-- <loadFromFile loadfile="${wt.loadfiles.dir}/sic/group/Catalyst_AeroAccess.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/> -->
+				
+		<!-- Groups -->
+		
+			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SiteLevelGroups_GroupsOnly.xml" />
+			<echo message="SUCCESS: Site level loaded successfully."/>
+
+		 
+			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SparcOrgLevelGroups_GroupsOnly.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+			<echo message="SUCCESS: SparcOrgLevelGroups GroupsOnly loaded successfully."/>
+			
+			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SparcOrgLevelGroups_GroupLinks.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+			<echo message="SUCCESS: SparcOrgLevelGroups GroupLinks loaded successfully."/>
+			
+			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SparcOrgLevelGroups_GroupUsers.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+			<echo message="SUCCESS:  SparcOrgLevelGroups GroupUsers loaded successfully."/>
+			
+			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SparcSiteLevelGroups_GroupLinks.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+			<echo message="SUCCESS: Org level loaded successfully."/>
+
+				
+		<!-- AGVR -->
+			<loadAGVR loadfile="${wt.loadfiles.dir}/configExport/agvr_nd_absr/agvr_export.txt"/>
+		
+		<!-- ABSR -->
+			<loadABSR loadfile="${wt.loadfiles.dir}/configExport/agvr_nd_absr/absr_export.txt" />
+				
+		<!-- Delete the existing ACL's  -->
+		  <loadFromFile loadfile="${wt.loadfiles.dir}/configExport/acl/deleteACLCA.xml"
+			 contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+
+		<!-- Site Level Policy Rules -->
+		   
+		 <loadFromFile loadfile="${wt.loadfiles.dir}/configExport/acl/TAG-0.xml"
+			 contpath="/wt.inf.container.OrgContainer=${org.name}"/>		
+					
+			
+	</target>
+
+</project>

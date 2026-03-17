@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		          |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!-- V0.10 buildlog archiving  |  June 24, 2019       | OLIVIER FRANCHET    -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Server Management Utilities" >
+
+	<!--  - - - - - - - - - - - - - - - - -  
+        Target used to verify if the Windchill server is Started, if not, the server will be started.
+               - - - - - - - - - - - - - - - - - -->
+	<target name="isServerStarted">
+		<if>
+			<equals arg1="${list.content.only}" arg2="true" />
+			<then>
+				<log message="Print Package Content - Skipping isServerStarted" />
+			</then>
+			<else>
+				<check.server.status action="started" />
+			</else>
+		</if>
+	</target>
+
+	<!--  - - - - - - - - - - - - - - - - -  
+        Target used to verify if the Windchill server is Stopped, if not, the server will be stopped.
+               - - - - - - - - - - - - - - - - - -->
+	<target name="isServerStopped">
+		<check.server.status action="stopped" />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: restart.wdc
+	        This Macrodef Stop Windchill, Clean Cache and Logs, Start Windchill 
+	                  and wait for Windchill to be UP and Running 
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="restart.wdc" >
+		<sequential>
+			<check.server.status action="stopped" />
+			<cleancache/>
+			<cleanlogs/>
+			<check.server.status action="started" />
+			<waitForWindchill/>
+		</sequential>
+	</macrodef>
+	
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: start.wdc
+	        This Macrodef Start Windchill
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="start.wdc" description="Start Windchill">
+		<sequential>
+			<log message="Starting Windchill: ${wc_cmd} start"/>
+			<exec dir="${wt.home}" executable="${wc_cmd}">
+				<arg value="start"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: stop.wdc
+        This Macrodef Stop Windchill
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="stop.wdc" description="Stop Windchill">
+		<sequential>
+			<log message="Stopping Windchill: ${wc_cmd} stop"/>
+			<exec dir="${wt.home}" executable="${wc_cmd}">
+				<arg value="stop"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: check.server.status
+	        This Macrodef verifies the server status, and re-align it with provided action parameter
+	            Action parameter can be either stopped or started
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="check.server.status">
+		<attribute name="action" />
+		<sequential>
+
+			<log />
+			<log message="------------------------------------------" />
+			<log message=" Verify if Windchill Server is @{action}" />
+			<log message="------------------------------------------" />
+			<trycatch>
+				<try>
+					<exec executable="${wc_cmd}" failonerror="true" output="serverstatus.log">
+						<arg line="status" />
+					</exec>
+					<if>
+						<equals arg1="@{action}" arg2="stopped" />
+						<then>
+							<log message="Windchill is Started, Going to stop it." />
+							<stop.wdc />
+						</then>
+						<else>
+							<log message="--" />
+							<log message="Windchill is Started." />
+						</else>
+					</if>
+					<property name="server.was.started" value="true"/>
+				</try>
+				<catch>
+					<if>
+						<equals arg1="@{action}" arg2="started" />
+						<then>
+							<log message="Windchill is Stopped, Going to start it." />
+							<start.wdc />
+						</then>
+						<else>	
+							<log message="--" />
+							<log message="Windchill is Stopped." />
+						</else>
+					</if>
+					<property name="server.was.stopped" value="true"/>
+				</catch>
+			</trycatch>
+			
+			<if>
+				<available file="serverstatus.log" />
+				<then>
+					<delete quiet="true" failonerror="false" file="serverstatus.log" />
+				</then>
+			</if>
+			
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: get.server.status
+	        This Macrodef verifies the server status, and re-align it with provided action parameter
+	            Action parameter can be either stopped or started
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="get.server.status">
+		<sequential>
+
+			<log />
+			<log message="------------------------------------------" />
+			<log message=" Get Windchill Server Status" />
+			<log message="------------------------------------------" />
+			<var name="server.is.started" unset="true" />
+			<trycatch>
+				<try>
+					<exec executable="${wc_cmd}" failonerror="true" output="serverstatus.log">
+						<arg line="status" />
+					</exec>	
+					<property name="server.is.started" value="true"/>
+				</try>
+				<catch>
+					<property name="server.is.started" value="false"/>
+				</catch>
+			</trycatch>
+			
+			<if>
+				<available file="serverstatus.log" />
+				<then>
+					<delete quiet="true" failonerror="false" file="serverstatus.log" />
+				</then>
+			</if>
+			<log/>
+			<log message=" Is Server Started ? [${server.is.started}]" />
+			<log/>
+		</sequential>
+	</macrodef>
+	
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: wdc.version
+	        This Macrodef capture Windchill Version
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="wdc.version" description="Capture Windchill Version">
+		<attribute name="filename" default="version" />
+		<attribute name="extension" default=".txt" />
+		<sequential>
+			<log message="Capturing Windchill version"/>
+			<var name="nowstamp_ver" unset="true"/>
+			<tstamp>
+				<format property="nowstamp_ver" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+			<exec executable="${wc_cmd}" failonerror="false" output="${installer.logs.dir}${file.separator}@{filename}_${nowstamp_ver}@{extension}">
+				<arg value="version"/>
+			</exec>
+		</sequential>
+	</macrodef>
+	
+    <!--    = = = = = = = = = = = = = = = = =
+                  macrodef: waitForWindchill
+            This Macrodef Wait for Windchill Readiness before continuing installation
+              If the parameter waitforwindchill.auto=false, the user need to press enter once Method Server is ready
+                 = = = = = = = = = = = = = = = = = -->	
+	<macrodef name="waitForWindchill">
+        <sequential>
+        	<if>
+                <istrue value="${waitforwindchill.auto}" />
+                <then> 
+                	<echo>Attempting to contact the Method Server.....</echo>
+    	            <loadproperties srcFile="${wt.home}/codebase/wt.properties"/>
+    	            
+    	            <property name="windchill.url" value="${wt.webserver.protocol}://${wt.rmi.server.hostname}:${wt.webserver.port}/${wt.webapp.name}"/>
+                	
+                	<echo message="" />
+    	            <echo message="Waiting (max 10 min) for URL ${windchill.url}/servlet/WindchillGW/wt.httpgw.HTTPServer/ping to provide a response" />
+                	<echo message="" />
+    	            
+                	<waitfor maxwait="10" maxwaitunit="minute" checkevery="15" checkeveryunit="second" timeoutproperty="server.is.not.started">
+    	                <http url="${windchill.url}/servlet/WindchillGW/wt.httpgw.HTTPServer/ping" />
+    	            </waitfor>
+    	            
+                	<if>
+                        <isset property="server.is.not.started"/>
+                        <then>
+                        	<echo message="" />
+                        	<echo message="Warning: Failed to auto-determine if MethodServer is started (URL properties may be wrong)" />
+                        	<echo message="  Tested URL is: ${wt.webserver.protocol}://${wt.rmi.server.hostname}:${wt.webserver.port}/${wt.webapp.name}"/>
+                        	<echo message="  Verify consistancy of Windchill Properties:"/>
+                        	<echo message="   -  wt.webserver.protocol [${wt.webserver.protocol}]"/>
+                        	<echo message="   -  wt.rmi.server.hostname [${wt.rmi.server.hostname}]"/>
+                        	<echo message="   -  wt.webserver.port [${wt.webserver.port}]"/>
+                        	<echo message="   -  wt.webapp.name [${wt.webapp.name}]"/>
+                        	<echo message="If these parameter are not consistant, please realign them on site.xconf for future installations." />
+                        	<echo message="Anyway this warning is not blocking the deployment."/>
+                        	<echo message="   - Please follow Manual Restart Instructions" />
+                        	<echo message="" />
+                        	
+                        	<echo message="Manually verify if Application is started (Restart Windchill if needed)" />
+                        	<input message="  Press Enter once Method Server is Ready. " />
+                        	<echo message="" />
+                        	<echo message="Continuing Deployment"/>
+                        	<echo message="" />
+                        </then>
+                        <else>
+                        	<echo message="" />
+                        	<echo message="Connection Valid"/>
+                        	<echo message="" />
+                		</else>
+                    </if>
+                </then>
+                <else>
+                    <input message="  Press Enter once Method Server is Ready. " />
+                	<echo message="" /> 
+                	<echo message="Continuing Deployment"/>
+                	<echo message="" />
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: cleancache
+	        This Macrodef remove all Windchill cache directories, 
+	          Tomcat, I*E and Workflow expressions
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="cleancache">
+		<sequential>
+			<log />
+			<log message="------------------------------------------" />
+			<log message="   Clean Caches" />
+			<log message="------------------------------------------" />
+			<log message="-- Tomcat Caches" />
+			<delete dir="${wt.home}/tomcat/instances" failonerror="false" />
+			<delete dir="${wt.home}/tomcat/work" failonerror="false" />
+
+			<log message="-- Info*Engine Compiled Tasks" />
+			<delete dir="${wt.home}/tasks/codebase/com/infoengine/compiledTasks" failonerror="false" />
+
+			<log message="-- Workflow Expressions" />
+			<delete dir="${wt.home}/codebase/wt/workflow/expr" failonerror="false" />
+			<log message="--" />
+			<log message="Caches cleaned" />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: cleanlogs 
+	        This Macrodef moves Log files to a backup directory
+	         If the backup directory is missing, it will be created
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="cleanlogs">
+		<sequential>
+			<log />
+			<log message="------------------------------------------" />
+			<log message="   Clean Logs (Archiving)" />
+			<log message="------------------------------------------" />
+			<if>
+				<available file="${wt.home}/logs/backup" type="dir" />
+				<then>
+					<move todir="${wt.home}/logs/backup" failonerror="false" >
+						<fileset dir="${wt.home}/logs">
+							<include name="**/*" />
+							<exclude name="**/backup/**" />
+						</fileset>
+					</move>
+				</then>
+				<else>
+					<log message="--" />
+					<log message="Missing [${wt.home}/logs/backup] folder => Create backup dir" />
+					<mkdir dir="${wt.home}/logs/backup" />
+					<move todir="${wt.home}/logs/backup" failonerror="false" >
+						<fileset dir="${wt.home}/logs">
+							<include name="**/*" />
+							<exclude name="**/backup/**" />
+						</fileset>
+					</move>
+				</else>
+			</if>
+			<log message="--" />
+            <log message="Logs files moved to ${wt.home}/logs/backup directory." />
+            
+            <if>
+                <available file="${wt.home}/buildlogs/backup" type="dir" />
+                <then>
+                    <move todir="${wt.home}/buildlogs/backup" failonerror="false" >
+                        <fileset dir="${wt.home}/buildlogs">
+                            <include name="**/*" />
+                            <exclude name="**/backup/**" />
+                        </fileset>
+                    </move>
+                </then>
+                <else>
+                    <log message="--" />
+                    <log message="Missing [${wt.home}/buildlogs/backup] folder => Create backup dir" />
+                    <mkdir dir="${wt.home}/buildlogs/backup" />
+                    <move todir="${wt.home}/buildlogs/backup" failonerror="false" >
+                        <fileset dir="${wt.home}/buildlogs">
+                            <include name="**/*" />
+                            <exclude name="**/backup/**" />
+                        </fileset>
+                    </move>
+                </else>
+            </if>
+            <log message="--" />
+            <log message="Build's Ant Logs files moved to ${wt.home}/buildlogs/backup directory." />
+		</sequential>
+	</macrodef>
+
+	<!--  - - - - - - - - - - - - - - - - -  
+	        Target used to Validate the Authentication and the type of Authentication 
+	        	by TrustedUser,
+	        	by UserName/Password
+	               - - - - - - - - - - - - - - - - - -->
+	<macrodef name="checkAuth" >
+		<attribute name="requestedpassword" default="false"/>
+		<sequential>
+			
+			<if>
+				<istrue value="${skip.checkAuth}"/>
+				<else>
+					
+					<get.server.status/>
+					
+					<if>
+						<istrue value="${server.is.started}"/>
+						<then>
+							<log/>
+							<input message="Provide Windchill Administrator Username" defaultvalue="Administrator" addproperty="wcadmin.username" />
+							
+							<var name="logIn.with.TrustedAuth" unset="true"/>
+							<var name="logIn.with.usernamepassword" unset="true"/>
+							<var name="logIn.fail" unset="true"/>
+							<var name="wcLogInTrustedAuth" unset="true"/>
+							<var name="wcLogIn" unset="true"/>
+							
+							<!-- First verify if Authentication by TrustedAuth.username is working -->
+							<trycatch property="wcLogInTrustedAuth">
+								<try>
+									<exec output="${installer.logs.dir}/testTrustAuthLogin.log" failonerror="true" executable="${wc_cmd}">
+										<arg line="--javaargs=&quot; -Dwt.auth.trustedAuth.username=${wcadmin.username}&quot;"/>
+										<arg value="wt.auth.Authentication"/>
+									</exec>
+								</try>
+								<catch>
+									<log/>
+									<log message="Authentication using trustedAuth.username is not available with this Windchill version" />
+									<log/>
+								</catch>
+							</trycatch>
+							
+							<!-- If Authentication by TrustedAuth.username is not working ask for UserName and Passwords -->
+							<if>
+								<isset property="wcLogInTrustedAuth" />
+								
+								<then>
+									<property name="logIn.with.TrustedAuth" value="false" /> 
+									
+									<loadproperties srcFile="${wt.home}/codebase/wt.properties"/>
+									
+									<log/>
+									<log/>
+									<input message="    [input] Provide Windchill [${wcadmin.username}] Password${line.separator}" addproperty="wcadmin.password">
+										<handler type="secure" />
+									</input>
+									<trycatch property="wcLogIn">
+										<try>
+											<get
+										src="${wt.webserver.protocol}://${wt.rmi.server.hostname}:${wt.webserver.port}/${wt.webapp.name}/servlet/WindchillAuthGW"
+										dest="${installer.logs.dir}/testWCLogin.log"
+										verbose="true"
+										password="${wcadmin.password}"
+										username="${wcadmin.username}" />
+										</try>
+										<catch>
+										</catch>
+									</trycatch>
+									
+									<if>
+										<isset property="wcLogIn" />
+										<then>
+											<log/>
+											<log message="Authentication Fail" />
+											<log/>
+											<property name="logIn.with.usernamepassword" value="false" /> 
+											<property name="logIn.fail" value="true" /> 
+										</then>
+										<else>
+											<log/>
+											<log message="Authenticated via username=${wcadmin.username} and password" />
+											<log/>
+											<property name="logIn.with.usernamepassword" value="true" /> 
+											<property name="logIn.fail" value="false" />
+										</else>
+									</if>
+								</then>
+								<else>
+									<log/>
+									<log message="Authenticated via trustedAuth - username=${wcadmin.username}" />
+									<log/>
+									<property name="logIn.with.TrustedAuth" value="true" /> 
+									<property name="logIn.fail" value="false" />
+									<property name="wcadmin.password" value="FAKEVALUE" /> 
+								</else>
+							</if>
+							
+							<if>
+								<available file="${installer.logs.dir}/testWCLogin.log" />
+								<then>
+									<delete quiet="true" failonerror="false" file="${installer.logs.dir}/testWCLogin.log" />
+								</then>
+							</if>
+							
+							<if>
+								<available file="${installer.logs.dir}/testTrustAuthLogin.log" />
+								<then>
+									<delete quiet="true" failonerror="false" file="${installer.logs.dir}/testTrustAuthLogin.log" />
+								</then>
+							</if>
+							
+							<property name="skip.checkAuth" value="true" />
+						</then>
+						<else>
+							<log/>
+							<log message="Server is Down, supposing TrustedAuth authentication" />
+							<log/>
+							<property name="logIn.with.TrustedAuth" value="true" />
+						</else>
+					</if>
+				</else>
+			</if>
+
+			<if>
+				<istrue value="${requestedpassword}"/>
+				<then>
+					<input message="    [input] Provide Windchill [${wcadmin.username}] Password${line.separator}" addproperty="wcadmin.password">
+						<handler type="secure" />
+					</input>
+				</then>
+			</if>
+			
+			<condition property="username.and.password" 
+				    value="" 
+				    else="-u ${wcadmin.username} -p ${wcadmin.password}">
+				<istrue value="${logIn.with.TrustedAuth}" />
+			</condition>
+			
+			<condition property="extra.java.args" 
+				    value="--javaargs=&quot; -Dwt.auth.trustedAuth.username=${wcadmin.username}&quot;" 
+				    else="--javaargs=&quot; -Dwt.httpgw.HTTPLogin.enableAuthPrefix=true&quot;">
+				<istrue value="${logIn.with.TrustedAuth}" />
+			</condition>
+			
+		</sequential>
+	</macrodef>
+
+	
+</project>

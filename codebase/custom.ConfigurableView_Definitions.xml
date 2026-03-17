@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profileBasedViews>
+	<configurableViewDefinition viewName='home'>
+		<layoutProfileMapping profile='default_oob_profile' layout='standardLayout'/>
+		<layoutProfileMapping profile='vendor_oob_profile' layout='standardVendorLayout'/>
+		<layoutProfileMapping profile='reebok_iu_profile' layout='standardReebokIULayout'/>
+		<layoutProfileMapping profile='reebok_eu_profile' layout='standardReebokEULayout'/>
+		<layoutProfileMapping profile='sourcingManager' layout='sourcingLayout'/>
+
+		<layoutDefinition name='standardVendorLayout'>
+			<column width='500'>
+				<component>
+					<id>NOTICES</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+				<component>
+					<id>ORDER_CONFIRMATION_SUMMARY</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+				<component>
+					<id>PRODUCT_SAMPLE_SUMMARY</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+			</column>
+            <column width='500'>
+                <component>
+                    <id>SEASON_SUMMARY</id>
+                    <params>
+                    </params>
+                </component>
+                <component>
+                    <id>RFQ_SUMMARY</id>
+                    <params>
+                    </params>
+                </component>
+				<component>
+					<id>MATERIAL_SAMPLE_SUMMARY</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+            </column>	
+		</layoutDefinition>
+
+		<layoutDefinition name='sourcingLayout'>
+			<column width='500'>
+				<component>
+					<id>NOTICES</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+			</column>
+		</layoutDefinition>
+
+		<layoutDefinition name='standardLayout'>
+			<column width='500'>
+				<component>
+					<id>NOTICES</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+				<component>
+					<id>ORDER_CONFIRMATION_SUMMARY</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+				<component>
+					<id>PRODUCT_SAMPLE_SUMMARY</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+			</column>
+            <column width='500'>
+                <component>
+                    <id>SEASON_SUMMARY</id>
+                    <params>
+                    </params>
+                </component>
+                <component>
+                    <id>RFQ_SUMMARY</id>
+                    <params>
+                    </params>
+                </component>
+				<component>
+					<id>MATERIAL_SAMPLE_SUMMARY</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+            </column>		
+		</layoutDefinition>
+		
+		<layoutDefinition name='standardReebokIULayout'>
+			<column width='500'>
+				<component>
+					<id>NOTICES</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+			</column>
+            <column width='500'>
+                <component>
+                    <id>SEASON_SUMMARY</id>
+                    <params>
+                    </params>
+                </component>
+            </column>
+		</layoutDefinition>
+		
+		<layoutDefinition name='standardReebokEULayout'>
+			<column width='500'>
+				<component>
+					<id>NOTICES</id>
+					<params>
+					   <templateType>COMPONENT</templateType>
+					</params>
+				</component>
+			</column>
+            <column width='500'>
+                <component>
+                    <id>SEASON_SUMMARY</id>
+                    <params>
+                    </params>
+                </component>
+            </column>
+		</layoutDefinition>
+		
+	</configurableViewDefinition>
+</profileBasedViews>

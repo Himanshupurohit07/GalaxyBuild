@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		      |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!-- V0.9 Windows Compatibility|  June 07, 2019       | OLIVIER FRANCHET    -->
+<!-- V0.12 provide task to delete files | Oct 4, 2019 | NATASCHA SCHWARZ	-->
+<!-- V1.0 add SQL Support      | May 8, 2020	      | OLIVIER FRANCHET	-->
+<!-- V1.1 Load Properties only once   | June 11, 2020 | OLIVIER FRANCHET	-->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Simple Changes Utilities">
+
+	<!-- Property definitions -->
+	<property environment="env" />
+
+	<condition property="wt.home" value="${env.WT_HOME}">
+		<isset property="env.WT_HOME" />
+	</condition>
+	
+	<condition property="java.home" value="${env.JAVA_HOME}">
+		<isset property="env.JAVA_HOME" />
+	</condition>
+	
+	<condition property="db.user" value="${env.DBUSER}">
+		<isset property="env.DBUSER" />
+	</condition>	
+	
+	<condition property="db.pass" value="${env.DBPASS}">
+		<isset property="env.DBPASS" />
+	</condition>
+	
+	<condition property="isWindows">
+		<os family="windows" />
+	</condition>
+	
+	<condition property="oslabel" value="Windows" else="Linux" >
+		<os family="windows" />
+	</condition>
+	
+	<condition property="isUnix">
+		<os family="unix" />
+	</condition>
+
+	<condition property="user" value="${env.USER}">
+		<and>
+			<os family="unix" />
+			<isset property="env.USER" />
+		</and>
+	</condition>
+
+	<condition property="user" value="${env.USERNAME}">
+		<and>
+			<os family="windows" />
+			<isset property="env.USERNAME" />
+		</and>
+	</condition>
+
+	<condition property="user.home" value="${env.HOME}">
+		<and>
+			<os family="unix" />
+			<isset property="env.HOME" />
+		</and>
+	</condition>
+
+	<condition property="user.home" value="${env.HOMEPATH}">
+		<and>
+			<os family="windows" />
+			<isset property="env.HOMEPATH" />
+		</and>
+	</condition>
+	
+	
+	<condition property="hostname" value="${env.HOSTNAME}">
+		<and>
+			<os family="unix" />
+			<isset property="env.HOSTNAME" />
+		</and>
+	</condition>
+
+	<condition property="hostname" value="${env.COMPUTERNAME}">
+		<and>
+			<os family="windows" />
+			<isset property="env.COMPUTERNAME" />
+		</and>
+	</condition>
+	
+	<condition property="executeSql" value="${env.EXECUTESQL}">
+		<and>
+			<os family="unix" />
+			<isset property="env.EXECUTESQL" />
+		</and>
+	</condition>
+	
+	<condition property="wt.temp" value="${wt.home}/temp">
+		<os family="windows"/>
+	</condition>
+
+	<condition property="wt.temp" value="${wt.home}/tmp">
+		<os family="unix"/>
+	</condition>
+	
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${wt.home}/ant/lib/ant-contrib.jar" />
+		</classpath>
+	</taskdef>
+
+	
+	
+	<if>  
+		<not>
+			<istrue value="${loaded}" />  <!-- Avoid reload properties having already be defined -->
+		</not>
+		<then>
+			<property file="${basedir}/ant/release.properties" />
+			<property file="build.properties" />
+			
+			<property file="${wt.home}/codebase/wt.properties" />
+			<property file="${wt.home}/codebase/service.properties" />
+			<property file="${wt.home}/db/db.properties" />
+
+			<property name="wt.codebase.dir" value="${wt.home}/codebase" />
+			<property name="wt.bin.dir" value="${wt.home}/bin" />
+			<property name="wt.conf.dir" value="${wt.home}/conf" />
+			<property name="wt.loadfiles.dir" value="${wt.home}/loadFiles" />
+			<property name="wt.installer.dir" value="${wt.home}/installer" />
+			<property name="wt.loadxmlfiles.dir" value="${wt.home}/loadXMLFiles" />
+			<property name="wt.tasks.dir" value="${wt.home}/tasks" />
+			<property name="wt.db.dir" value="${wt.home}/db" />
+			<property name="wt.wtCustom.dir" value="${wt.home}/wtCustom" />
+			<property name="wt.wtSafeArea.dir" value="${wt.home}/wtSafeArea" />
+			<property name="wt.srclib.dir" value="${wt.home}/srclib" />
+			<property name="wt.lib.dir" value="${wt.home}/lib" />
+			<property name="installregistry.dir" value="${wt.installer.dir}/instreg" />
+			<!-- ========== wbr_actions require wt_home variable to be set =========== -->
+			<property name="wt_home" value="${wt.home}" />
+
+			<property name="installer.basedir" value="${basedir}" />
+			<basename property="package.name" file="${basedir}" />
+
+			<property name="installer.logs.dir" value="${installer.basedir}${file.separator}logs" />
+			<property name="builds.history.dir" value="${wt.home}${file.separator}buildhistory" />
+			<property name="tempPatch.dir" value="${installer.basedir}${file.separator}temppatch" />
+			
+			<property name="uninstaller.jar" value="${installer.logs.dir}${file.separator}uninstaller_${package.name}.jar" />
+			<property name="uninstaller.deleted.jar" value="${installer.logs.dir}${file.separator}uninstaller_${package.name}_deletedFiles.jar" />
+			<property name="delivery.note" value="${installer.logs.dir}${file.separator}DN_${package.name}.csv" />
+			<property name="installation.log" value="${installer.logs.dir}${file.separator}LOG_${package.name}.log" />
+
+			<property name="verbose.log" value="${installer.logs.dir}${file.separator}VERBOSE_LOG_${package.name}.log" />
+			<property name="info.log" value="${installer.logs.dir}${file.separator}INFO_LOG_${package.name}.log" />
+			<property name="error.log" value="${installer.logs.dir}${file.separator}ERROR_LOG_${package.name}.csv" />
+			
+			<property name="waitforwindchill.auto" value="true" />
+
+			<!-- Windchill command -->
+			<condition property="wc_cmd" value="${wt.home}/bin/windchill">
+				<os family="unix" />
+			</condition>
+			<condition property="wc_cmd" value="${wt.home}/bin/windchill.exe">
+				<os family="windows" />
+			</condition>
+			
+			<!-- Xconfmanager command -->
+			<condition property="xconf_cmd" value="${wt.home}/bin/xconfmanager">
+				<os family="unix" />
+			</condition>
+			<condition property="xconf_cmd" value="${wt.home}/bin/xconfmanager.bat">
+				<os family="windows" />
+			</condition>
+
+			<!-- initializing wt.classpath variable. -->
+			<path id="wt.classpath">
+				<pathelement location="${wt.codebase.dir}" />
+				<fileset dir="${wt.codebase.dir}/WEB-INF/lib" includes="**/*.jar" />
+				<fileset dir="${wt.codebase.dir}/lib/" includes="**/*.jar" />
+				<fileset dir="${wt.home}/lib" includes="**/*.jar" />
+				<fileset dir="${wt.home}/srclib" includes="**/*.jar" />
+				<fileset dir="./lib" includes="**/*.jar" />
+			</path>
+			<property name="loaded" value="true" />
+		</then>
+	</if>
+
+	<import file="./utils/compile.xml" />
+	<import file="./utils/copy.xml" />
+	<import file="./utils/delete.xml" />
+	<import file="./utils/exporters.xml" />
+	<import file="./utils/install.xml" />
+	<import file="./utils/ldap.xml" />
+	<import file="./utils/load.xml" />
+	<import file="./utils/log.xml" />
+	<import file="./utils/servermgt.xml" />
+	<import file="./utils/sql.xml" />
+	<import file="./utils/wtutils.xml" />
+
+</project>

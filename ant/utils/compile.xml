@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		      |  Author                 -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!-- V0.9 Windows Compatibility|  June 07, 2019       | OLIVIER FRANCHET    -->
+<!-- V0.10 Class Encoding      |  June 19, 2019       | OLIVIER FRANCHET    -->
+<!-- V0.11 compile wtSafeArea  |  July 05, 2019       | BARTOSZ SIEMIASZKO  -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Compile Utilities" >
+	
+	<!-- import tools.xml to inherit its default classpath --> 
+	<import file="${wt.home}${dir.sep}bin${dir.sep}tools.xml" />
+	<property name="classEncoding" value="UTF-8" />
+
+	<!-- ================================= 
+        Execute Compile the Java Sources
+              ================================= -->
+	<target name="force.compile" description="Compile Sources provided in the src directory." >
+		<log />
+		<log message="------------------------------------------" />
+		<log message="   Compile Files from ${wt.home}/src" />
+		<log message="------------------------------------------" />
+		<compile.src />
+	</target>
+	
+	<!-- ================================= 
+        Execute Compile the Java Sources - deprecated
+              ================================= -->
+	<target name="compile" >
+		<log />
+		<log message="------------------------------------------" />
+		<log message="   Compile Files from ${wt.home}/src" />
+		<log message="------------------------------------------" />
+		<compile.src />
+	</target>
+
+	<!-- ================================= 
+        Execute Combine JSFrag
+              ================================= -->
+	<target name="force.jsfragcombine" description="Force the combination of the js fragments" >
+		<log />
+		<log message="------------------------------------------" />
+		<log message="   Calling JSFRAG combine" />
+		<log message="------------------------------------------" />
+		<combine.jsfrag />
+	</target>
+
+    <path id="compilation.class.path">
+            <!-- initializing compilation.class.path variable. -->
+            <pathelement location="${wt.codebase.dir}" />
+            <fileset dir="${wt.codebase.dir}/WEB-INF/lib" erroronmissingdir="false" >
+                    <include name="**/*.jar"/>
+                    <exclude name="**/*-src.jar"/>
+                    <exclude name="**/*-java.jar"/>
+                    <exclude name="wc3rdpartylibs.jar"/>
+             </fileset>
+             <fileset dir="${wt.codebase.dir}/lib/" includes="**/*.jar" excludes="**/*-src.jar"  erroronmissingdir="false" />
+             <fileset dir="${wt.home}/lib" includes="**/*.jar" excludes="**/*-src.jar"  erroronmissingdir="false" />
+             <fileset dir="${wt.home}/srclib" erroronmissingdir="false">
+                    <include name="**/*.jar"/>
+                    <exclude name="**/*-src.jar"/>
+                    <exclude name="**/*-java.jar"/>
+                    <exclude name="annotations.jar"/>
+                    <exclude name="ant.jar"/>
+                    <exclude name="gwt-dev.jar"/>
+            </fileset>
+            <pathelement location="${installer.basedir}/compile_tmp"/>
+    </path>
+
+
+    <!-- Add temporary compilation folder location in runtime.class.path of tools.xml -->
+    <path id="runtime.compilation.class.path">
+            <path refid="runtime.class.path" />
+            <pathelement location="${installer.basedir}/compile_tmp"/>
+    </path>
+
+	
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: compile.src
+        This Macrodef compile the Java and Resource Files provided on the src folder. 
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="compile.src">
+		<attribute name="component.name" default="${component.name}"/>
+		<attribute name="test.mode" default="${test_mode}"/>
+		<sequential>
+			<log />
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message="   Compiling java src files" />
+			<log message="= = = = = = = = = = = = = = = =" />
+			<if>
+				<or>
+					<available file="${basedir}/src" type="dir" />
+					<available file="${basedir}/wtSafeArea/siteMod/src" type="dir" />
+				</or>
+				<then>
+					<create.compile.temp.dir />
+					<create.src.temp.dir />
+					
+					<if>
+						<istrue value="${use.runtime.classpath}" />
+		            	<then>
+	            			<path id="compil.class.path">
+	            		    	<path refid="runtime.compilation.class.path" />
+	            		    </path>
+		            	</then>
+						<else>
+							<path id="compil.class.path">
+							    <path refid="compilation.class.path" />
+							</path>
+						</else>
+		            </if>
+
+					<append.to.uninstaller file="codebase/WEB-INF/lib/@{component.name}.jar"  />
+					<append.to.uninstaller file="src/@{component.name}_src.jar"  />
+					
+					<if>
+						<available file="${installer.basedir}/src_tmp" type="dir" />
+						<then>
+							<!-- start if test.mode   add a trycatch 	-->
+							<var name="compileallsources" unset="true" />
+							<trycatch property="compileallsources">
+								<try>
+									<ant antfile="${wt.home}/bin/tools.xml" inheritAll="false" useNativeBasedir="true" target="class">
+										<property name="class.source" value="${installer.basedir}/src_tmp" />
+										<property name="class.output" value="${installer.basedir}/compile_tmp" />
+										<property name="class.debug" value="on" />
+										<property name="class.classpath" value="compil.class.path" />
+										<property name="class.includes" value="**/*.*" />
+										<property name="class.includeAntRuntime" value="false" />
+										<property name="class.encoding" value="${classEncoding}" />
+										<reference refid="compil.class.path" torefid="compil.class.path"/>
+									</ant>
+								</try>
+								<catch>
+									<log/>
+									<log message="-----------------------------"/>
+									<log message="ERROR - Java [src with wtSafeArea/siteMod/src] Compilation !"/>
+									<log message="-----------------------------"/>
+									<log message="${compileallsources}"/>
+									<log message="-----------------------------"/>
+									<log message=" !! Compilation of [${basedir}/src] and [${basedir}/wtSafeArea/siteMod/src] fails" />
+									<log message="-----------------------------"/>
+									<log/>
+								</catch>
+							</trycatch>
+							<!-- end if test.mode   trycatch -->
+						</then>
+					</if>
+
+					<if>
+						<available file="${basedir}/wtSafeArea/siteMod/src" type="dir" />
+						<then>
+							<!-- start if test.mode   add a trycatch 	-->
+							<var name="compilewtsafeareasources" unset="true" />
+							<trycatch property="compilewtsafeareasources">
+								<try>
+									<ant antfile="${wt.home}/bin/tools.xml" inheritAll="false" useNativeBasedir="true" target="class">
+										<property name="class.source" value="${basedir}/wtSafeArea/siteMod/src" />
+										<property name="class.output" value="${installer.basedir}/compile_tmp_wtSafeArea" />
+										<property name="class.debug" value="on" />
+										<property name="class.classpath" value="compil.class.path" />
+										<property name="class.includes" value="**/*.*" />
+										<property name="class.includeAntRuntime" value="false" />
+										<property name="class.encoding" value="${classEncoding}" />
+										<reference refid="compil.class.path" torefid="compil.class.path"/>
+									</ant>
+								</try>
+								<catch>
+									<log/>
+									<log message="-----------------------------------------------"/>
+									<log message="ERROR - Java [wtSafeArea/siteMod/src] Compilation !"/>
+									<log message="---------------"/>
+									<log message="${compilewtsafeareasources}"/>
+									<log message="---------------"/>
+									<log message=" !! Compilation of [${basedir}/wtSafeArea/siteMod/src] fails" />
+									<log message="-----------------------------------------------"/>
+									<log/>
+								</catch>
+							</trycatch>
+							<!-- end if test.mode   trycatch -->
+							
+							<fileset id="compiledSafeAreaFiles" dir="${installer.basedir}/compile_tmp_wtSafeArea" >
+								<include name="**/*.class" />
+							</fileset>
+							
+							<!-- start if test.mode   do not execute it::: -->
+							<if>
+								<istrue value="@{test.mode}"/>
+								<then>
+									<log/>
+									<log message="---------------"/>
+									<log message="VALIDATION MODE"/>
+									<log message="   -  Copy of wtSafeArea Compiled Classes skipped !" />
+									<log message="VALIDATION MODE"/>
+									<log message="---------------"/>
+									<log/>
+								</then>
+								<else>
+									<copy overwrite="true" verbose="${copy.verbose}" todir="${wt.codebase.dir}" failonerror="false">
+										<fileset refid="compiledSafeAreaFiles" />
+									</copy>
+								</else>
+							</if>
+							<!-- end if test.mode   do not execute it::: -->
+							
+							
+							
+							<control.and.archive.codebase.files filesetref="compiledSafeAreaFiles" changetype="Original version of OOTB ReCompiled Class file" />
+							<print.delnote.and.pack.uninstaller filesetref="compiledSafeAreaFiles" changetype="WTSafeArea Compiled Classes" />
+							
+							<log/>
+							<log message="= = = = = = = = = = = = = = = ="/>
+							<log message=":: compile.wtSafeArea.siteMod.src Result:" />
+							<log message="= = = = = = = = = = = = = = = ="/>
+							<if>
+								<isset property="compilewtsafeareasources" />
+								<then>
+									<log message=" - WTSafeArea classes Compilation fails !" />
+									<log message="    - See installation logs for more details" />
+									<append.to.file message="ERROR ${csv.sep} compile.wtSafeArea.siteMod.src ${csv.sep} WTSafeArea Sources File Compilation fails !"  error="true" />
+								</then>
+								<else>
+									<append.to.file message="SUCCESS ${csv.sep} compile.wtSafeArea.siteMod.src ${csv.sep} WTSafeArea Sources File Compilation succeed" />
+									<!-- start if test.mode   do not execute it::: -->
+									<if>
+										<istrue value="@{test.mode}"/>
+										<then>
+											<log/>
+											<log message="---------------"/>
+											<log message="VALIDATION MODE"/>
+											<log message="  -  WTSafeArea classes Compiled but Deployment to [${wt.home}/codebase] skipped !" />
+											<log message="VALIDATION MODE"/>
+											<log message="---------------"/>
+											<log/>
+										</then>
+										<else>
+											<log/>
+											<log message="  - WTSafeArea classes Compiled and Deployed to [${wt.home}/codebase]" />
+											<log/>
+										</else>
+									</if>
+								</else>
+							</if>
+							<log message="= = = = = = = = = = = = = = = ="/>
+							<log/>
+							
+							<pathconvert pathsep="," property="wtSafeAreaCompiledFiles" refid="compiledSafeAreaFiles">
+								<map from="${installer.basedir}/compile_tmp_wtSafeArea/" to="" />
+							</pathconvert>
+
+							<if>
+								<and>
+									<isset property="wtSafeAreaCompiledFiles"/>
+									<not>
+										<equals arg1="${wtSafeAreaCompiledFiles}" arg2=""/>
+									</not>
+								</and>
+								<then>
+									<delete verbose="false" failonerror="false" includeemptydirs="true">
+								    		<fileset dir="${installer.basedir}/compile_tmp" includes="${wtSafeAreaCompiledFiles}"/>
+								  	</delete>
+								</then>
+							</if>
+						</then>
+					</if>
+
+					
+					<if>
+						<available file="${basedir}/src" type="dir" />
+						<then>
+							<fileset id="compiledSrcFiles" dir="${installer.basedir}/compile_tmp" >
+								<include name="**/*.class" />
+							</fileset>
+							
+							<!-- start if test.mode   do not modify the jars, nor delete duplicated class files -->
+							<if>
+								<istrue value="@{test.mode}"/>
+								<then>
+									<log/>
+									<log message="---------------"/>
+									<log message="VALIDATION MODE"/>
+									<log message="  - Update of [${wt.home}/codebase/WEB-INF/lib/@{component.name}.jar] file skipped !" />
+									<append.to.file message="Custom Classes Library${csv.sep}CHG_ID${csv.sep}codebase/WEB-INF/lib/@{component.name}.jar${csv.sep}VALIDATION MODE - Jar file not updated"  />
+									<log message="  - Update of [${wt.home}/src/@{component.name}_src.jar] file skipped !" />
+									<control.and.archive.codebase.files filesetref="compiledSrcFiles" changetype="Class file located on both [codebase] and [codebase/WEB-INF/lib/@{component.name}.jar]${csv.sep}VALIDATION MODE - Duplicated class not deleted" deleteIfExist="false" />
+									<append.to.file message="Custom Sources Archive${csv.sep}CHG_ID${csv.sep}src/@{component.name}_src.jar${csv.sep}VALIDATION MODE - Jar file not updated"  />
+									<log message="VALIDATION MODE"/>
+									<log message="---------------"/>
+									<log/>
+								</then>
+								<else>
+									<jar destfile="${wt.home}/codebase/WEB-INF/lib/@{component.name}.jar" update="true">
+										<fileset refid="compiledSrcFiles" />
+									</jar>
+									<append.to.file message="Custom Classes Library${csv.sep}CHG_ID${csv.sep}codebase/WEB-INF/lib/@{component.name}.jar"  />
+									
+									<jar destfile="${wt.home}/src/@{component.name}_src.jar" update="true">
+										<fileset dir="${basedir}/src" >
+											<include name="**/*.*" />
+										</fileset>
+									</jar>
+									<control.and.archive.codebase.files filesetref="compiledSrcFiles" changetype="Class file located on both [codebase] and [codebase/WEB-INF/lib/@{component.name}.jar]" deleteIfExist="true" />
+									
+									<append.to.file message="Custom Sources Archive${csv.sep}CHG_ID${csv.sep}src/@{component.name}_src.jar"  />
+								</else>
+							</if>
+							<!-- end if test.mode   do not modify the jars, nor delete duplicated class files -->
+							
+							<log/>
+							<log message="= = = = = = = = = = = = = = = ="/>
+							<log message=":: compile.src Result:" />
+							<log message="= = = = = = = = = = = = = = = ="/>
+							<if>
+								<or>
+									<isset property="compileallsources" />
+									<isset property="compilewtsafeareasources" />
+								</or>
+								<then>
+									<log message=" - Classes Compilation fails !" />
+									<log message="    - See installation logs for more details" />
+									<append.to.file message="ERROR ${csv.sep} compile.src ${csv.sep} Sources File Compilation fails !" error="true" />
+								</then>
+								<else>
+									<append.to.file message="SUCCESS ${csv.sep} compile.src ${csv.sep} Sources File Compilation succeed" />
+									<if>
+										<istrue value="@{test.mode}"/>
+										<then>
+											<log/>
+											<log message="---------------"/>
+											<log message="VALIDATION MODE"/>
+											<log message="  -  Classes Compiled but update to jar file [${wt.home}/codebase/WEB-INF/lib/@{component.name}.jar] skipped" />
+											<log message="  -  Java sources addition to Jar File [${wt.home}/src/@{component.name}_src.jar] skipped" />
+											<log message="VALIDATION MODE"/>
+											<log message="---------------"/>
+											<log/>
+										</then>
+										<else>
+											<log/>
+											<log message="  - Classes Compiled and Deployed on Jar File [${wt.home}/codebase/WEB-INF/lib/@{component.name}.jar]" />
+											<log message="  - Java sources stored on Jar File [${wt.home}/src/@{component.name}_src.jar]" />
+											<log/>
+										</else>
+									</if>
+								</else>
+							</if>
+						</then>
+					</if>
+					<log message="= = = = = = = = = = = = = = = =" />
+				</then>
+				<else>
+					<log message="No src folder -> Compilation skipped" />
+					<log message="------------------------------------------" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	                  macrodef: Create compilation temp directories
+	            This Macrodef Rebuild the RbInfos
+	                 = = = = = = = = = = = = = = = = = -->
+	<macrodef name="create.compile.temp.dir">
+		<sequential>
+			<log />
+			<log message="------------------------------------------" />
+			<log message="   Preparing Compilation Temp directories" />
+			<log message="------------------------------------------" />
+			<if>
+				<available file="${installer.basedir}/compile_tmp" type="dir" />
+				<then>
+					<log message="Re-compiling on existing folder [${installer.basedir}/compile_tmp]" />
+				</then>
+				<else>
+					<log message="Compiling on folder [${installer.basedir}/compile_tmp]" />
+					<mkdir dir="${installer.basedir}/compile_tmp" />
+				</else>
+			</if>
+
+			<if>
+				<available file="${installer.basedir}/compile_tmp_wtSafeArea" type="dir" />
+				<then>
+					<log message="Re-compiling on existing folder [${installer.basedir}/compile_tmp_wtSafeArea]" />
+				</then>
+				<else>
+					<log message="Compiling on folder [${installer.basedir}/compile_tmp_wtSafeArea]" />
+					<mkdir dir="${installer.basedir}/compile_tmp_wtSafeArea" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	                  macrodef: Create Src temp directories
+	            This Macrodef Merge src and wtSafeArea/siteMod/src directories
+	                 = = = = = = = = = = = = = = = = = -->
+	<macrodef name="create.src.temp.dir">
+		<sequential>
+			<log />
+			<log message="------------------------------------------" />
+			<log message="   Preparing Source Temp directories" />
+			<log message="------------------------------------------" />
+			<if>
+				<available file="${installer.basedir}/src_tmp" type="dir" />
+				<then>
+					<log message="Re-copying Src on existing folder [${installer.basedir}/src_tmp]" />
+				</then>
+				<else>
+					<log message="Copying Src on folder [${installer.basedir}/src_tmp]" />
+					<mkdir dir="${installer.basedir}/src_tmp" />
+				</else>
+			</if>
+
+			<copy.folder.contents source="${basedir}/src" target="${installer.basedir}/src_tmp" />
+			<copy.folder.contents source="${basedir}/wtSafeArea/siteMod/src" target="${installer.basedir}/src_tmp" />
+		</sequential>
+	</macrodef>
+	
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: compile.rbinfos
+	        This Macrodef Rebuild the RbInfos
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="compile.rbinfos">
+		<attribute name="test.mode" default="${test_mode}"/>
+		<sequential>
+			<log />
+			<log message="------------------------------------------" />
+			<log message="   Compile RBInfo" />
+			<log message="------------------------------------------" />
+			<log />
+			<if>
+				<available file="${basedir}/wtCustom" type="dir" />
+				<then>
+					<if>
+						<istrue value="@{test.mode}"/>
+						<then>
+							<log/>
+							<log message="---------------"/>
+							<log message="VALIDATION MODE"/>
+							<log message="   -  wtCustom Folder exists but RBInfo Compilation skipped !" />
+							<log message="VALIDATION MODE"/>
+							<log message="---------------"/>
+							<log/>
+						</then>
+						<else>
+							<ant antfile="${wt.home}/bin/tools.xml" dir="${wt.home}/bin" target="bundle_custom" inheritrefs="true"/>
+							<log/>
+							<log message="---------------"/>
+							<log message="   -  RBInfo Compiled using the [bundle_custom] OOTB action" />
+							<log message="---------------"/>
+							<log/>
+						</else>
+					</if>
+				</then>
+				<else>
+					<log message="No wtCustom folder -> RBInfo Compilation skipped" />
+					<log message="------------------------------------------" />
+					<log />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: custom.columns
+	        This Macrodef Apply DataModel Customizations
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="custom.columns">
+		<attribute name="package" default="*" />
+		<attribute name="test.mode" default="${test_mode}"/>
+		<sequential>
+			<log />
+			<log message="------------------------------------------" />
+			<log message="    Apply DataModel customizations on package [@{package}]  " />
+			<log message="------------------------------------------" />
+			<log />
+			<if>
+				<available file="${basedir}/wtCustom" type="dir" />
+				<then>
+					<if>
+						<istrue value="@{test.mode}"/>
+						<then>
+							<log/>
+							<log message="---------------"/>
+							<log message="VALIDATION MODE"/>
+							<log message="   -  wtCustom Folder exists but processing of @{package}Model.properties file skipped !" />
+							<log message="VALIDATION MODE"/>
+							<log message="---------------"/>
+							<log/>
+						</then>
+						<else>
+							<ant antfile="${wt.home}/bin/tools.xml" target="custom_column" inheritAll="false"  useNativeBasedir="true">
+								<property name="gen.input"        value="@{package}" /> <!-- process all wtCustom/**/*Model.properties files -->
+							</ant>
+							<log/>
+							<log message="---------------"/>
+							<log message="  -  @{package}Model.properties file Processed using the [custom_column] OOTB action" />
+							<log message="---------------"/>
+							<log/>
+						</else>
+					</if>
+				</then>
+				<else>
+					<log message="No wtCustom folder -> No *Model.properties change to apply - skipped" />
+					<log message="------------------------------------------" />
+					<log />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: add.columns
+	        This Macrodef Expect the file AddColumns.txt to exist on folder installer/customization
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="add.columns" >
+		<sequential>
+			<log message="==========================================" />
+			<log message=" Executing add.columns " />
+			<log message="==========================================" />
+			<log message="   Addcolumns args: [${extra.java.args}]" />
+			<exec-cmd executable="${wc_cmd}" failonerror="true" action="Add Columns TypeInfo Generator" parameters="[]">
+				<args>
+					<arg line="${extra.java.args}" />
+					<arg value="com.ptc.core.lwc.server.addColumns.AddColumnsTypeInfoGenerator" />
+				</args>
+			</exec-cmd>
+		</sequential>
+	</macrodef>
+	
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: combine.jsfrag
+        This Macrodef recombine the jsfrag
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="combine.jsfrag">
+		<attribute name="test.mode" default="${test_mode}"/>
+		<sequential>
+			<log />
+			<log message="------------------------------------------" />
+			<log message="   Combine JSFrag" />
+			<log message="------------------------------------------" />
+			<log />
+			<if>
+				<istrue value="@{test.mode}"/>
+				<then>
+					<log/>
+					<log message="---------------"/>
+					<log message="VALIDATION MODE"/>
+					<log message="   -  JSFrag Combination skipped !" />
+					<log message="VALIDATION MODE"/>
+					<log message="---------------"/>
+					<log/>
+				</then>
+				<else>
+					<ant antfile="${wt.home}/bin/jsfrag_combine.xml"/>
+					
+					<log message="---------------"/>
+					<log message="   - JSFrag Combined" />
+					<log message="---------------"/>
+					<log />
+					<log message="------------------------------------------" />
+					<log />
+				</else>
+			</if>
+			
+		</sequential>
+	</macrodef>
+
+</project>

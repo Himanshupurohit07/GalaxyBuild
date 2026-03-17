@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList containerPath="/">
+		
+		<!-- 
+		
+		<loadFile filename="configExport/Enums/AllEnums_0.xml" />			
+		<loadFile filename="configExport/typeManager/MOAObject_0.xml" />
+		<loadFile filename="configExport/typeManager/MOAObject_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/BOM_0.xml" />
+		<loadFile filename="configExport/typeManager/BOM_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/BOMLink_0.xml" />
+		<loadFile filename="configExport/typeManager/BOMLink_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/BusinessObject_0.xml" />
+		<loadFile filename="configExport/typeManager/BusinessObject_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Color_0.xml" />
+		<loadFile filename="configExport/typeManager/Color_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Country_0.xml" />
+		<loadFile filename="configExport/typeManager/Country_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Document_0.xml" />
+		<loadFile filename="configExport/typeManager/Document_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/LCSPaletteMaterialColorLink_0.xml" />
+		<loadFile filename="configExport/typeManager/LCSPaletteMaterialColorLink_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/LCSPaletteMaterialLink_0.xml" />
+		<loadFile filename="configExport/typeManager/LCSPaletteMaterialLink_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/LCSPaletteToColorLink_0.xml" />
+		<loadFile filename="configExport/typeManager/LCSPaletteToColorLink_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/LCSSKU_0.xml" />
+		<loadFile filename="configExport/typeManager/LCSSKU_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/logEntry_0.xml" />
+		<loadFile filename="configExport/typeManager/logEntry_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/MaterialPricingEntry_0.xml" />
+		<loadFile filename="configExport/typeManager/MaterialPricingEntry_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Material_0.xml" />
+		<loadFile filename="configExport/typeManager/Material_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Product_0.xml" />
+		<loadFile filename="configExport/typeManager/Product_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/MaterialColor_0.xml" />
+		<loadFile filename="configExport/typeManager/MaterialColor_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/MaterialSupplier_0.xml" />
+		<loadFile filename="configExport/typeManager/MaterialSupplier_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Measurement_0.xml" />
+		<loadFile filename="configExport/typeManager/Measurement_0.xml" />
+		
+		<loadFile filename="configExport/typeManager/OrderConfirmation_0.xml" />
+		<loadFile filename="configExport/typeManager/OrderConfirmation_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/OrderConfirmationLineItem_0.xml" />
+		<loadFile filename="configExport/typeManager/OrderConfirmationLineItem_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Palette_0.xml" />
+		<loadFile filename="configExport/typeManager/Palette_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Placeholder_0.xml" />
+		<loadFile filename="configExport/typeManager/Placeholder_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Plan_0.xml" />
+		<loadFile filename="configExport/typeManager/Plan_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/PlanDetail_0.xml" />
+		<loadFile filename="configExport/typeManager/PlanDetail_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/PointsOfMeasure_0.xml" />
+		<loadFile filename="configExport/typeManager/PointsOfMeasure_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/ProductCostSheet_0.xml" />
+		<loadFile filename="configExport/typeManager/ProductCostSheet_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/ProductSeasonLink_0.xml" />
+		<loadFile filename="configExport/typeManager/ProductSeasonLink_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Supplier_0.xml" />
+		<loadFile filename="configExport/typeManager/Supplier_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Sample_0.xml" />
+		<loadFile filename="configExport/typeManager/Sample_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/SampleRequest_0.xml" />
+		<loadFile filename="configExport/typeManager/SampleRequest_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Season_0.xml" />
+		<loadFile filename="configExport/typeManager/Season_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/SKU_0.xml" />
+		<loadFile filename="configExport/typeManager/SKU_1.xml" />   
+		
+		-->
+		
+		<loadFile filename="configExport/typeManager/SKUCostSheet_0.xml" />
+		<loadFile filename="configExport/typeManager/SKUCostSheet_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/SKUSeasonLink_0.xml" />
+		<loadFile filename="configExport/typeManager/SKUSeasonLink_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/SourceToSeasonLink_0.xml" />
+		<loadFile filename="configExport/typeManager/SourceToSeasonLink_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/SKUSourcingLink_0.xml" />
+		<loadFile filename="configExport/typeManager/SKUSourcingLink_1.xml" />
+		
+		<!-- 
+		
+		<loadFile filename="configExport/typeManager/SourcingConfig_0.xml" /> 
+		<loadFile filename="configExport/typeManager/SourcingConfig_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/Specification_0.xml" />
+		<loadFile filename="configExport/typeManager/Specification_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/TestSpecification_0.xml" />
+		<loadFile filename="configExport/typeManager/TestSpecification_1.xml" />
+		
+		<loadFile filename="configExport/typeManager/ProductDestination_0.xml" />
+		<loadFile filename="configExport/typeManager/ProductDestination_1.xml" />
+		
+		-->
+		
+</loadFileList>

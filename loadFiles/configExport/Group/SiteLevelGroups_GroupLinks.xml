@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standard11_2.dtd">
+<NmLoader>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_PROCESSINGFACILITY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELVENDORSUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARFINISHEDGOODSFACTORY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_SUPPLIERFACILITY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELFINISHEDGOODSFACTORY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARAGENTOFFICE</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_MATERIALSUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARVENDORSUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>VENDORS</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELAGENTOFFICE</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELPATTERNADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SPARC_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SPARC_APPAREL_PATTERN_ADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>F21_FIT_AND_TECH</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>SIZEDEF_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>Administrators</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>View Administrators</csvparentGroupName>
+      <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>View Administrators</csvparentGroupName>
+      <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>View Administrators</csvparentGroupName>
+      <csvchildGroupName>Administrators</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_VENDOR_READ_MAT_LIBRARY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELPATTERNADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_APPAREL_AGENT_OFFICE</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SPARC_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SPARC_APPAREL_PATTERN_ADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>F21_FIT_AND_TECH</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_APPAREL_FINISHED_GOODS_FACTORY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>LUCKY_APPAREL_VENDOR_SUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>RBK_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvparentGroupName>
+      <csvchildGroupName>Administrators</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Filter Administrators</csvparentGroupName>
+      <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Filter Administrators</csvparentGroupName>
+      <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Filter Administrators</csvparentGroupName>
+      <csvchildGroupName>Administrators</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Type Administrators</csvparentGroupName>
+      <csvchildGroupName>ORG ADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_VENDOR_READ_MAT_LIBRARY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_APPAREL_PD</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_SWEATER_DESIGN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MERCHANDISING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_NON_APPAREL_PD</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_NONAPPAREL_MERCHANDISING_BUYING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_VERTICAL_VENDOR</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APP_FTW_MAT_DEVELOPER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>VENDORS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SUPPLIER_FACILITY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_TECH_DESIGNER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_CUSTOMS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELDEVELOPER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_MATERIAL_SUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_FOOTWEAR_FINISHED_GOODS_FACTORY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_HYBRID</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_PD_AND_PRODUCTION</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_COLORIST</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_READONLYPRODUCTNOCOSTING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_NON_APPAREL</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELVENDORSUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_FOOTWEAR_VENDOR_SUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_FOOTWEAR_AGENT_OFFICE</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARFINISHEDGOODSFACTORY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_PROCESSING_FACILITY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELMARKETING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARDESIGNER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARMARKETING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APP_FW_DEVELOPER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARDEVELOPER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELPATTERNADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_APPAREL_AGENT_OFFICE</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELFINISHEDGOODSFACTORY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELDESIGNER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_MATERIALDEVELOPER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_SUPPLYPLANNING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_APPAREL_DESIGN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_READONLYPRODUCTWITHCOSTING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_PRODUCTION_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_GRAPHICS_TREND</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_APPAREL_MERCHANDISING_BUYING</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_SOURCING_AND_PRODUCTION</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_APPAREL_DESIGN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SPARC_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_FOOTWEARVENDORSUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELPATTERNUSER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SPARC_READ_ONLY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_SPARC_APPAREL_PATTERN_ADMIN</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_SOURCINGMANAGER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>F21_FIT_AND_TECH</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_APPAREL_FINISHED_GOODS_FACTORY</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_APPAREL_VENDOR_SUPPLIER</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_APPARELAGENTOFFICE</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>RBK_OPERATIONS</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>Retail</csvparentGroupName>
+      <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_HYBRID_NO_CAP</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>PTC FlexPLM Internal License</csvparentGroupName>
+      <csvchildGroupName>PTC Internal License group</csvchildGroupName>
+   </csvGroupGroup>
+   <csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+      <csvuser/>
+      <csvparentGroupName>PTC FlexPLM External License</csvparentGroupName>
+      <csvchildGroupName>PTC External License group</csvchildGroupName>
+   </csvGroupGroup>
+</NmLoader>

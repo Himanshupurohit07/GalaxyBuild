@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.ptcmscloud.sfTooling_com_lcs_wc_material_LCSMaterial_20250428-080315/com.ptcmscloud.sfTooling_com_lcs_wc_material_LCSMaterial_0.xml"/>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.ptcmscloud.sfTooling_com_lcs_wc_material_LCSMaterial_20250428-080315/com.ptcmscloud.sfTooling_com_lcs_wc_material_LCSMaterial_1.xml"/>
+</loadFileList>

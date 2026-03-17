@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20250530-060951/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_0.xml"/>
+   <loadFile filename="sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20250530-060951/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_1.xml"/>
+</loadFileList>

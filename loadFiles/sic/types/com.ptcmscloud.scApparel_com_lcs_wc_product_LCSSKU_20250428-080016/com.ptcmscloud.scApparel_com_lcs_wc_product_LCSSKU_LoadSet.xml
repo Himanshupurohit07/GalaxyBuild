@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.ptcmscloud.scApparel_com_lcs_wc_product_LCSSKU_20250428-080016/com.ptcmscloud.scApparel_com_lcs_wc_product_LCSSKU_0.xml"/>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.ptcmscloud.scApparel_com_lcs_wc_product_LCSSKU_20250428-080016/com.ptcmscloud.scApparel_com_lcs_wc_product_LCSSKU_1.xml"/>
+</loadFileList>

@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		          |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!-- V0.10 buildlog archiving  |  June 24, 2019       | OLIVIER FRANCHET    -->
+<!-- V0.13 add wtutils.xml     |  Feb 10,  2020       | NATASCHA SCHWARZ    -->
+<!-- V1.1 Improve Exec TryCatch|  June 11, 2020       | OLIVIER FRANCHET	-->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Windchill Management Utilities">
+
+	<!--  - - - - - - - - - - - - - - - - -  
+        Private Target used to run different windchill command lines - which are separated by specific tasks
+  			- - - - - - - - - - - - - - - - - -->
+	<target name="WindchillCommand">
+		<windchillCommand commandline="${line}" />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: windchillCmd
+        This Macrodef execute the     winchill commandline   command
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="windchillCommand">
+		<attribute name="commandline" />
+		<attribute name="action" default="windchillCommand" />
+		<attribute name="failonerror" default="true" />
+		<attribute name="details" default="" />
+		<element name="extra-args" optional="yes" description="Add command line extra arguments" />
+		<sequential>
+
+			<var name="theparameters" unset="true" />
+			<if>
+				<equals arg1="@{details}" arg2="" />
+				<then>
+					<property name="theparameters" value="[commandline=@{commandline}]" />
+				</then>
+				<else>
+					<property name="theparameters" value="@{details}" />
+				</else>
+			</if>
+
+			<if>
+				<equals arg1="${list.content.only}" arg2="true" />
+				<then>
+					<log message="Print Package Content - Skipping WindchillCommand" />
+				</then>
+				<else>
+					<exec-cmd executable="${wc_cmd}" failonerror="@{failonerror}" action="@{action}" parameters="${theparameters}">
+						<args>
+							<arg line="${extra.java.args}" />
+							<arg value="@{commandline}" />
+							<extra-args />
+						</args>
+					</exec-cmd>
+				</else>
+			</if>
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: exec-cmd
+        This Macrodef execute the     winchill cmd   command  
+		    <exec-cmd executable="${wc_cmd}" failonerror="true" action="name of source macrodef or target" parameters="relevant parameters">
+				<args>
+					<arg value="ddd"/>
+				</args>
+			</exec-cmd>
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="exec-cmd">
+		<attribute name="executable" default="${wc_cmd}" />
+		<attribute name="inputstring" default="" />
+		<attribute name="resultproperty" default="retCode" />
+		<attribute name="failonerror" default="true" />
+		<attribute name="checksumreference" default="" />
+		<attribute name="requestedpassword" default="false" />
+		<attribute name="enforce" default="false" />
+		<attribute name="action" />
+		<attribute name="parameters" />
+		<element name="args" optional="yes" description="Add command line arguments" />
+		<sequential>
+
+			<if>
+				<not>
+					<equals arg1="@{checksumreference}" arg2="" />
+				</not>
+				<then>
+					<compareChecksum file="@{checksumreference}" />
+					<log />
+					<log message="Checking for changes in @{checksumreference}" />
+					<if>
+						<istrue value="${isMD5ok}" />
+						<then>
+							<log message="-- SAME MD5 => Had already been successfully Executed" />
+							<log />
+						</then>
+						<else>
+							<log message="-- DIFFERENT MD5 => New File" />
+							<log />
+						</else>
+					</if>
+				</then>
+			</if>
+
+			<if>
+				<and>
+					<istrue value="${isMD5ok}" />
+					<istrue value="${skip.already.loaded.files}" />
+					<not>
+						<istrue value="@{enforce}" />
+					</not>
+				</and>
+				<then>
+					<log message="-- Skipping Execution of command [@{action}] on file [@{checksumreference}]  (Same file already installed via a prior Installation)" />
+					<append.to.file message="SKIPPED ${csv.sep} @{action} ${csv.sep} @{parameters} ${csv.sep} @{checksumreference} had already been installed via on a prior installation" />
+				</then>
+				<else>
+					<log />
+					<checkAuth requestedpassword="@{requestedpassword}" />
+					<log />
+					<var name="executionstamp" unset="true" />
+					<tstamp>
+						<format property="executionstamp" pattern="yyyy/MM/dd - hh:mm:ss aa z" />
+					</tstamp>
+					<log message="= = = = = = = = = = = = = = = =" />
+					<log message="Execute [@{action}]" />
+					<log message=" - with parameters" />
+					<log message="    @{parameters}" />
+					<log message=" - at ${executionstamp}" />
+					<log message="= = = = = = = = = = = = = = = =" />
+
+					<switch.verbose.log.recorder.to.info />
+
+					<var name="logcommandexecfail" unset="true" />
+					<trycatch property="logcommandexecfail">
+						<try>
+							<log-exec-cmd>
+								<exec-cmd>
+									<exec failonerror="@{failonerror}" executable="@{executable}" resultproperty="@{resultproperty}" inputstring="@{inputstring}">
+										<args />
+									</exec>
+								</exec-cmd>
+							</log-exec-cmd>
+						</try>
+						<catch>
+							<log />
+							<log message="WARNING" />
+							<log message="${logcommandexecfail}" />
+							<log />
+							<log message=" !! Logging @{action} with parameters @{parameters} fails !!" />
+							<log />
+						</catch>
+					</trycatch>
+
+					<var name="commandexecfail" unset="true" />
+					<trycatch property="commandexecfail">
+						<try>
+							<exec failonerror="@{failonerror}" executable="@{executable}" resultproperty="@{resultproperty}" inputstring="@{inputstring}">
+								<args />
+							</exec>
+						</try>
+						<catch>
+							<log />
+							<log />
+							<log message="ERROR" />
+							<log message="${commandexecfail}" />
+							<log />
+							<log message=" !! Executing @{action} with parameters @{parameters} fails !! Check Method Server logs for more details" />
+							<log />
+							<append.to.file errormessage="ERROR:   @{parameters}" error="true" />
+						</catch>
+					</trycatch>
+
+					<if>
+						<isset property="commandexecfail" />
+						<then>
+							<append.to.file message="ERROR ${csv.sep} @{action} ${csv.sep} @{parameters} ${csv.sep} ${cmd-line}" />
+						</then>
+						<else>
+							<captureChecksum file="@{checksumreference}" />
+							<append.to.file message="SUCCESS ${csv.sep} @{action} ${csv.sep} @{parameters}" />
+						</else>
+					</if>
+
+					<switch.verbose.log.recorder.to.verbose />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="log-exec-cmd">
+		<element name="exec-cmd" optional="no" />
+		<sequential>
+			<echoxml file="${installer.logs.dir}/command.xml">
+				<exec-cmd />
+			</echoxml>
+			<groovy>
+                def installerLogsDir = ant.project.getProperty("installer.logs.dir");
+                def password = ant.project.getProperty("wcadmin.password");
+                def fullpath = installerLogsDir+"/command.xml";
+                def execCmd  = new XmlParser().parse(fullpath);
+                def commandline = execCmd.'@executable';
+                def replacepassword = false;
+                if ( password != null ) {
+                    password = password.trim();
+                    if ( password.size() >0 ) {
+                        replacepassword=true;
+                    }
+                }
+
+                for (def argument: execCmd.arg)
+                {
+                    def argval=argument.'@value';
+                    if ( argval == null ) {
+                        argval=argument.'@line';
+                    }
+
+                    if ( argval != null ) {
+                        if ( replacepassword )  {
+                            if ( argval.indexOf(password)!=-1 ) {
+                                argval = argval.replaceAll(password,'\\$WDCPASS');
+                            }
+                        }
+                        commandline = commandline + " " + argval;
+                    }
+                }
+                ant.project.setProperty("cmd-line",commandline);
+            </groovy>
+			<log />
+			<log message="Executing:" />
+			<log message="${cmd-line}" />
+			<log />
+
+			<if>
+				<available file="${installer.logs.dir}/command.xml" />
+				<then>
+					<delete quiet="true" failonerror="false" file="${installer.logs.dir}/command.xml" />
+				</then>
+			</if>
+
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: updateEditDTDUtility
+        This Macrodef execute the    wt.load.util.UpdateEditDTDUtility    command  
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="updateEditDTDUtility">
+		<sequential>
+			<log />
+			<log message="START - Executing wt.load.util.UpdateEditDTDUtility command" />
+			<log />
+			<windchillCommand commandline="wt.load.util.UpdateEditDTDUtility" />
+			<log />
+			<log message="END   - Command wt.load.util.UpdateEditDTDUtilityBackup executed" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: setLogLevel
+        This Macrodef execute the    wt.util.jmx.SetLogLevel    command  
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="setLogLevel">
+		<attribute name="logger" />
+		<attribute name="loglevel" default="ERROR" />
+		<sequential>
+			<log />
+			<log message="START - Executing wt.util.jmx.SetLogLevel @{logger} @{loglevel} command" />
+			<log />
+			<if>
+				<not>
+					<equals arg1="X@{logger}" arg2="X" />
+				</not>
+				<then>
+					<exec-cmd executable="${wc_cmd}" failonerror="false" action="SetLogLevel" parameters="[logger=@{logger},loglevel=@{loglevel}]">
+						<args>
+							<arg value="wt.util.jmx.SetLogLevel" />
+							<arg line="@{logger}" />
+							<arg value="@{loglevel}" />
+						</args>
+					</exec-cmd>
+				</then>
+				<else>
+					<log message=" Warning: Cannot execute SetLogLevel with parameter [logger] Empty !" />
+				</else>
+			</if>
+
+			<log />
+			<log message="END   - Command wt.util.jmx.SetLogLevel executed" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: backupExistingLWCTypeImpExpFiles
+        This Macrodef Backup the existing   LWCTypeImpExp folder before build deployment
+        	In case files exist on this folder after deployment, it means that Windchill has detected Datamodel deletion during SoftType loading 
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="backupExistingLWCTypeImpExpFiles">
+		<sequential>
+			<log />
+			<log message="START - Backup Existing LWCTypeImpExp Files" />
+			<log />
+			<tstamp>
+				<format property="dirTimePostFix" pattern="yyyy-MM-dd_HHmmssSSS" />
+			</tstamp>
+			<move file="${wt.temp}/LWCTypeImpExp" tofile="${wt.temp}/LWCTypeImpExp_${dirTimePostFix}" failonerror="false" />
+			<mkdir dir="${wt.temp}/LWCTypeImpExp" />
+			<log />
+			<log message="END   - Existing LWCTypeImpExp Files backup on folder [${wt.temp}/LWCTypeImpExp_${dirTimePostFix}]" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: loadLWCTypeImpExpFiles
+        This Macrodef Load (or Log the command to execute) based on the files generated on folder LWCTypeImpExp during installation
+        	By default nothing will be deleted, but command to be executed will be listed on the Delivery Note
+        		2 options exist:  autoDeleteType  and autoDeleteAttributes which can be used to automatically trigger these deletions.
+        			 <loadLWCTypeImpExpFiles autoDeleteTypes="true" autoDeleteAttributes="true" /> 
+        			 	added on the extension file would automatically execute the Delete Loader for both Types and Attributes.
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="loadLWCTypeImpExpFiles">
+		<attribute name="autoDeleteTypes" default="${lwctypeimpexp.autodeletetypes}" />
+		<attribute name="autoDeleteAttributes" default="${lwctypeimpexp.autodeleteattributes}" />
+		<sequential>
+			<log />
+			<log message="START - Load LWCTypeImpExp Files" />
+			<log />
+
+
+			<!-- Rename files containing "$" character on their name, "$" is replaced by an "_"  -->
+			<move todir="${wt.temp}/LWCTypeImpExp" verbose="true" overwrite="true" failonerror="false">
+				<fileset dir="${wt.temp}/LWCTypeImpExp" includes="**" />
+				<regexpmapper from="(.*)[$$](.*)" to="\1_\2" />
+			</move>
+
+			<fileset id="typesToDelete" dir="${wt.temp}/LWCTypeImpExp">
+				<include name="DELETE_TYPES_*.xml" />
+			</fileset>
+			<fileset id="attributesToDelete" dir="${wt.temp}/LWCTypeImpExp">
+				<exclude name="DELETE_TYPES_*.xml" />
+				<include name="*.xml" />
+			</fileset>
+
+			<var name="theTypesToDelelete" unset="true" />
+			<property name="theTypesToDelelete" refid="typesToDelete" />
+			<for list="${theTypesToDelelete}" delimiter=";" param="file">
+				<sequential>
+					<if>
+						<equals arg1="@{autoDeleteTypes}" arg2="true" />
+						<then>
+							<loadFromFile loadfile="${wt.temp}/LWCTypeImpExp/@{file}" />
+						</then>
+						<else>
+							<append.to.file message="SKIPPED ${csv.sep} loadLWCTypeImpExpFiles ${csv.sep} [loadfile=${wt.temp}/LWCTypeImpExp/@{file}] ${csv.sep} The Delete Type file [@{file}] generated by Windchill during installation has not be Loaded (Param [autoDeleteTypes] != true) ${csv.sep} Review with Customer then execute manually executing command [ ${wc_cmd} ${extra.java.args} wt.load.LoadFromFile -d @{file} ${username.and.password} -CONT_PATH / ]" />
+						</else>
+					</if>
+				</sequential>
+			</for>
+
+			<var name="theAttributesToDelelete" unset="true" />
+			<property name="theAttributesToDelelete" refid="attributesToDelete" />
+			<for list="${theAttributesToDelelete}" delimiter=";" param="file">
+				<sequential>
+					<if>
+						<equals arg1="@{autoDeleteAttributes}" arg2="true" />
+						<then>
+							<loadFromFile loadfile="${wt.temp}/LWCTypeImpExp/@{file}" />
+						</then>
+						<else>
+							<append.to.file message="SKIPPED ${csv.sep} loadLWCTypeImpExpFiles ${csv.sep} [loadfile=${wt.temp}/LWCTypeImpExp/@{file}] ${csv.sep} The Delete Attribute file [@{file}] generated by Windchill during installation has not be Loaded (Param [autoDeleteAttributes] != true) ${csv.sep} Execute manually executing command [ ${wc_cmd} ${extra.java.args} wt.load.LoadFromFile -d @{file} ${username.and.password} -CONT_PATH / ]" />
+						</else>
+					</if>
+				</sequential>
+			</for>
+
+			<log />
+			<log message="END   - LWCTypeImpExp Files loaded" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: disablePrimeTypeCache
+        This Macrodef switch property "com.ptc.core.lwc.PrimeTypeCache" to "false".
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="disablePrimeTypeCache">
+		<sequential>
+			<log />
+			<log message="START - Disabling Prime Type Cache" />
+			<log />
+			<xconf.s property="com.ptc.core.lwc.PrimeTypeCache" value="false" targetfile="codebase/wt.properties" />
+			<log />
+			<log message="END   - Prime Type Cache Disabled" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: enablePrimeTypeCache
+        This Macrodef switch property "com.ptc.core.lwc.PrimeTypeCache" to "true".
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="enablePrimeTypeCache">
+		<sequential>
+			<log />
+			<log message="START - Enabling Prime Type Cache" />
+			<log />
+			<xconf.s property="com.ptc.core.lwc.PrimeTypeCache" value="true" targetfile="codebase/wt.properties" />
+			<log />
+			<log message="END   - Prime Type Cache Enabled" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: disableExtraMS
+        This Macrodef reconfigure property "wt.manager.monitor.service" to "MethodServer".
+           and property "wt.manager.monitor.start.MethodServer" to "1"
+         It stores as well on a file ./original.site.propertie the original values of these 2 properties
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="disableExtraMS">
+		<sequential>
+			<log />
+			<log message="START - Disabling extra MethodServer and BackgroundMethodServer" />
+			<log message="---------------------------------------------------------" />
+			<log />
+			<property name="original.monitor.services" value="${wt.manager.monitor.services}" />
+			<property name="original.number.of.ms" value="${wt.manager.monitor.start.MethodServer}" />
+
+
+
+			<log message=" - List of Monitor Services: ${original.monitor.services}" />
+			<log message=" - Number of Method Servers before deployment starts: ${original.number.of.ms}" />
+
+			<log message="   - Storing properties in file: [${installer.basedir}${file.separator}original.site.properties] " />
+			<propertyfile file="${installer.basedir}${file.separator}original.site.properties" comment="Capture MS and BGMS site properties">
+				<entry key="original.number.of.ms" value="${original.number.of.ms}" />
+				<entry key="original.monitor.services" value="${original.monitor.services}" />
+			</propertyfile>
+
+			<if>
+				<not>
+					<equals arg1="${original.number.of.ms}" arg2="1" />
+				</not>
+				<then>
+					<log message="   - Changing Number of MethodServer to 1" />
+					<log message=" - Changing value of property [wt.manager.monitor.start.MethodServer] from [${original.number.of.ms}] to [1]" />
+					<xconf.s property="wt.manager.monitor.start.MethodServer" value="1" targetfile="codebase/wt.properties" />
+				</then>
+			</if>
+
+			<if>
+				<not>
+					<equals arg1="${original.monitor.services}" arg2="MethodServer" />
+				</not>
+				<then>
+					<log message="   - Disabling BackgroundMethodServer" />
+					<log message=" - Changing value of property [wt.manager.monitor.services] from [${original.monitor.services}] to [MethodServer]" />
+					<xconf.s property="wt.manager.monitor.services" value="MethodServer" targetfile="codebase/wt.properties" />
+				</then>
+			</if>
+
+			<log />
+			<log message="---------------------------------------------------------" />
+			<log message="END   - Extra MethodServer and BackgroundMethodServer Disabled" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: enableExtraMS
+        This Macrodef reconfigure property "wt.manager.monitor.service" and property "wt.manager.monitor.start.MethodServer" 
+           to their original values as captured in file ./original.site.properties before reconfiguration
+           
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="enableExtraMS">
+		<sequential>
+			<log />
+			<log message="START - Re-Enabling Extra MethodServer and BackgroundMethodServer " />
+			<log message="---------------------------------------------------------" />
+			<log />
+
+			<if>
+				<available file="${installer.basedir}${file.separator}original.site.properties" />
+				<then>
+					<property file="${installer.basedir}${file.separator}original.site.properties" />
+				</then>
+			</if>
+
+			<if>
+				<and>
+					<not>
+						<equals arg1="${original.number.of.ms}" arg2="1" />
+					</not>
+					<not>
+						<equals arg1="X${original.number.of.ms}" arg2="X" />
+					</not>
+				</and>
+				<then>
+					<log message=" - Changing value of property [wt.manager.monitor.start.MethodServer] from [1] to [${original.number.of.ms}]" />
+					<xconf.s property="wt.manager.monitor.start.MethodServer" value="${original.number.of.ms}" targetfile="codebase/wt.properties" />
+				</then>
+			</if>
+
+			<if>
+				<and>
+					<not>
+						<equals arg1="${original.monitor.services}" arg2="MethodServer" />
+					</not>
+					<not>
+						<equals arg1="X${original.monitor.services}" arg2="X" />
+					</not>
+				</and>
+				<then>
+					<log message=" - Changing value of property [wt.manager.monitor.services] from [MethodServer] to [${original.monitor.services}]" />
+					<xconf.s property="wt.manager.monitor.services" value="${original.monitor.services}" targetfile="codebase/wt.properties" />
+				</then>
+			</if>
+			<log />
+			<log message="---------------------------------------------------------" />
+			<log message="END   - Extra MethodServer and BackgroundMethodServer Re-Enabled" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: encryptAllPasswords
+        This Macrodef execute the target "encryptAllPasswords" of the EncryptPasswords.xml Ant script.
+           The list of properties being encrypted can be found on folder  ${wt.home}/bin/adminTools/sip
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="encryptAllPasswords">
+		<sequential>
+			<log />
+			<log message="START - Encrypt All Passwords" />
+			<log />
+			<log message="   - Execute Windchill Command to Encrypt all windchill Passwords listed on file [${wt.home}/bin/adminTools/sip/validProperties.list]" />
+			<log />
+			<ant antfile="${wt.home}/bin/adminTools/sip/EncryptPasswords.xml" dir="${wt.home}/bin/adminTools/sip" target="encryptAllPasswords" inheritrefs="true" />
+			<log />
+			<log message="END   - All Passwords Encrypted" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: encryptValueOfProperty
+        This Macrodef execute the target "encryptPw" of the EncryptPasswords.xml Ant script.
+           The value of the property given in parameter will be encrypted and propagated to Windchill Property files.
+           Usage <encryptValueOfProperty property="aKey" value="aPassword" />
+           
+           Warning: thlse propertyName must have been already declared as an encrypted Property on file called 
+              ${wt.home}/bin/adminTools/sip/validProperties.list
+           
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="encryptValueOfProperty">
+		<attribute name="property" />
+		<attribute name="value" />
+		<sequential>
+			<log />
+			<log message="START - Encrypt a Property Value" />
+			<log />
+			<log message="   - Execute Windchill Command to Encrypt the provided property [@{property}]" />
+			<log />
+			<ant antfile="${wt.home}/bin/adminTools/sip/EncryptPasswords.xml" dir="${wt.home}/bin/adminTools/sip" target="encryptPw" inheritrefs="true">
+				<property name="propertyName" value="@{property}" />
+				<property name="password" value="@{value}" />
+			</ant>
+			<log />
+			<xconf.p force="false" />
+			<log />
+			<log message="END   - Property [@{property}] has been encrypted" />
+			<log />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: get.component.version
+        This Macrodef extract from a <comnponent>.ia file the releaseIdentifier.
+           The releaseIdentifier is then split in various properties
+               <component>.major
+               <component>.minor
+               <component>.point
+               <component>.cps
+               <component>.build
+           They can then be called using ${<component>.major} for instance
+           If the component is not installed, a property  ${<component>.installed} is set to false
+           Default component name is "wnc"
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="get.component.version">
+		<attribute name="component" default="wnc" />
+		<sequential>
+
+			<if>
+				<available file="${installregistry.dir}/@{component}.ia" />
+				<then>
+					<var name="currentcomponent" unset="true" />
+					<property name="currentcomponent" value="@{component}" />
+					<groovy>
+                        def path = ant.project.getProperty("installregistry.dir");
+                        def compo = ant.project.getProperty("currentcomponent");
+                        def fullpath = path+"/"+compo+".ia";
+                        def installedAssembly  = new XmlParser().parse(fullpath);
+                        def vers = installedAssembly.'@releaseIdentifier';
+                        def vals = vers.trim().split('\\.');
+                        def index = 0;
+                        def map = [1: "component", 2: "major", 3: "minor", 4: "point", 5: "cps", 6: "build"];
+
+                        for (String exp : vals) {
+                                index++
+                                def key = compo+"."+map[index];
+                                ant.project.setProperty(key,exp);
+                        }
+                    </groovy>
+					<property name="@{component}.installed" value="true" />
+				</then>
+				<else>
+					<property name="@{component}.installed" value="false" />
+				</else>
+			</if>
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: display.component.version
+        This Macrodef execute get.component.version before displaying the result.
+           Default component name is "wnc"
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="display.component.version">
+		<attribute name="component" default="wnc" />
+		<attribute name="ignore.if.not.installed" default="false" />
+		<sequential>
+
+			<get.component.version component="@{component}" />
+
+			<if>
+				<istrue value="${@{component}.installed}" />
+				<then>
+					<log message=" - ${@{component}.component} Version:   " />
+					<log message="             Major: ${@{component}.major} " />
+					<log message="             Minor: ${@{component}.minor} " />
+					<log message="             Point: ${@{component}.point} " />
+					<log message="               CPS: ${@{component}.cps}   " />
+					<log message="       BuildNumber: ${@{component}.build} " />
+				</then>
+				<else>
+					<if>
+						<not>
+							<istrue value="@{ignore.if.not.installed}" />
+						</not>
+						<then>
+							<log />
+							<log message=" - @{component} component is not installed ! " />
+							<log />
+						</then>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: flex.add.columns.exec
+        This Macrodef execute the  Add Columns for Flex PLM  
+          Example: 
+            <flex.add.columns.exec
+               columns="wt.part.WTPart String=2 Long=0 Double=0 Boolean=0 Timestamp=0 ObjectReference=0 VersionReference=0 InlineBLOB=0"
+            />
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="flex.add.columns.exec">
+		<attribute name="columns" />
+		<sequential>
+			<exec-cmd executable="AddColumns.sh" failonerror="true" action="Execute Add Columns" parameters="[@{columns}]">
+				<args>
+					<arg value="-a" />
+					<arg value="-f" />
+					<arg line="@{columns}" />
+				</args>
+			</exec-cmd>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: flex.add.columns.apply
+        This Macrodef execute the Add Columns to Sync changes with DB  
+          Example: 
+            <flex.add.columns.apply />
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="flex.add.columns.apply">
+		<sequential>
+			<exec-cmd executable="AddColumns.sh" failonerror="true" action="Apply Add Columns" parameters="[]">
+				<args>
+					<arg value="-u" />
+					<arg value="-s" />
+				</args>
+			</exec-cmd>
+		</sequential>
+	</macrodef>
+</project>

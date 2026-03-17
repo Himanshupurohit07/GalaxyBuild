@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities 								-->
+<!-- 																		-->
+<!-- Date: 02 April 2020 													-->
+<!-- Author: OLIVIER FRANCHET 												-->
+<!-- 																		-->
+<!-- Changes 																-->
+<!-- ============= 															-->
+<!-- Reason for Change | Date | Author 										-->
+<!-- =====================================================================  -->
+<!-- Document Creation | April 2, 2020                  | OLIVIER FRANCHET  -->
+<!-- 																		-->
+<!-- ********************************************************************** -->
+
+<project name="SQL Utilities">
+
+	<target name="execute.sql.file" depends="checkDatabaseSupport" description="Execute an SQL Query based on an sql File">
+		<echo> Prepare execution of sql file [${sql.file}]</echo>
+		<echo> Output to be generated on file [${output.file}]</echo>
+		<executeSqlFile file="${sql.file}" output="${output.file}"/>
+	</target>
+
+	<target name="execute.sql.query" depends="checkDatabaseSupport">
+		<echo> Prepare execution of sql query [${sql.query}]</echo>
+		<echo> Output to be generated on file [${output.file}]</echo>
+		<executeQuery query="${sql.query}" output="${output.file}"/>
+	</target>
+
+	<path id="project.class.path">
+		<pathelement location="${wt.home}/codebase"/>
+		<fileset dir="${wt.home}/codebase/WEB-INF/lib" includes="*.jar"/>
+		<fileset dir="${wt.home}/lib" includes="*.jar"/>
+		<pathelement path="${wt.home}/srclib/wnc/WCA.jar"/>
+	</path>
+
+	<target name="declare">
+		<taskdef resource="wt/tools/tuner/WCAAntTasks.properties">
+			<classpath refid="project.class.path"/>
+		</taskdef>
+		<typedef resource="wt/tools/tuner/WCAAntTypes.properties">
+			<classpath refid="project.class.path"/>
+		</typedef>
+	</target>
+
+	<target name="checkDatabaseSupport" depends="initJDBCDriverVersion">
+		<echo message="wt.db.dataStore=${wt.db.dataStore}"/>
+		<condition property="unSupportedDB">
+			<not>
+				<or>
+					<equals arg1="${wt.db.dataStore}" arg2="Oracle"/>
+					<equals arg1="${wt.db.dataStore}" arg2="SQLServer"/>
+					<equals arg1="${wt.db.dataStore}" arg2="AzureSQL"/>
+				</or>
+			</not>
+		</condition>
+	</target>
+
+	<target name="initJDBCDriverVersion" depends="declare" unless="jdbcdriverinited">
+		<trycatch property="JDBCDriverException">
+			<try>
+				<getjdbcdriver
+					dbmajorversionproperty="dbmajorversion"
+					dbminorversionproperty="dbminorversion"
+					jdbcmajorversionproperty="jdbcmajorversion"
+					jdbcminorversionproperty="jdbcminorversion"
+					dbproductproperty="dbproduct"
+					drivernameproperty="drivername"/>
+			</try>
+			<catch>
+				<echo message="Error connecting to database: ${JDBCDriverException}"/>
+				<property name="dbmajorversion" value="undefined"/>
+				<property name="dbminorversion" value="undefined"/>
+				<property name="jdbcmajorversion" value="undefined"/>
+				<property name="jdbcminorversion" value="undefined"/>
+				<property name="dbproduct" value="undefined"/>
+				<property name="drivername" value="undefined"/>
+			</catch>
+		</trycatch>
+
+		<echo message="Database Product: ${dbproduct}"/>
+		<echo message="Database Major Version: ${dbmajorversion}"/>
+		<echo message="Database Minor Version: ${dbminorversion}"/>
+		<echo message="Driver Name: ${drivername}"/>
+		<echo message="JDBC Driver Major Version: ${jdbcmajorversion}"/>
+		<echo message="JDBC Driver Minor Version: ${jdbcminorversion}"/>
+
+		<if>
+			<and>
+				<equals arg1="9" arg2="${jdbcmajorversion}"/>
+				<equals arg1="${wt.db.dataStore}" arg2="Oracle"/>
+			</and>
+			<then>
+				<echo message="***************************************************"/>
+				<echo message="WARNING: Your JDBC driver is out of date"/>
+				<echo message="Please upgrade your JDBC driver to 10g !!!"/>
+				<echo message="***************************************************"/>
+			</then>
+		</if>
+		<property name="jdbcdriverinited" value="yes"/>
+	</target>
+
+	<macrodef name="checkSQLContext" >
+		<sequential>
+			<antcall target="checkDatabaseSupport" />
+		</sequential>
+	</macrodef>
+
+
+	<macrodef name="executeQuery">
+		<attribute name="query"/>
+		<attribute name="output"/>
+		<attribute name="print" default="true"/>
+		<attribute name="keepformat" default="yes"/>
+		<attribute name="showtrailers" default="false"/>
+		<attribute name="showheaders" default="false"/>
+		<sequential>
+
+			<checkSQLContext/>
+
+			<sqlptc
+				driver="${jdbcdriver}"
+				url="${jdbcurl}"
+				userid="${db.username}"
+				password="${db.password}"
+				print="@{print}"
+				keepformat="@{keepformat}"
+				showtrailers="@{showtrailers}"
+				showheaders="@{showheaders}"
+				output="@{output}">
+				<classpath>
+					<pathelement location="${wt.home}/codebase/WEB-INF/lib/wc3rdpartylibs.jar"/>
+				</classpath>
+				@{query};
+			</sqlptc>
+			<echo> Output generated on file [@{output}] (${basedir}) </echo>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="executeSqlFile">
+		<attribute name="file"/>
+		<attribute name="output"/>
+		<attribute name="print" default="true"/>
+		<attribute name="keepformat" default="yes"/>
+		<attribute name="showtrailers" default="false"/>
+		<attribute name="showheaders" default="false"/>
+		
+		<sequential>
+			<if>
+				<not><equals arg1="@{file}" arg2=""/></not>
+				<then>
+					<compareChecksum file="@{file}"/>
+					<log />
+					<log message="Checking for changes in @{file}"/>
+					<if>
+						<istrue value="${isMD5ok}" />
+						<then>
+							<log message="--    SAME   MD5 => Had already been successfully loaded"/>
+							<log />
+						</then>
+						<else>
+							<log message="-- DIFFERENT MD5 => New File"/>
+							<log />
+						</else>
+					</if>
+				</then>
+			</if>
+	
+			<if>
+				<and>
+					<istrue value="${isMD5ok}" />
+					<istrue value="${skip.already.loaded.files}" />
+				</and>
+				<then>
+					<append.to.file message="SKIPPED ${csv.sep} @{action} ${csv.sep} @{parameters} ${csv.sep} @{file} had already been treated successfully on a previous run of same installation" />
+				</then>
+				<else>
+
+					<checkSQLContext/>
+		
+					<sqlptc
+						driver="${jdbcdriver}"
+						url="${jdbcurl}"
+						userid="${db.username}"
+						password="${db.password}"
+						print="@{print}"
+						keepformat="@{keepformat}"
+						showtrailers="@{showtrailers}"
+						showheaders="@{showheaders}"
+						output="@{output}"
+						src="@{file}">
+						<classpath>
+							<pathelement location="${wt.home}/codebase/WEB-INF/lib/wc3rdpartylibs.jar"/>
+						</classpath>
+					</sqlptc>
+					<captureChecksum file="@{file}" />	
+					<echo> Output generated on file [@{output}] (${basedir}) </echo>
+				</else>	
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: execute.sql.command
+	        This Macrodef execute the wt.tools.sql.SQLCommandTool command
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="execute.sql.command">
+		<attribute name="file"/>
+		<sequential>
+			<exec-cmd executable="${wc_cmd}" failonerror="true" action="Execute SQLCommand Tool" parameters="[file=@{file}]">
+				<args>
+					<arg line="--javaargs=&quot; -Dwt.tools.sql.dbUser=${db.user} -Dwt.tools.sql.dbPassword=${db.pass}&quot;" />
+					<arg value="wt.tools.sql.SQLCommandTool" />
+					<arg value="@{file}" />
+				</args>
+			</exec-cmd>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: gen.schema
+	        Generate schema artifacts based on file db/conf/SchemaConfig.xml
+	          Invokes generate_customized_schema_artifacts from bin/tools.xml
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="gen.schema">
+		<sequential>
+			<if>
+				<available file="${basedir}/db/conf/SchemaConfig.xml" type="file" />
+				<then>
+					<isgreaterthan arg1="${wnc.major}" arg2="12" strict="false" to="isgreaterthan12"/>
+					<if>
+						<istrue value="${isgreaterthan12}"/>
+						<then>
+							<trycatch property="gen.schema.error">
+								<try>
+									<ant antfile="${wt.home}/bin/tools.xml" inheritAll="false" target="generate_customized_schema_artifacts" />
+									<append.to.file message="SUCCESS ${csv.sep} gen.schema ${csv.sep} Generate Customized Schema Artifacts succeed" />
+								</try>
+								<catch>
+									<log message="Error in gen.schema : ${gen.schema.error}" />
+									<append.to.file message="ERROR ${csv.sep} gen.schema ${csv.sep} Generate Customized Schema Artifacts failed with error [${gen.schema.error}]" error="true" />
+								</catch>
+							</trycatch>
+						</then>
+						<else>
+							<log message="SKIPPED gen.schema, not compatible with this version of Windchill [${wnc.major}]" />
+							<append.to.file message="SKIPPED ${csv.sep} gen.schema ${csv.sep} Generate Customized Schema Artifacts based on db/conf/SchemaConfig.xml only apply if Windchill Major Version is &gt;= 12" />
+						</else>
+					</if>
+				</then>
+				<else>
+					<log message="SKIPPED gen.schema, no db/conf/SchemaConfig.xml provided" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: apply.schema
+	        Apply Schema changes as defined on file db/conf/SchemaConfig.xml
+	          Invokes apply_customized_schema from bin/tools.xml
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="apply.schema">
+		<sequential>
+			<if>
+				<available file="${basedir}/db/conf/SchemaConfig.xml" type="file" />
+				<then>
+					<isgreaterthan arg1="${wnc.major}" arg2="12" strict="false" to="isgreaterthan12"/>
+					<if>
+						<istrue value="${isgreaterthan12}"/>
+						<then>
+							<trycatch property="apply.schema.error">
+								<try>
+									<ant antfile="${wt.home}/bin/tools.xml" inheritAll="false" target="apply_customized_schema" />
+									<append.to.file message="SUCCESS ${csv.sep} apply.schema ${csv.sep} Applying Customized Schema succeed" />
+								</try>
+								<catch>
+									<log message="Error in apply.schema : ${apply.schema.error}" />
+									<append.to.file message="ERROR ${csv.sep} apply.schema ${csv.sep} Applying Customized Schema failed with error [${apply.schema.error}]" error="true" />
+								</catch>
+							</trycatch>
+						</then>
+						<else>
+							<log message="SKIPPED apply.schema, not compatible with this version of Windchill [${wnc.major}]" />
+							<append.to.file message="SKIPPED ${csv.sep} apply.schema ${csv.sep} Applying Customized Schema based on db/conf/SchemaConfig.xml only apply if Windchill Major Version is &gt;= 12" />
+						</else>
+					</if>
+				</then>
+				<else>
+					<log message="SKIPPED apply.schema, no db/conf/SchemaConfig.xml provided" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+</project>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configuration SYSTEM "xconf.dtd">
+<Configuration xmlns:xlink="http://www.w3.org/1999/xlink">
+   <!-- ADD The specific XConf declarations here after -->
+		<xconf.s property="com.sparc.webservice" value="ext.addcolumn.RestUtil,com.sparc.wc.integration.SparcRestIntegration" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		
+		<xconf.a property="com.lcs.wc.util.LCSProperties.additionalProperties" value="/sparc.plugins.properties,/custom.sparc.properties,/sparc.integration.properties,/sparcTechPack.properties,/sharefile.sparc.properties" targetFile="codebase/custom.lcs.properties"/>
+
+		
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.mainmaterials" value="Material\\scApparel\\scFabric\\scDenim,Material\\scApparel\\scFabric\\scKnit,Material\\scApparel\\scFabric\\scNonWoven,Material\\scApparel\\scFabric\\scWoven,Material\\scApparel\\scLeatherFurFeather\\scFurAndFeather,Material\\scApparel\\scLeatherFurFeather\\scLeather,Material\\scApparel\\scTrim\\scZipper,Material\\scApparel\\scTrim,Material\\scApparel\\scProcesses,Material\\scApparel\\scYarn" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scAccTrim" value="Material\\scApparel\\scFabric\\scKnit,Material\\scApparel\\scFabric\\scNonWoven,Material\\scApparel\\scFabric\\scWoven,Material\\scApparel\\scLeatherFurFeather\\scFurAndFeather,Material\\scApparel\\scLeatherFurFeather\\scLeather,Material\\scApparel\\scTrim\\scZipper,Material\\scApparel\\scTrim,Material\\scApparel\\scProcesses,Material\\scApparel\\scYarn" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.labels" value="Material\\scApparel\\scPackagingAndLabels\\scLabels" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.packaging" value="Material\\scApparel\\scPackagingAndLabels\\scPackaging" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scartwork" value="Material\\scApparel\\scFabric\\scKnit,Material\\scApparel\\scFabric\\scNonWoven,Material\\scApparel\\scFabric\\scWoven,Material\\scApparel\\scLeatherFurFeather\\scFurAndFeather,Material\\scApparel\\scLeatherFurFeather\\scLeather,Material\\scApparel\\scTrim\\scZipper,Material\\scApparel\\scTrim,Material\\scApparel\\scProcesses,Material\\scApparel\\scYarn" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scprocess" value="Material\\scApparel\\scFabric\\scKnit,Material\\scApparel\\scFabric\\scNonWoven,Material\\scApparel\\scFabric\\scWoven,Material\\scApparel\\scLeatherFurFeather\\scFurAndFeather,Material\\scApparel\\scLeatherFurFeather\\scLeather,Material\\scApparel\\scTrim\\scZipper,Material\\scApparel\\scTrim,Material\\scApparel\\scProcesses,Material\\scApparel\\scYarn" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scFwUpper" value="Material\\scFootwear\\sfLeathers,Material\\scFootwear\\sfSynthetics,Material\\scFootwear\\sfPolymers,Material\\scFootwear\\sfTextiles,Material\\scFootwear\\sfComponents,Material\\scFootwear\\sfConstructiveElements,Material\\scFootwear\\sfTooling\\sfLasts,Material\\scFootwear\\sfTooling\\sfMolds,Material\\scFootwear\\sfTooling\\sfDies,Material\\scFootwear\\scConstructionSet" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scSockliner" value="Material\\scFootwear\\sfLeathers,Material\\scFootwear\\sfSynthetics,Material\\scFootwear\\sfPolymers,Material\\scFootwear\\sfTextiles,Material\\scFootwear\\sfComponents,Material\\scFootwear\\sfConstructiveElements,Material\\scFootwear\\sfTooling\\sfLasts,Material\\scFootwear\\sfTooling\\sfMolds,Material\\scFootwear\\sfTooling\\sfDies,Material\\scFootwear\\scConstructionSet" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scInsole" value="Material\\scFootwear\\sfLeathers,Material\\scFootwear\\sfSynthetics,Material\\scFootwear\\sfPolymers,Material\\scFootwear\\sfTextiles,Material\\scFootwear\\sfComponents,Material\\scFootwear\\sfConstructiveElements,Material\\scFootwear\\sfTooling\\sfLasts,Material\\scFootwear\\sfTooling\\sfMolds,Material\\scFootwear\\sfTooling\\sfDies,Material\\scFootwear\\scConstructionSet" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scBottom" value="Material\\scFootwear\\sfLeathers,Material\\scFootwear\\sfSynthetics,Material\\scFootwear\\sfPolymers,Material\\scFootwear\\sfTextiles,Material\\scFootwear\\sfComponents,Material\\scFootwear\\sfConstructiveElements,Material\\scFootwear\\sfTooling\\sfLasts,Material\\scFootwear\\sfTooling\\sfMolds,Material\\scFootwear\\sfTooling\\sfDies,Material\\scFootwear\\scConstructionSet" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scsundries" value="Material\\scFootwear\\sfLeathers,Material\\scFootwear\\sfSynthetics,Material\\scFootwear\\sfPolymers,Material\\scFootwear\\sfTextiles,Material\\scFootwear\\sfComponents,Material\\scFootwear\\sfConstructiveElements,Material\\scFootwear\\sfTooling\\sfLasts,Material\\scFootwear\\sfTooling\\sfMolds,Material\\scFootwear\\sfTooling\\sfDies,Material\\scFootwear\\scConstructionSet" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.scPackaging" value="Material\\scFootwear\\sfPackagingandLabelling\\sfPackaging,Material\\scFootwear\\sfPackagingandLabelling\\sfLables" targetFile="codebase/custom.lcs.properties" />
+	
+		<xconf.s property="jsp.vendorportal.VendorPortalSideMenu.useMaterial" value="true" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="jsp.vendorportal.VendorPortalSideMenu.useProduct" value="true" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="jsp.vendorportal.VendorPortalSideMenu.useRFQ" value="true" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="jsp.vendorportal.VendorPortalSideMenu.useSample" value="true" targetFile="codebase/custom.lcs.properties" />
+
+		<xconf.s property="jsp.measurements.adminGroup" value="MEASUREMENTS_TEMPLATE_ADMIN" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="jsp.sizingDefinition.adminGroup" value="SIZEDEF_TEMPLATE_ADMIN" targetFile="codebase/custom.lcs.properties" />
+		
+		<xconf.s property="jsp.flexbom.automaticBOMHighlight" value="true" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.season.LineSheetQuery.queryLimit" value="6000" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="jsp.email.SSLOffloadProtocolOverride" value="https" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="BAC.Enabled" value="false" targetFile="codebase/wt.properties" />
+		<xconf.s property="com.ptc.layout.configurableview.configurableViewDefinitionXMLFile" value="/codebase/custom.ConfigurableView_Definitions.xml" targetFile="codebase/wt.properties" />
+		
+		<!-- Sep Build  Start-->
+		<xconf.s property="lucky.integration.rest.provider" value="com.sparc.wc.integration.controller.LuckyController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		<xconf.s property="lucky.integration.rest.resource" value="com.sparc.wc.integration.controller.LuckyController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />		
+		
+		<xconf.s property="lucky.fc.color.integration.rest.provider" value="com.sparc.wc.integration.lucky.controller.FCColorController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		<xconf.s property="lucky.fc.color.integration.rest.resource" value="com.sparc.wc.integration.lucky.controller.FCColorController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+
+		 <xconf.s property="f21.scm.integration.rest.provider" value="com.sparc.wc.integration.f21.controller.SCMIntegrationController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		<xconf.s property="f21.scm.integration.rest.resource" value="com.sparc.wc.integration.f21.controller.SCMIntegrationController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />	
+		
+		<xconf.a property="com.lcs.wc.util.LCSProperties.additionalProperties" value="/sparc.plugins.properties,/custom.sparc.properties,/sparc.integration.properties,/sparcTechPack.properties,/SparcCosting.properties" targetFile="codebase/custom.lcs.properties"/>
+		
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.sclining" value="Material\\scApparel\\scFabric\\scWoven,Material\\scApparel\\scFabric\\scNonWoven,Material\\scApparel\\scTrim,Material\\scApparel\\scProcesses" targetFile="codebase/custom.lcs.properties" />		
+		<!-- Sep Build End -->
+
+		<!-- Oct Build  Start-->
+		<xconf.s property="lucky.costing.integration.rest.provider" value="com.sparc.wc.integration.lucky.controller.LuckyCostingController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+        <xconf.s property="lucky.costing.integration.rest.resource" value="com.sparc.wc.integration.lucky.controller.LuckyCostingController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		<xconf.s property="f21.costing.integration.rest.provider" value="com.sparc.wc.integration.controller.F21Controller" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		<xconf.s property="f21.costing.integration.rest.resource" value="com.sparc.wc.integration.controller.F21Controller" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		<xconf.s property="jsp.flexbom.EditBOM.colorQuickSearchAttributePrefixMapping" value="DEFAULT:name,CIN:scColorNo" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="FlexPLM.system.allowedFileTypesForContentFileUpload" value="stl,pdf,jpg,mp4,ai,,dxf,doc,xls,mpeg,wmv,avi,tiff,gif,docx,ppt,pptx,txt,xlsx,csv,json" targetFile="codebase/custom.lcs.properties" />
+		
+		<xconf.s property="jsp.flexbom.EditBOM.colorQuickSearchAttributePrefixMapping" value="DEFAULT:name,CIN:scColorNo" targetFile="codebase/custom.lcs.properties" />
+
+		<!-- Oct Build End -->
+	
+		<!-- December Build  Start-->
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.sclining" value="Material\\scApparel\\scFabric\\scWoven,Material\\scApparel\\scFabric\\scNonWoven,Material\\scApparel\\scTrim,Material\\scApparel\\scProcesses,Material\\scApparel\\scFabric\\scKnit" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.document.imageGeneration.maxFilesizeConvertThreshhold" value="25485760" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="com.lcs.wc.material.BOMSection.constraint.sctrims" value="Material\\scApparel\\scFabric\\scKnit,Material\\scApparel\\scFabric\\scNonWoven,Material\\scApparel\\scFabric\\scWoven,Material\\scApparel\\scLeatherFurFeather\\scFurAndFeather,Material\\scApparel\\scLeatherFurFeather\\scLeather,Material\\scApparel\\scTrim\\scZipper,Material\\scApparel\\scTrim,Material\\scApparel\\scProcesses,Material\\scApparel\\scYarn" targetFile="codebase/custom.lcs.properties" />
+		<xconf.s property="aero.article.integration.rest.provider" value="com.sparc.wc.integration.aero.controller.AeroArticleController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+        <xconf.s property="aero.article.integration.rest.resource" value="com.sparc.wc.integration.aero.controller.AeroArticleController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+        <xconf.s property="aero.costing.integration.rest.provider" value="com.sparc.wc.integration.aero.controller.AeroCostingController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+        <xconf.s property="aero.costing.integration.rest.resource" value="com.sparc.wc.integration.aero.controller.AeroCostingController" targetFile="codebase/com/ptc/windchill/rest/rest.properties" />
+		<xconf.s property = "jsp.season.LinePlan.skipFiltersOnNewView" value="false" targetFile="codebase/custom.lcs.properties" />
+		<xconf.a property="com.lcs.wc.util.LCSProperties.additionalProperties" value="/sparc.plugins.properties,/custom.sparc.properties,/sparc.integration.properties,/sparcTechPack.properties,/SparcCosting.properties,/SparcCostingExpImp.properties" targetFile="codebase/custom.lcs.properties"/>
+		
+		<!-- December Build  End-->
+		<!-- January Build  Start-->
+		
+		<xconf.s property = "com.lcs.wc.product.LCSProduct.LockedAttribute.SampleReady.Status.Keys" value="scBrand,scGender,scAge,scProductDescriptionShort,scSizeRange" targetFile="codebase/custom.sparc.properties" />
+		
+		<!-- January Build  End-->
+		
+		<!-- Feb Build Start -->
+		<xconf.s property="com.lcs.wc.product.LCSProductSeasonLink.IntegrationAttributesKeys.INTEGRATION.ATT.KEYS" 
+       		 value="scDivision,scProductGroup,scProductType,scsportcategory,sccorpmarketingline,sccatmarketingline,scsalesline,sctechnologyconcept,scsustainabilityethics,scsellingregion,scFranchise,scprodmanager,scdistchannel,scRetailexitdate,scRetailintrodate,scTargetRetail,scdevelopmentype" 	
+       		 targetfile="codebase/custom.sparc.properties" />
+		<!-- Feb Build End -->
+		<!-- August Build Start -->
+		<xconf.s property="com.lcs.wc.product.LCSProduct.LockedAttribute.SampleReady.Status.Keys" 
+       		 value="scBrand,scGender,scAge,scProductDescriptionShort,scSizeRange,scProductDescription" 	
+       		 targetfile="codebase/custom.sparc.properties" />
+		<xconf.s property="com.lcs.wc.util.LCSProperties.additionalProperties" value="/sparc.plugins.properties,/custom.sparc.properties,/sparc.integration.properties,/sparcTechPack.properties,/SparcCosting.properties,/SparcCostingExpImp.properties,/qiwk.plugins.properties,/sharefile.sparc.properties" targetFile="codebase/custom.lcs.properties" />
+		<!-- August Build End -->
+		<!-- OCTOBER Build Start -->
+		<xconf.s property="com.lcs.wc.product.LCSProductSeasonLink.LockedAttribute.Released.StatusKeys" 
+       		 value="scDivision,scProductGroup,scsportcategory,sccorpmarketingline,scProductType" 	
+       		 targetfile="codebase/custom.sparc.properties" />
+		<xconf.s property="com.lcs.wc.product.LCSProductSeasonLink.LockedAttribute.SampleReady.Status.Keys" 
+       		 value="scDivision,scProductGroup,scsportcategory,sccorpmarketingline,scProductType" 	
+       		 targetfile="codebase/custom.sparc.properties" />
+		<xconf.s property="com.lcs.wc.product.LCSProductSeasonLink.LockedAttribute.BuyReady.Status.Keys" 
+       		 value="scDivision,scProductGroup,scsportcategory,sccorpmarketingline,scProductType" 	
+       		 targetfile="codebase/custom.sparc.properties" />
+		<!-- OCTOBER Build End -->
+		
+</Configuration>

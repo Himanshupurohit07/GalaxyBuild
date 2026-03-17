@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   4 October 2019                                                -->
+<!-- Author: NATACHA SCHWARZ                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		      |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation														-->
+<!-- V0.12 include delete      | Oct 04, 2019      | NATASCHA SCHWARZ   	 -->
+<!-- V1.1.2 updating delete      | May 06, 2021      | Olivier Franchet   	 -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Delete Utilities" >
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: deleteFile
+         This Macrodef deletes files
+  			= = = = = = = = = = = = = = = = = -->
+	<macrodef name="deleteFile">
+		<attribute name="filename"/>
+		<attribute name="filepath" default="${wt.home}"/>
+		<sequential>
+			<log message="" />
+			<log message="Deleting File [@{filename}] from path [@{filepath}]" />
+
+			<var name="thefilename" unset="true"/>
+			<var name="thedirname" unset="true"/>
+			<var name="hasWildcard" unset="true"/>
+
+			<condition property="hasWildcard">
+				<matches pattern="\*" string="@{filename}"/>
+			</condition>
+
+			<if>
+				<istrue value="${hasWildcard}"/>
+				<then>
+					<delete.files filename="@{filename}" filepath="@{filepath}"/>
+				</then>
+				<else>
+					<if>
+						<available file="@{filename}" type="file" />
+						<then>
+							<basename property="thefilename" file="@{filename}"/>
+							<dirname property="thedirname" file="@{filename}"/>
+
+							<delete.files filename="${thefilename}" filepath="${thedirname}"/>
+						</then>
+						<elseif>
+							<available file="@{filepath}/@{filename}" type="file" />
+							<then>
+								<property name="thefilename" value="@{filename}"/>
+								<property name="thedirname" value="@{filepath}"/>
+
+								<delete.files filename="${thefilename}" filepath="${thedirname}"/>
+							</then>
+						</elseif>
+						<else>
+							<log message="  - No File to Delete based on parameters filename=[@{filename}], filepath=[@{filepath}]" />
+						</else>
+					</if>
+				</else>
+			</if>
+			<log message="--" />
+		</sequential>
+	</macrodef>
+
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: delete.files
+	         This Macrodef deletes files
+	  			= = = = = = = = = = = = = = = = = -->
+	<macrodef name="delete.files">
+		<attribute name="filename"/>
+		<attribute name="filepath"/>
+		<sequential>
+
+			<log message="  - Deleting Files based on parameters filename=[@{filename}], filepath=[@{filepath}]" />
+
+			<if>
+				<available file="@{filepath}" type="dir" />
+				<then>
+					<fileset id="toDelete" dir="@{filepath}">
+						<include name="@{filename}" />
+					</fileset>
+					<pathconvert refid="toDelete" property="dir.contains-files" setonempty="false"/>
+
+					<if>
+						<isset property="dir.contains-files"/>
+						<then>
+
+							<var name="somefilesToDel" unset="true"/>
+							<property name="somefilesToDel" refid="toDelete"/>
+							<for list="${somefilesToDel}" delimiter=";" param="file" >
+								<sequential>
+									<append.to.uninstaller file="@{filepath}/@{file}" skip="false" uninstaller.jar.file="${uninstaller.deleted.jar}"/>
+								</sequential>
+							</for>
+
+							<delete verbose="true" failonerror="false">
+								<fileset refid="toDelete" />
+							</delete>
+						</then>
+						<else>
+							<log message="  - No File to delete based on parameters filename=[@{filename}], filepath=[@{filepath}]" />
+						</else>
+					</if>
+				</then>
+				<else>
+					<log message="  - The Specified Folder [@{filepath}] does not exists !" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: deleteFolder
+         This Macrodef deletes Folder
+  			= = = = = = = = = = = = = = = = = -->
+	<macrodef name="deleteFolder">
+		<attribute name="dir"/>
+		<sequential>
+			<log message="Deleting Folder [@{dir}]" />
+			<delete dir="@{foldername}" includeemptydirs="true" verbose="true" failonerror="false"/>
+			<log message="--" />
+		</sequential>
+	</macrodef>
+</project>

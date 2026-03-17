@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="sic/types/com.ptcmscloud.scWoven_com_lcs_wc_material_LCSMaterial_20250401-064233/com.ptcmscloud.scWoven_com_lcs_wc_material_LCSMaterial_0.xml"/>
+   <loadFile filename="sic/types/com.ptcmscloud.scWoven_com_lcs_wc_material_LCSMaterial_20250401-064233/com.ptcmscloud.scWoven_com_lcs_wc_material_LCSMaterial_1.xml"/>
+</loadFileList>

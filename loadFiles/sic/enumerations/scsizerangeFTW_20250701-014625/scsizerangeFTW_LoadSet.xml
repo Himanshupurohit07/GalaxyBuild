@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="sic/enumerations/scsizerangeFTW_20250701-014625/scsizerangeFTW_0.xml"/>
+</loadFileList>

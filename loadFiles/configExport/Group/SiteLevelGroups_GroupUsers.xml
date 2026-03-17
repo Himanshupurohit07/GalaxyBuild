@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standard11_2.dtd">
+<NmLoader>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>Administrators</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>praveen.rajegowda@acnovate.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>Administrators</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>vakhairnar@ptc.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>Administrators</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>sparcadmin</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>Administrators</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>QiwkTeam</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>Administrators</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>li.he@eddiebauer.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>Administrators</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>wcadmin</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>LOG_VIEWER_ADMIN</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>interfaceadmin</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>LOG_VIEWER_ADMIN</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>praveen.rajegowda@acnovate.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>LOG_VIEWER_ADMIN</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>sparcadmin</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>LOG_VIEWER_ADMIN</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>QiwkTeam</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>LOG_VIEWER_ADMIN</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>li.he@eddiebauer.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>cherryzhang@brilliantemail.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>aaron.s@miasfashion.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>manuahuja@lfsourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>CHRISTINAKIM@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>kacyhong@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>JULIECHO@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>chari.h@miasfashion.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>SEMIKIM@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>terryyeunghh@brilliantemail.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>yrhan@miasfashion.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>linda@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>SiddharthKaul@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>gemabe@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>joannayoon@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>SELENEKIM@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>BhuvneshSapra@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>LILLYHAN@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>edwinpablo@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>hazelkim@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>kumara.hennayaka@oritsl.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>yapa@oritsl.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>andres.an@intsa.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>DANA@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>PriyaKaurav@lfsourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>monicatran@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>MeeraKumar@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>ShivaniChoudhary@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>charith.kumarasinghe@oritsl.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>jina.lee@intsa.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>jswoo@mfmkorea.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>lena.woo@intsa.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>hgkim@mfmguate.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>GoravKhurana@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>ERICNAM@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>ervincapule@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>chancechen@brilliantemail.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>cindy_tham@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>AmandeepSingh@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>jessica.ortiz@intsa.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>PradeepKumarSingh@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>vanessa.vidal@apparellinks.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>florenda.valdez@intsa.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>MARILER@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>emilyleungkw@brilliantemail.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>ymjeong@miasfashion.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>NoopurDutt@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>sunny.l@miasfashion.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>AnilRajS@lfsourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>yohan.kim@mfmguate.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>ymhan@mfmkorea.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>simoncui@brilliantemail.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>danihong@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>sara.jeung@apparellinks.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>SureshYadav@lfSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>NusratAli@LFSourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>hylee@mfmkorea.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>noah.kim@intsa.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>samnguyen@ubaseinternational.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>marco.lee@intsa.net</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>TOMKIM@UBASEINTERNATIONAL.COM</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>AkanshaPant@lfsourcing.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>smkim@mfmguate.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+   <csvUserGroup handler="wt.load.LoadUser.createUserGroup">
+      <csvuser/>
+      <csvgroupName>License Exclusion</csvgroupName>
+      <csvgroupNameDirectoryService/>
+      <csvuserName>vakhairnar@ptc.com</csvuserName>
+      <csvuserNameDirectoryService/>
+      <csvDirectoryService/>
+   </csvUserGroup>
+</NmLoader>

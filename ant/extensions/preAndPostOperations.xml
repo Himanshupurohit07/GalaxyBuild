@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Pre And Post Operations                                          -->
+<!--                                                                        -->
+<!-- Date:   1st May 2020                                                   -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		      |  Author                 -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  May 1, 2020     | OLIVIER FRANCHET        -->
+<!-- V1.1 modelupdate macrodef | June 11, 2020    | OLIVIER FRANCHET	    -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Pre And Post Operations" >
+
+
+	<!-- ================================= 
+	        Declare Actions to be executed Pre-Deployment (After Copying Files).
+	             ================================= -->
+	<target name="pre.deploy" description="Actions to be Executed Pre-Deployment (After Copying Files)" >
+		<echo>Executing Pre-Deployment Actions</echo>
+
+		<!-- EXAMPLES -->
+		<!--   
+	        <antcall target="execute.sql.file">
+                <param name="sql.file" value="${wt.home}/db/sql/customer/aQuery.sql"/>
+                <param name="output.file" value="${installer.logs.dir}${file.separator}/aQuery-result.log" />
+            </antcall>
+		-->
+
+	</target>
+
+
+
+	<!-- ================================= 
+	        Declare Actions to be Executed Post-Deployment (Before Server Stop).
+	             ================================= -->
+	<target name="post.deploy" description="Actions to be Executed Post-Deployment (Before Server Stop)" >
+		<echo>Executing Post-Deployment Actions</echo>
+		<!-- EXAMPLES -->
+		<!--  
+			<combine.jsfrag />  
+		-->
+	</target>
+
+
+
+	<!-- ================================= 
+        Declare Actions to be Executed Pre-Load (After Server Restart).
+             ================================= -->
+	<target name="pre.load" description="Actions to be Executed Pre-Load (After Server Restart)" >
+		<echo>Executing Pre-Load Actions</echo>
+
+		<!-- EXAMPLES -->
+		<!--  
+		    <deleteBusinessRules ruleset="MyRuleSet" contpath="/" />
+		-->
+
+	</target>
+
+
+	<!-- ================================= 
+	        Declare Actions to be Executed Post-Load (After Load Sequence).
+	             ================================= -->
+	<target name="post.load" description="Actions to be Executed Post-Load (After Load Sequence)" >
+		<echo>Executing Post-Load Actions</echo>
+
+		<!-- EXAMPLES -->
+		<!--
+			Preference Importer
+			    <windchillCommand commandline="wt.preference.ImportPreferences -importfile=${wt.home}/loadFiles/com/customer/Preferences/Site_preferences.xml -user=${wcadmin.username} -password=${wcadmin.password}  
+								-importSiteLevel -overwriteValueConflicts" />			
+		    
+		    Cognos Specific:
+		        <loadCognosReports folderpath="${wt.home}/loadFiles/com/customer/cognosReports"/>
+		        <modelupdate />
+		    
+		    A Custom Command:
+		        <windchillCommand commandline="ext.customer.MyTool -file ${wt.home}/loadFiles/ext/customer/dataset.csv" />
+		   		or
+		   		<windchillCommand commandline="ext.customer.MyTool">
+		   			<extra-args>
+						<arg value="-file" />
+						<arg value="${wt.home}/loadFiles/ext/customer/dataset.csv" />
+		   			</extra-args>
+		   		</windchillCommand>
+		    -->
+	</target>
+
+</project>

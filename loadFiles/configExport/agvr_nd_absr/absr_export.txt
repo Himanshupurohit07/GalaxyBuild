@@ -1,0 +1,2 @@
+#ABSR Exported Data:
+AttributeAccessRule,UPDATE_ACCESS,APPAREL_VENDORS|~*~|FOOTWEAR_VENDORS,materialColorControlled,0|~*~|1|~*~|2|~*~|4,com.lcs.wc.material.LCSMaterial,DENY

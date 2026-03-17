@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standard11_2.dtd">
+<NmLoader>
+
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_IMGPAGE_AERO_CREATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_IMGPAGE_AERO_READ</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_IMGPAGE_AERO_UPDATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_TECHPACK_AERO_CREATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_TECHPACK_AERO_READ</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_TECHPACK_AERO_UPDATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_MANUALS_AERO_CREATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_MANUALS_AERO_READ</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_MANUALS_AERO_UPDATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_MATDOC_AERO_CREATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_MATDOC_AERO_READ</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_MATDOC_AERO_UPDATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_PRODDOC_AERO_CREATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_PRODDOC_AERO_READ</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_PRODDOC_AERO_UPDATE</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+	
+	<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+		<csvuser/>
+		<csvparentGroupName>DOC_VNDRDOC_AERO_READ</csvparentGroupName>
+		<csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MATERIAL_DEVELOPER</csvchildGroupName>
+	</csvGroupGroup>
+
+	<!-- Providing Aeropostale Imagespage deletion access to LUCKY_SPARC_OPERATIONS group   -->
+	
+</NmLoader>

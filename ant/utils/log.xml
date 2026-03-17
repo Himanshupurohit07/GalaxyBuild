@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Installer Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   31 January 2019                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		      |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  January 31, 2019    | OLIVIER FRANCHET    -->
+<!-- V0.5 include compile      |  April 05, 2019      | OLIVIER FRANCHET    -->
+<!--                                                                        -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Log and Archiving Utilities" >
+
+	<property name="csv.sep" value="," />
+
+	<target name="listcontent" >
+		<init.package.content />
+		<list.package.content />
+		<close.package.content />
+	</target>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: init.package.content
+	        This Macrodef print the First Section of the Delivery Note
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="init.package.content">
+		<sequential>
+			<!-- initialize delivery note file -->
+			<append.to.file append="false" message="Package Name:${csv.sep}${package.name}.zip"  />
+			<append.to.file message="Installation Guide:${csv.sep}IG_${package.name}.docx"  />
+			<append.to.file message="Package Owner:${csv.sep}OWNER NAME and EMAIL ADDRESS"  />
+			<append.to.file/>
+			<append.to.file message="Change Identifier${csv.sep}Description${csv.sep}Assignee${csv.sep}Status"  />
+			<append.to.file message="CHG_ID${csv.sep}CHANGE_ID_DESCRIPTION${csv.sep}ASSIGNEE${csv.sep}CHANGE_STATUS"  />
+			<append.to.file message="Please replace this previous line and add as many line as required to represent the Package Content"/>
+			<append.to.file/>
+			<append.to.file/>
+			<append.to.file message="Change Type${csv.sep}Change Reference${csv.sep}File Name"  />
+
+			<if>
+				<istrue value="${skip.uninstaller}"/>
+				<then>
+					<log message="Skipping Uninstaller Generation"/>
+				</then>
+				<else>
+					<if>
+						<available file="${uninstaller.jar}" type="file" />
+						<then>
+							<property name="skip.uninstaller" value="true" />
+							<if>
+								<istrue value="${force.uninstaller}"/>
+								<then>
+									<var name="skip.uninstaller" unset="true"/>
+									<var name="nowstamp" unset="true"/>
+									<tstamp>
+										<format property="nowstamp" pattern="yyyyMMdd-hhmmss" />
+									</tstamp>
+
+									<move file="${uninstaller.jar}" tofile="${uninstaller.jar}_${nowstamp}"/>
+								</then>
+								<else>
+									<log message="Skipping Uninstaller Generation"/>
+								</else>
+							</if>
+						</then>
+						<else>
+							<wdc.version />
+						</else>
+					</if>
+				</else>
+			</if>
+
+			<append.to.uninstaller file="site.xconf"  />
+			<append.to.uninstaller file="declarations.xconf"  />
+
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: close.package.content
+	        This Macrodef print the First Section of the Delivery Note
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="close.package.content">
+		<sequential>
+			<var name="nowts" unset="true"/>
+			<tstamp>
+				<format property="nowts" pattern="yyyy/MM/dd-hh:mm:ss_aa_z" />
+			</tstamp>
+			<append.to.file/>
+			<append.to.file/>
+			<append.to.file message="Delivery Note generated on server [${hostname}] the [${nowts}] using Simple Change Framework [${sic.version}_${sic.version.hotfix}]."  />
+			<wdc.version />
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: list.package.content
+        This Macrodef scan the Package Content to fullfill the Delivery Note
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="list.package.content">
+		<attribute name="directory" default="${basedir}"/>
+		<sequential>
+
+			<fileset id="loadFiles" dir="@{directory}" >
+				<include name="loadFiles/**/*.*" />
+				<exclude name="**/*.gif" />
+				<exclude name="**/*.png" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="loadFiles" changetype="Load File" />
+
+			<fileset id="loadXMLFiles" dir="@{directory}" >
+				<include name="loadXMLFiles/**/*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="loadXMLFiles" changetype="Load XML File"  />
+
+			<fileset id="codebaseFiles" dir="@{directory}" >
+				<include name="codebase/**/*.*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller  filesetref="codebaseFiles" changetype="Codebase File" />
+
+			<fileset id="wtCustomFiles" dir="@{directory}" >
+				<include name="wtCustom/**/*.rbInfo" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="wtCustomFiles" changetype="Resource Files" />
+
+			<fileset id="wtCustomModelFiles" dir="@{directory}" >
+				<include name="wtCustom/**/*Model.properties" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="wtCustomModelFiles" changetype="Model Files" />
+
+			<fileset id="wtCustomLostFiles" dir="@{directory}" >
+				<include name="wtCustom/**/*.*" />
+				<exclude name="wtCustom/**/*.rbInfo" />
+				<exclude name="wtCustom/**/*Model.properties" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="wtCustomLostFiles" changetype="wtCustom Unclassified Files" />
+
+			<fileset id="tasksFiles" dir="@{directory}" >
+				<include name="tasks/**/*.*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="tasksFiles" changetype="I*E Task Files" />
+
+			<fileset id="wtSafeAreaFiles" dir="@{directory}" >
+				<include name="wtSafeArea/**/*.*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="wtSafeAreaFiles" changetype="WT SafeArea Files" />
+
+			<fileset id="srcJavaFiles" dir="@{directory}" >
+				<include name="src/**/*.java" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="srcJavaFiles" changetype="Java File" />
+
+			<fileset id="srcRBFiles" dir="@{directory}" >
+				<include name="src/**/*.rbInfo" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="srcRBFiles" changetype="Custom RBInfo File" />
+
+			<fileset id="srcOtherFiles" dir="@{directory}" >
+				<include name="src/**/*.*" />
+				<exclude name="src/**/*.rbInfo" />
+				<exclude name="src/**/*.java" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="srcOtherFiles" changetype="Other SRC File" />
+
+			<fileset id="dbFiles" dir="@{directory}" >
+				<include name="db/**/*.*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="dbFiles" changetype="Database File" />
+
+			<fileset id="srcLibFiles" dir="@{directory}" >
+				<include name="srclib/**/*.*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="srcLibFiles" changetype="Custom Library" />
+
+			<fileset id="LibFiles" dir="@{directory}" >
+				<include name="lib/**/*.*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="LibFiles" changetype="Custom Library" />
+
+			<fileset id="installerFiles" dir="@{directory}" >
+				<include name="installer/**/*.*" />
+				<exclude name="**/*.sicsample.*"/>
+				<exclude name="**/*_sicsample/**"/>
+			</fileset>
+			<print.delnote.and.pack.uninstaller filesetref="installerFiles" changetype="Installer Files" />
+
+
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: print.delnote.and.pack.uninstaller
+        This Macrodef generates both 
+                the Delivery Note 
+               and add older version of files to the uninstaller Archive
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="print.delnote.and.pack.uninstaller">
+		<attribute name="filesetref" />
+		<attribute name="changetype" />
+
+		<sequential>
+			<var name="somefiles" unset="true"/>
+			<property name="somefiles" refid="@{filesetref}"/>
+			<for list="${somefiles}" delimiter=";" param="file" >
+				<sequential>
+					<append.to.file message="@{changetype}${csv.sep}CHG_ID${csv.sep}@{file}"  />
+					<append.to.uninstaller file="@{file}"  />
+				</sequential>
+			</for>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: control.and.archive.codebase.files
+        This Macrodef generates both 
+                an entry to the Delivery Note for Codebase files 
+               and add older version of same files to the uninstaller Archive
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="control.and.archive.codebase.files">
+		<attribute name="filesetref" />
+		<attribute name="changetype" />
+		<attribute name="deleteIfExist" default="false" />
+
+		<sequential>
+			<var name="somefiles" unset="true"/>
+			<property name="somefiles" refid="@{filesetref}"/>
+			<for list="${somefiles}" delimiter=";" param="file" >
+				<sequential>
+					<if>
+						<available file="${wt.codebase.dir}/@{file}" type="file" />
+						<then>
+							<if>
+								<istrue value="@{deleteIfExist}" />
+								<then>
+									<append.to.file message="@{changetype}${csv.sep}CHG_ID${csv.sep}codebase/@{file}${csv.sep}Automatically deleted from codebase and archived on file [${uninstaller.deleted.jar}]" />
+									<deleteFile filename="@{file}" filepath="${wt.codebase.dir}" />
+								</then>
+								<else>
+									<append.to.file message="@{changetype}${csv.sep}CHG_ID${csv.sep}codebase/@{file}"  />
+									<append.to.uninstaller file="codebase/@{file}"  />
+								</else>
+							</if>
+						</then>
+					</if>
+				</sequential>
+			</for>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: append.to.uninstaller
+        This Macrodef - Append a Given File to the uninstaller Archive
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="append.to.uninstaller">
+		<attribute name="uninstaller.jar.file" default="${uninstaller.jar}" />
+		<attribute name="skip" default="${skip.uninstaller}"/>
+		<attribute name="file" />
+
+		<sequential>
+			<if>
+				<istrue value="@{skip}"/>
+				<else>
+					<if>
+						<available file="${wt.home}${file.separator}@{file}" type="file" />
+						<then>
+							<jar destfile="@{uninstaller.jar.file}" update="true">
+								<fileset dir="${wt.home}" >
+									<include name="@{file}" />
+								</fileset>
+							</jar>
+							<log message="File [${wt.home}${file.separator}@{file}] added to Uninstaller Archive [@{uninstaller.jar.file}]" />
+						</then>
+						<else>
+							<if>
+								<available file="@{file}" type="file" />
+								<then>
+									<jar destfile="@{uninstaller.jar.file}" file="@{file}" update="true"/>
+									<log message="File [@{file}] added to Uninstaller Archive [@{uninstaller.jar.file}]" />
+								</then>
+							</if>
+						</else>
+					</if>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: append.to.file
+        This Macrodef print messages to the delivery Note
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="append.to.file">
+		<attribute name="message" default="" />
+		<attribute name="errormessage" default="" />
+		<attribute name="error" default="false" />
+		<attribute name="file" default="${delivery.note}" />
+		<attribute name="errorfile" default="${error.log}" />
+		<attribute name="append" default="true" />
+		<attribute name="newline" default="true" />
+		<sequential>
+			<if>
+				<equals arg1="@{newline}" arg2="true" />
+				<then>
+					<echo file="@{file}" append="@{append}" message="@{message}${line.separator}" />
+				</then>
+				<else>
+					<echo file="@{file}" append="@{append}" message="@{message}" />
+				</else>
+			</if>
+			<if>
+				<or>
+					<equals arg1="@{error}" arg2="true" />
+					<not><equals arg1="@{errormessage}X" arg2="X" /></not>
+				</or>
+				<then>
+					<if>
+						<not><equals arg1="@{errormessage}X" arg2="X" /></not>
+						<then>
+							<echo file="@{errorfile}" append="@{append}" message="@{errormessage}${line.separator}" />
+						</then>
+						<else>
+							<echo file="@{errorfile}" append="@{append}" message="@{message}${line.separator}" />
+						</else>
+					
+					</if>
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+              macrodef: log
+        This Macrodef print messages to the Log file and the console
+             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="log">
+		<attribute name="message" default="" />
+		<attribute name="file" default="${installation.log}" />
+		<attribute name="append" default="true" />
+		<attribute name="newline" default="true" />
+		<sequential>
+			<echo message="@{message}" />
+			<if>
+				<equals arg1="@{newline}" arg2="true" />
+				<then>
+					<echo file="@{file}" append="@{append}" message="@{message}${line.separator}" />
+				</then>
+				<else>
+					<echo file="@{file}" append="@{append}" message="@{message}" />
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: start.log.recorders
+	        This Macrodef Start the logs Recorder
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="start.log.recorders">
+		<sequential>
+			<record name="${verbose.log}" loglevel="verbose" action="start"/>
+			<record name="${info.log}" loglevel="info" action="start"/>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: stop.log.recorders
+	        This Macrodef Stop the logs Recorder
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="stop.log.recorders">
+		<sequential>
+			<record name="${verbose.log}" action="stop"/>
+			<record name="${info.log}" action="stop"/>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: switch.verbose.log.recorder.to.info
+	        This Macrodef Pause the Verbose Log Recorder (switch to Info to not expose command arguments)
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="switch.verbose.log.recorder.to.info">
+		<sequential>
+			<record name="${verbose.log}" loglevel="info" append="true" action="start"/>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: switch.verbose.log.recorder.to.verbose
+	       This Macrodef Restart the Verbose Log Recorder (switch back to Verbose to expose command arguments)
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="switch.verbose.log.recorder.to.verbose">
+		<sequential>
+			<record name="${verbose.log}" loglevel="verbose" append="true" action="start"/>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: captureChecksum
+	       This Macrodef capture the checksum of an existing file
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="captureChecksum">
+		<attribute name="file" />
+		<sequential>
+			<mkdir dir="${builds.history.dir}/md5" />
+			<var name="file.dirname" unset="true"/>
+			<var name="file.dirname.tmp" unset="true"/>
+			<dirname property="file.dirname.tmp" file="@{file}"/>
+			<loadresource property="file.dirname">
+				<propertyresource name="file.dirname.tmp"/>
+				<filterchain>
+					<tokenfilter>
+						<filetokenizer/>
+						<replacestring from=":" to=""/>
+					</tokenfilter>
+				</filterchain>
+			</loadresource>
+			<mkdir dir="${builds.history.dir}/md5/${file.dirname}" />
+			<if>
+				<available file="@{file}" type="file" />
+				<then>
+					<checksum file="@{file}" forceOverwrite="yes" todir="${builds.history.dir}/md5/${file.dirname}" />
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+	              macrodef: compareChecksum
+	       This Macrodef compare the checksum of a file with an existing checksum file
+	           the result is added to the variable isMD5ok
+	             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="compareChecksum">
+		<attribute name="file" />
+		<sequential>
+			<var name="file.dirname" unset="true"/>
+			<var name="file.dirname.tmp" unset="true"/>
+			<dirname property="file.dirname.tmp" file="@{file}"/>
+			<loadresource property="file.dirname">
+				<propertyresource name="file.dirname.tmp"/>
+				<filterchain>
+					<tokenfilter>
+						<filetokenizer/>
+						<replacestring from=":" to=""/>
+					</tokenfilter>
+				</filterchain>
+			</loadresource>
+			<var name="isMD5ok" unset="true"/>
+			<checksum file="@{file}" todir="${builds.history.dir}/md5/${file.dirname}" verifyProperty="isMD5ok"/>
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+			macrodef: addToPropertyFile
+		This Macrodef Add a new entry to a given property file
+		             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="addToPropertyFile">
+		<attribute name="file" />
+		<attribute name="key" />
+		<attribute name="value" />
+		<attribute name="comment" default="" />
+
+		<sequential>
+			<propertyfile 
+				file="@{file}"
+				comment="@{comment}">
+				<entry 
+						key="@{key}" 
+						value="@{value}" />
+			</propertyfile>
+		</sequential>
+
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+		macrodef: mergePropertyFiles
+		This Macrodef Add/Update the properties of an existing Source property file to the file  Target property file ${wt.home}/codebase/WEB-INF/log4jMethodServer.properties
+		  Source file formatting, order and comments are not kept, only properties are added and/or updated on the target file
+		  Target file will be updated in place, so format will remains but existing properties may be overridden if different on the source file
+		             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="appendToLog4JMethodServerPropertyFile">
+		<attribute name="source.file" />
+		<sequential>
+			<mergePropertyFiles source.file="@{source.file}" target.file="${wt.codebase.dir}/WEB-INF/log4jMethodServer.properties" />
+		</sequential>
+	</macrodef>
+	
+	<!--    = = = = = = = = = = = = = = = = =
+			macrodef: mergePropertyFiles
+		This Macrodef Add/Update the properties of an existing Source property file to a Target property file
+		  Source file formatting, order and comments are not kept, only properties are added and/or updated on the target file
+		  Target file will be updated in place, so format will remains but existing properties may be overridden if different on the source file
+		             = = = = = = = = = = = = = = = = = -->
+	<macrodef name="mergePropertyFiles">
+		<attribute name="source.file" />
+		<attribute name="target.file" />
+		<sequential>
+
+			<!-- Obscure enough prefix to ensure the right props are handled -->
+			<property name="prefix" value="__source.prefix__"/>
+			<!--Load the source properties -->
+			<property prefix="${prefix}" file="@{source.file}"/>
+
+			<!-- List properties starting with the matching prefix -->
+			<propertyselector property="listOfProps" delimiter="," 
+				match="${prefix}\..*" select="\0" 
+				casesensitive="false"/>
+
+			<!-- Copy each properties, to the Temporary file -->
+			<for list="${listOfProps}" delimiter="," param="prefix.prop.key" >
+				<sequential>
+					<!-- remove prefix from prefixed property -->
+					<property name="prefixed.prop.key" value="@{prefix.prop.key}" />
+					<loadresource property="prop.key">
+						<propertyresource name="prefixed.prop.key"/>
+						<filterchain>
+							<tokenfilter>
+								<filetokenizer/>
+								<replacestring from="${prefix}." to=""/>
+							</tokenfilter>
+						</filterchain>
+					</loadresource>
+					
+					<!-- Add or Update Properties on Target file based on properties provided on Source file-->
+					<propertyfile 
+						file="@{target.file}"
+						comment=" Updated via Build Package [${package.name}] using SCF [${sic.version}]">
+						<entry 
+								key="${prop.key}" 
+								value="${@{prefix.prop.key}}" />
+					</propertyfile>
+				</sequential>
+			</for>
+		</sequential>
+	</macrodef>
+
+</project>

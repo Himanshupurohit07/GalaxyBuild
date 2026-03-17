@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************************** -->
+<!-- Desc: Simple Change Exporter Utilities                                -->
+<!--                                                                        -->
+<!-- Date:   27 October 2023                                                -->
+<!-- Author: OLIVIER FRANCHET                                               -->
+<!--                                                                        -->
+<!-- Changes                                                                -->
+<!-- =============                                                          -->
+<!-- Reason for Change         |  Date		          |  Author             -->
+<!-- =====================================================================  -->
+<!-- Document Creation	       |  October 27, 2023    | OLIVIER FRANCHET    -->
+<!--                                                                        -->
+<!-- ********************************************************************** -->
+
+<project name="Exporter Utilities">
+
+	<macrodef name="exporter.type">
+		<attribute name="custom.subfolder" default="sic"/>
+		<attribute name="type"/>
+		<attribute name="mode" default="0"/>
+		<attribute name="exportancestor" default="false"/>
+
+		<sequential>
+			<var name="nowts_export" unset="true"/>
+			<tstamp>
+				<format property="nowts_export" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+
+			<var name="updatedType" unset="true"/>
+			<var name="updatedFilename" unset="true"/>
+			<replaceChar string="@{type}" pattern="\$" replacement="_" to="updatedType" />
+			<replaceChar string="@{type}.xml" pattern="\$" replacement="_" to="updatedFilename" />
+			
+			<var name="tempLoadFile" unset="true" />
+			<property name="tempLoadFile" value="${wt.temp}/${updatedType}_${nowts_export}_TypeDefExporter.xml"/>
+
+			<gen.type.definition.exporter.loadfile
+				type="@{type}"
+				filename="${updatedFilename}"
+				export.location="${wt.loadfiles.dir}/@{custom.subfolder}/types/${updatedType}_${nowts_export}"
+				mode="@{mode}"
+				export.ancestor="@{exportancestor}"
+				temp.filepath="${wt.temp}/${updatedType}_${nowts_export}_TypeDefExporter.xml" />
+
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" 1 - Exporting Type [@{type}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+
+			<loadFromFile loadfile="${tempLoadFile}" />
+
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" 2 - Archiving exported Type" />
+			<log message="= = = = = = = = = = = = = = = =" />
+
+			<zip.clean.log filename="${updatedType}_${nowts_export}"
+				basedir="${wt.loadfiles.dir}/@{custom.subfolder}/types"
+				message="Type Definition"
+				target.location="${installer.logs.dir}/@{custom.subfolder}/types"/>
+
+		</sequential>
+	</macrodef>
+
+	<macrodef name="gen.type.definition.exporter.loadfile">
+		<attribute name="type" />
+		<attribute name="filename" />
+		<attribute name="export.location" />
+		<attribute name="mode" default="0" />
+		<attribute name="export.ancestor" default="false" />
+		<attribute name="temp.filepath" />
+
+		<sequential>
+			<var name="thetype" unset="true" />
+			<property name="thetype" value="@{type}"/>
+			<var name="thefilename" unset="true" />
+			<property name="thefilename" value="@{filename}"/>
+			<var name="xmltargetfile" unset="true" />
+			<property name="xmltargetfile" value="@{temp.filepath}"/>
+			<var name="theexport.location" unset="true" />
+			<property name="theexport.location" value="@{export.location}"/>
+			<var name="themode" unset="true" />
+			<property name="themode" value="@{mode}"/>
+			<var name="theexport.ancestor" unset="true" />
+			<property name="theexport.ancestor" value="@{export.ancestor}"/>
+
+			<groovy>
+				def xmlTargetFile = ant.project.getProperty("xmltargetfile");
+
+				def type = ant.project.getProperty("thetype");
+				def filename = ant.project.getProperty("thefilename");
+				def mode = ant.project.getProperty("themode");
+				def ancestor = ant.project.getProperty("theexport.ancestor");
+				def location = ant.project.getProperty("theexport.location");
+
+				def writer = new StringWriter()
+				def builder = new groovy.xml.MarkupBuilder(writer)
+				def helper = new groovy.xml.MarkupBuilderHelper(builder)
+				helper.xmlDeclaration([version:'1.0', encoding:'UTF-8'])
+				helper.yieldUnescaped """&lt;!DOCTYPE NmLoader SYSTEM "standardX24.dtd"&gt;"""+"\n"
+				builder.NmLoader {
+					csvExportDefinition( handler: "com.ptc.core.lwc.server.TypeDefinitionExporter.beginExportDefinition" ) {
+						csvtoLocation(location)
+						csvtoFileName(filename)
+						csvexportDefClass("com.ptc.core.lwc.server.LWCTypeDefinition")
+						csvexportNames(type)
+						csvmode(mode)
+						csvExportAncestorTypes(ancestor)
+					}
+				}
+				File xmlFile = new File (xmlTargetFile)
+				xmlFile.append(writer.toString())
+			</groovy>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="exporter.enum">
+		<attribute name="custom.subfolder" default="sic"/>
+		<attribute name="enum"/>
+
+		<sequential>
+			<var name="nowts_export" unset="true"/>
+			<tstamp>
+				<format property="nowts_export" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+
+			<var name="updatedEnum" unset="true"/>
+			<var name="updatedFilename" unset="true"/>
+			<replaceChar string="@{enum}" pattern="\$" replacement="_" to="updatedEnum" />
+			<replaceChar string="@{enum}.xml" pattern="\$" replacement="_" to="updatedFilename" />
+			
+			<var name="tempLoadFile" unset="true" />
+			<property name="tempLoadFile" value="${wt.temp}/${updatedEnum}_${nowts_export}_EnumerationDefExporter.xml"/>
+			
+			<gen.enum.definition.exporter.loadfile
+				enum="@{enum}"
+				filename="${updatedFilename}"
+				export.location="${wt.loadfiles.dir}/@{custom.subfolder}/enumerations/${updatedEnum}_${nowts_export}"
+				temp.filepath="${wt.temp}/${updatedEnum}_${nowts_export}_EnumerationDefExporter.xml" />
+
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" 1 - Exporting Enumeration [@{enum}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+
+			<loadFromFile loadfile="${tempLoadFile}" />
+
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" 2 - Archiving exported Enumeration" />
+			<log message="= = = = = = = = = = = = = = = =" />
+
+			<zip.clean.log filename="${updatedEnum}_${nowts_export}"
+				basedir="${wt.loadfiles.dir}/@{custom.subfolder}/enumerations"
+				message="Enumeration Definition"
+				target.location="${installer.logs.dir}/@{custom.subfolder}/enumerations"/>
+
+		</sequential>
+	</macrodef>
+
+	<macrodef name="gen.enum.definition.exporter.loadfile">
+		<attribute name="enum" />
+		<attribute name="filename" />
+		<attribute name="export.location" />
+		<attribute name="temp.filepath" />
+
+		<sequential>
+			<var name="theenum" unset="true" />
+			<property name="theenum" value="@{enum}"/>
+			<var name="thefilename" unset="true" />
+			<property name="thefilename" value="@{filename}"/>
+			<var name="xmltargetfile" unset="true" />
+			<property name="xmltargetfile" value="@{temp.filepath}"/>
+			<var name="theexport.location" unset="true" />
+			<property name="theexport.location" value="@{export.location}"/>
+
+			<groovy>
+				def xmlTargetFile = ant.project.getProperty("xmltargetfile");
+
+				def enumer = ant.project.getProperty("theenum");
+				def filename = ant.project.getProperty("thefilename");
+				def location = ant.project.getProperty("theexport.location");
+
+				def writer = new StringWriter()
+				def builder = new groovy.xml.MarkupBuilder(writer)
+				def helper = new groovy.xml.MarkupBuilderHelper(builder)
+				helper.xmlDeclaration([version:'1.0', encoding:'UTF-8'])
+				helper.yieldUnescaped """&lt;!DOCTYPE NmLoader SYSTEM "standardX24.dtd"&gt;"""+"\n"
+				builder.NmLoader {
+					csvExportDefinition( handler: "com.ptc.core.lwc.server.TypeDefinitionExporter.beginExportDefinition" ) {
+						csvtoLocation(location)
+						csvtoFileName(filename)
+						csvexportDefClass("com.ptc.core.lwc.server.LWCEnumerationDefinition")
+						csvexportNames(enumer)
+					}
+				}
+				File xmlFile = new File (xmlTargetFile)
+				xmlFile.append(writer.toString())
+			</groovy>
+		</sequential>
+	</macrodef>
+
+
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+      macrodef: exporter.lcs.file Rules
+         This Macrodef execute the windchill com.lcs.wc.load.ExtractFile command
+     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="exporter.lcs.file">
+		<attribute name="objects" default="All"/>
+		<attribute name="custom.subfolder" default="sic"/>
+		<attribute name="delimiter" default="TAB"/>
+		<sequential>
+			<var name="nowts_export" unset="true"/>
+			<tstamp>
+				<format property="nowts_export" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+			<var name="export.location" unset="true" />
+			<property name="export.location" value="${wt.loadfiles.dir}/@{custom.subfolder}/lcsextracts/LCS_files_${nowts_export}"/>
+			<mkdir dir="${export.location}"/>
+			
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" - Exporting LCS Objects [@{objects}] on Folder [${export.location}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+
+			<exec-cmd executable="${wc_cmd}" failonerror="true" inputstring="Y&#xA;" action="exporter.lcs.file" parameters="[objects=@{objects}|custom.subfolder=@{custom.subfolder}|delimiter=@{delimiter}]">
+				<args>
+					<arg line="${extra.java.args}" />
+					<arg value="com.lcs.wc.load.ExtractFile"/>
+					<arg line="${username.and.password}" />
+					<arg value="${export.location}" />
+					<arg value="@{delimiter}" />
+					<arg line="@{objects}" />
+				</args>
+			</exec-cmd>
+
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" - LCS Objects [@{objects}] have been exported on Folder [${export.location}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+			
+			<zip.clean.log filename="LCS_files_${nowts_export}"
+				basedir="${wt.loadfiles.dir}/@{custom.subfolder}/lcsextracts"
+				message="Extracted LCS Files"
+				target.location="${installer.logs.dir}/@{custom.subfolder}/lcsextracts"/>
+		</sequential>
+	</macrodef>
+
+
+	<!--    = = = = = = = = = = = = = = = = =
+      macrodef: exporter.agvr
+         This Macrodef execute the windchill com.lcs.wc.load.ExtractAGAR command
+     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="exporter.agvr">
+		<attribute name="custom.subfolder" default="sic"/>
+		<attribute name="delimiter" default=","/>
+
+		<sequential>
+			<var name="nowts_export" unset="true"/>
+			<tstamp>
+				<format property="nowts_export" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+			
+			<var name="file" unset="true" />
+			<property name="file" value="AGVR_Export_${nowts_export}.txt"/>
+			<var name="export.location" unset="true" />
+			<property name="export.location" value="${installer.logs.dir}/@{custom.subfolder}/agvr"/>
+			<mkdir dir="${export.location}"/>
+			
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message="Exporting AGVR [${file}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+
+			<exec-cmd executable="${wc_cmd}" failonerror="true" inputstring="Y&#xA;" action="exporter.agvr" parameters="[custom.subfolder=@{custom.subfolder}|delimiter=@{delimiter}]">
+				<args>
+					<arg line="${extra.java.args}" />
+					<arg value="com.lcs.wc.load.ExtractAGAR"/>
+					<arg line="${username.and.password}" />
+					<arg value="-f"/>
+					<arg value="${file}" />
+					<arg value="-d"/>
+					<arg value="@{delimiter}" />
+				</args>
+			</exec-cmd>
+			
+			<copy file="${file}" todir="${export.location}"/>
+			<delete failonerror="false" file="${file}" />
+			
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" - Exported AGVR added to Folder [${export.location}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+			
+		</sequential>
+	</macrodef>
+
+	<!--    = = = = = = = = = = = = = = = = =
+      macrodef: exporter.absr
+         This Macrodef execute the windchill com.lcs.wc.load.ExtractABSR command
+     = = = = = = = = = = = = = = = = = -->
+	<macrodef name="exporter.absr">
+		<attribute name="custom.subfolder" default="sic"/>
+		<attribute name="delimiter" default=","/>
+
+		<sequential>
+			<var name="nowts_export" unset="true"/>
+			<tstamp>
+				<format property="nowts_export" pattern="yyyyMMdd-hhmmss" />
+			</tstamp>
+			
+			<var name="file" unset="true" />
+			<property name="file" value="ABSR_Export_${nowts_export}.txt"/>
+			<var name="export.location" unset="true" />
+			<property name="export.location" value="${installer.logs.dir}/@{custom.subfolder}/absr"/>
+			<mkdir dir="${export.location}"/>
+			
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message="Exporting ABSR [${file}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+
+			<exec-cmd executable="${wc_cmd}" failonerror="true" inputstring="Y&#xA;" action="exporter.absr" parameters="[custom.subfolder=@{custom.subfolder}|delimiter=@{delimiter}]">
+				<args>
+					<arg line="${extra.java.args}" />
+					<arg value="com.lcs.wc.load.ExtractABSR"/>
+					<arg line="${username.and.password}" />
+					<arg value="-f"/>
+					<arg value="${file}" />
+					<arg value="-d"/>
+					<arg value="@{delimiter}" />
+				</args>
+			</exec-cmd>
+			
+			<copy file="${file}" todir="${export.location}"/>
+			<delete failonerror="false" file="${file}" />
+						
+			<log message="= = = = = = = = = = = = = = = =" />
+			<log message=" - Exported ABSR added to Folder [${export.location}]" />
+			<log message="= = = = = = = = = = = = = = = =" />
+			
+		</sequential>
+	</macrodef>
+
+
+	<macrodef name="zip.clean.log">
+		<attribute name="filename" />
+		<attribute name="basedir" />
+		<attribute name="message" />
+		<attribute name="target.location" default="${installer.logs.dir}"/>
+
+		<sequential>
+			
+			<tar longfile="gnu" compression="none" destfile="@{target.location}/@{filename}.tar">
+				<tarfileset dir="@{basedir}/@{filename}/." >
+					<include name="**"/>
+				</tarfileset>
+			</tar>
+			<zip destfile="@{target.location}/@{filename}.zip">
+				<tarfileset src="@{target.location}/@{filename}.tar"/>
+			</zip>
+			<delete file="@{target.location}/@{filename}.tar"/>
+			
+			<if>
+				<available file="@{target.location}/@{filename}.zip" type="file" />
+				<then>
+					<chmod file="@{target.location}/@{filename}.zip" perm="ugo+rw" />
+		
+					<log message="-----" />
+					<log message="   - @{message} added on file [@{target.location}/@{filename}.zip]." />
+					<log message="-----" />
+				</then>
+				<else>
+					<log message="-----" />
+					<log message="   - @{message} exporter fails !! Check Method Server logs for more details" />
+					<log message="-----" />
+				</else>
+			</if>
+	
+			<if>
+				<available file="@{basedir}/@{filename}" type="file" />
+				<then>
+					<delete failonerror="false" dir="@{basedir}/@{filename}" />
+				</then>
+			</if>
+			
+		</sequential>
+	</macrodef>
+</project>

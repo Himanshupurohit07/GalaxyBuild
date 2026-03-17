@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="sic/enumerations/scFitBucket_20250522-060920/scFitBucket_0.xml"/>
+</loadFileList>

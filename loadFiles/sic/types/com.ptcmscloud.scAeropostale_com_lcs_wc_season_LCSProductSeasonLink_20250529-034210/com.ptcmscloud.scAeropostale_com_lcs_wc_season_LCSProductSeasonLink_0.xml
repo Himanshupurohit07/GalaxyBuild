@@ -1,0 +1,3296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standard12_0.dtd">
+<NmLoader>
+   <csvBeginBaseDefsRbInfos handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessRbInfos"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCPropertyDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>description</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCPropertyDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>200</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>tooltip</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCPropertyDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>300</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCAbstractAttributeTemplate</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>required</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCPropertyDefinition</csvholderClass>
+      <csvdatatype>java.lang.Boolean</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>instantiable</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCAbstractAttributeTemplate</csvholderClass>
+      <csvdatatype>java.lang.Boolean</csvdatatype>
+      <csvsortOrder>115</csvsortOrder>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyDefaultValue">
+      <csvname>instantiable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Instantiable</csvvalue>
+      <csvlocale_en_us>Instantiable</csvlocale_en_us>
+      <csvlocale_en_gb>Instantiable</csvlocale_en_gb>
+      <csvlocale_fr>Instanciable</csvlocale_fr>
+      <csvlocale_de>Instantiierbar</csvlocale_de>
+      <csvlocale_es>Instanciable</csvlocale_es>
+      <csvlocale_ja>インスタンス化</csvlocale_ja>
+      <csvlocale_it>Istanziabile</csvlocale_it>
+      <csvlocale_ko>인스턴스화 가능</csvlocale_ko>
+      <csvlocale_ru>Допускающий создание экземпляров</csvlocale_ru>
+      <csvlocale_zh_cn>可实例化</csvlocale_zh_cn>
+      <csvlocale_zh_tw>可實例化</csvlocale_zh_tw>
+      <csvlocale_pt_br>Instanciável</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Instantiable</csvvalue>
+      <csvlocale_en_us>Instantiable</csvlocale_en_us>
+      <csvlocale_en_gb>Instantiable</csvlocale_en_gb>
+      <csvlocale_fr>Instanciable</csvlocale_fr>
+      <csvlocale_de>Instantiierbar</csvlocale_de>
+      <csvlocale_es>Instanciable</csvlocale_es>
+      <csvlocale_ja>インスタンス化</csvlocale_ja>
+      <csvlocale_it>Istanziabile</csvlocale_it>
+      <csvlocale_ko>인스턴스화 가능</csvlocale_ko>
+      <csvlocale_ru>Допускающий создание экземпляров</csvlocale_ru>
+      <csvlocale_zh_cn>可实例化</csvlocale_zh_cn>
+      <csvlocale_zh_tw>可實例化</csvlocale_zh_tw>
+      <csvlocale_pt_br>Instanciável</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Instantiable</csvvalue>
+      <csvlocale_en_us>Instantiable</csvlocale_en_us>
+      <csvlocale_en_gb>Instantiable</csvlocale_en_gb>
+      <csvlocale_fr>Instanciable</csvlocale_fr>
+      <csvlocale_de>Instantiierbar</csvlocale_de>
+      <csvlocale_es>Instanciable</csvlocale_es>
+      <csvlocale_ja>インスタンス化</csvlocale_ja>
+      <csvlocale_it>Istanziabile</csvlocale_it>
+      <csvlocale_ko>인스턴스화 가능</csvlocale_ko>
+      <csvlocale_ru>Допускающий создание экземпляров</csvlocale_ru>
+      <csvlocale_zh_cn>可实例化</csvlocale_zh_cn>
+      <csvlocale_zh_tw>可實例化</csvlocale_zh_tw>
+      <csvlocale_pt_br>Instanciável</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>required</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCConstraintRuleDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>description</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCConstraintRuleDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>200</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>tooltip</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCConstraintRuleDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>300</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>sort_order</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCConstraintRuleDefinition</csvholderClass>
+      <csvdatatype>java.lang.Integer</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyDefaultValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>1</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+      <csvlocale_en_us>Sort Order</csvlocale_en_us>
+      <csvlocale_en_gb>Sort Order</csvlocale_en_gb>
+      <csvlocale_fr>Ordre de tri</csvlocale_fr>
+      <csvlocale_de>Sortierreihenfolge</csvlocale_de>
+      <csvlocale_es>Orden de clasificación</csvlocale_es>
+      <csvlocale_ja>並べ替え順序</csvlocale_ja>
+      <csvlocale_it>Criterio ordinamento</csvlocale_it>
+      <csvlocale_ko>정렬 순서</csvlocale_ko>
+      <csvlocale_ru>Порядок сортировки</csvlocale_ru>
+      <csvlocale_zh_cn>排序顺序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>排序順序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ordem de Classificação</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+      <csvlocale_en_us>Sort Order</csvlocale_en_us>
+      <csvlocale_en_gb>Sort Order</csvlocale_en_gb>
+      <csvlocale_fr>Ordre de tri</csvlocale_fr>
+      <csvlocale_de>Sortierreihenfolge</csvlocale_de>
+      <csvlocale_es>Orden de clasificación</csvlocale_es>
+      <csvlocale_ja>並べ替え順序</csvlocale_ja>
+      <csvlocale_it>Criterio ordinamento</csvlocale_it>
+      <csvlocale_ko>정렬 순서</csvlocale_ko>
+      <csvlocale_ru>Порядок сортировки</csvlocale_ru>
+      <csvlocale_zh_cn>排序顺序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>排序順序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ordem de Classificação</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+      <csvlocale_en_us>Sort Order</csvlocale_en_us>
+      <csvlocale_en_gb>Sort Order</csvlocale_en_gb>
+      <csvlocale_fr>Ordre de tri</csvlocale_fr>
+      <csvlocale_de>Sortierreihenfolge</csvlocale_de>
+      <csvlocale_es>Orden de clasificación</csvlocale_es>
+      <csvlocale_ja>並べ替え順序</csvlocale_ja>
+      <csvlocale_it>Criterio ordinamento</csvlocale_it>
+      <csvlocale_ko>정렬 순서</csvlocale_ko>
+      <csvlocale_ru>Порядок сортировки</csvlocale_ru>
+      <csvlocale_zh_cn>排序顺序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>排序順序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ordem de Classificação</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDatatypeDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>description</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDatatypeDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>200</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>tooltip</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDatatypeDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>300</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>icon</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDatatypeDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>400</csvsortOrder>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Icon</csvvalue>
+      <csvlocale_en_us>Icon</csvlocale_en_us>
+      <csvlocale_en_gb>Icon</csvlocale_en_gb>
+      <csvlocale_fr>Icône</csvlocale_fr>
+      <csvlocale_de>Symbol</csvlocale_de>
+      <csvlocale_es>Icono</csvlocale_es>
+      <csvlocale_ja>アイコン</csvlocale_ja>
+      <csvlocale_it>Icona</csvlocale_it>
+      <csvlocale_ko>아이콘</csvlocale_ko>
+      <csvlocale_ru>Значок</csvlocale_ru>
+      <csvlocale_zh_cn>图标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>圖示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ícone</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Icon</csvvalue>
+      <csvlocale_en_us>Icon</csvlocale_en_us>
+      <csvlocale_en_gb>Icon</csvlocale_en_gb>
+      <csvlocale_fr>Icône</csvlocale_fr>
+      <csvlocale_de>Symbol</csvlocale_de>
+      <csvlocale_es>Icono</csvlocale_es>
+      <csvlocale_ja>アイコン</csvlocale_ja>
+      <csvlocale_it>Icona</csvlocale_it>
+      <csvlocale_ko>아이콘</csvlocale_ko>
+      <csvlocale_ru>Значок</csvlocale_ru>
+      <csvlocale_zh_cn>图标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>圖示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ícone</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Icon</csvvalue>
+      <csvlocale_en_us>Icon</csvlocale_en_us>
+      <csvlocale_en_gb>Icon</csvlocale_en_gb>
+      <csvlocale_fr>Icône</csvlocale_fr>
+      <csvlocale_de>Symbol</csvlocale_de>
+      <csvlocale_es>Icono</csvlocale_es>
+      <csvlocale_ja>アイコン</csvlocale_ja>
+      <csvlocale_it>Icona</csvlocale_it>
+      <csvlocale_ko>아이콘</csvlocale_ko>
+      <csvlocale_ru>Значок</csvlocale_ru>
+      <csvlocale_zh_cn>图标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>圖示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ícone</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>guiHandlerClass</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDatatypeDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>5000</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>typeFilter</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDatatypeDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDisplayStyle</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>description</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDisplayStyle</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>200</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>tooltip</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCDisplayStyle</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>300</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCEnumerationDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>required</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>autoSort</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCEnumerationDefinition</csvholderClass>
+      <csvdatatype>java.lang.Boolean</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyDefaultValue">
+      <csvname>autoSort</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Auto Sort</csvvalue>
+      <csvlocale_en_us>Auto Sort</csvlocale_en_us>
+      <csvlocale_en_gb>Auto Sort</csvlocale_en_gb>
+      <csvlocale_fr>Tri automatique</csvlocale_fr>
+      <csvlocale_de>Automatisch sortieren</csvlocale_de>
+      <csvlocale_es>Clasificación automática</csvlocale_es>
+      <csvlocale_ja>自動並べ替え</csvlocale_ja>
+      <csvlocale_it>Ordinamento automatico</csvlocale_it>
+      <csvlocale_ko>자동 정렬</csvlocale_ko>
+      <csvlocale_ru>Автоматическая сортировка</csvlocale_ru>
+      <csvlocale_zh_cn>自动排序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>自動排序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Classificação Automática</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Auto Sort</csvvalue>
+      <csvlocale_en_us>Auto Sort</csvlocale_en_us>
+      <csvlocale_en_gb>Auto Sort</csvlocale_en_gb>
+      <csvlocale_fr>Tri automatique</csvlocale_fr>
+      <csvlocale_de>Automatisch sortieren</csvlocale_de>
+      <csvlocale_es>Clasificación automática</csvlocale_es>
+      <csvlocale_ja>自動並べ替え</csvlocale_ja>
+      <csvlocale_it>Ordinamento automatico</csvlocale_it>
+      <csvlocale_ko>자동 정렬</csvlocale_ko>
+      <csvlocale_ru>Автоматическая сортировка</csvlocale_ru>
+      <csvlocale_zh_cn>自动排序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>自動排序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Classificação Automática</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Auto Sort</csvvalue>
+      <csvlocale_en_us>Auto Sort</csvlocale_en_us>
+      <csvlocale_en_gb>Auto Sort</csvlocale_en_gb>
+      <csvlocale_fr>Tri automatique</csvlocale_fr>
+      <csvlocale_de>Automatisch sortieren</csvlocale_de>
+      <csvlocale_es>Clasificación automática</csvlocale_es>
+      <csvlocale_ja>自動並べ替え</csvlocale_ja>
+      <csvlocale_it>Ordinamento automatico</csvlocale_it>
+      <csvlocale_ko>자동 정렬</csvlocale_ko>
+      <csvlocale_ru>Автоматическая сортировка</csvlocale_ru>
+      <csvlocale_zh_cn>自动排序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>自動排序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Classificação Automática</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCEnumerationEntry</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>required</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>selectable</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCEnumerationEntry</csvholderClass>
+      <csvdatatype>java.lang.Boolean</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyDefaultValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Selectable</csvvalue>
+      <csvlocale_en_us>Selectable</csvlocale_en_us>
+      <csvlocale_en_gb>Selectable</csvlocale_en_gb>
+      <csvlocale_fr>Sélectionnable</csvlocale_fr>
+      <csvlocale_de>Auswählbar</csvlocale_de>
+      <csvlocale_es>Seleccionable</csvlocale_es>
+      <csvlocale_ja>選択可能</csvlocale_ja>
+      <csvlocale_it>Selezionabile</csvlocale_it>
+      <csvlocale_ko>선택 가능</csvlocale_ko>
+      <csvlocale_ru>Доступно для выбора</csvlocale_ru>
+      <csvlocale_zh_cn>可选择</csvlocale_zh_cn>
+      <csvlocale_zh_tw>可選擇</csvlocale_zh_tw>
+      <csvlocale_pt_br>Selecionável</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Selectable</csvvalue>
+      <csvlocale_en_us>Selectable</csvlocale_en_us>
+      <csvlocale_en_gb>Selectable</csvlocale_en_gb>
+      <csvlocale_fr>Sélectionnable</csvlocale_fr>
+      <csvlocale_de>Auswählbar</csvlocale_de>
+      <csvlocale_es>Seleccionable</csvlocale_es>
+      <csvlocale_ja>選択可能</csvlocale_ja>
+      <csvlocale_it>Selezionabile</csvlocale_it>
+      <csvlocale_ko>선택 가능</csvlocale_ko>
+      <csvlocale_ru>Доступно для выбора</csvlocale_ru>
+      <csvlocale_zh_cn>可选择</csvlocale_zh_cn>
+      <csvlocale_zh_tw>可選擇</csvlocale_zh_tw>
+      <csvlocale_pt_br>Selecionável</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Selectable</csvvalue>
+      <csvlocale_en_us>Selectable</csvlocale_en_us>
+      <csvlocale_en_gb>Selectable</csvlocale_en_gb>
+      <csvlocale_fr>Sélectionnable</csvlocale_fr>
+      <csvlocale_de>Auswählbar</csvlocale_de>
+      <csvlocale_es>Seleccionable</csvlocale_es>
+      <csvlocale_ja>選択可能</csvlocale_ja>
+      <csvlocale_it>Selezionabile</csvlocale_it>
+      <csvlocale_ko>선택 가능</csvlocale_ko>
+      <csvlocale_ru>Доступно для выбора</csvlocale_ru>
+      <csvlocale_zh_cn>可选择</csvlocale_zh_cn>
+      <csvlocale_zh_tw>可選擇</csvlocale_zh_tw>
+      <csvlocale_pt_br>Selecionável</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>sort_order</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCEnumerationEntryLink</csvholderClass>
+      <csvdatatype>java.lang.Integer</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+      <csvlocale_en_us>Sort Order</csvlocale_en_us>
+      <csvlocale_en_gb>Sort Order</csvlocale_en_gb>
+      <csvlocale_fr>Ordre de tri</csvlocale_fr>
+      <csvlocale_de>Sortierreihenfolge</csvlocale_de>
+      <csvlocale_es>Orden de clasificación</csvlocale_es>
+      <csvlocale_ja>並べ替え順序</csvlocale_ja>
+      <csvlocale_it>Criterio ordinamento</csvlocale_it>
+      <csvlocale_ko>정렬 순서</csvlocale_ko>
+      <csvlocale_ru>Порядок сортировки</csvlocale_ru>
+      <csvlocale_zh_cn>排序顺序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>排序順序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ordem de Classificação</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+      <csvlocale_en_us>Sort Order</csvlocale_en_us>
+      <csvlocale_en_gb>Sort Order</csvlocale_en_gb>
+      <csvlocale_fr>Ordre de tri</csvlocale_fr>
+      <csvlocale_de>Sortierreihenfolge</csvlocale_de>
+      <csvlocale_es>Orden de clasificación</csvlocale_es>
+      <csvlocale_ja>並べ替え順序</csvlocale_ja>
+      <csvlocale_it>Criterio ordinamento</csvlocale_it>
+      <csvlocale_ko>정렬 순서</csvlocale_ko>
+      <csvlocale_ru>Порядок сортировки</csvlocale_ru>
+      <csvlocale_zh_cn>排序顺序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>排序順序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ordem de Classificação</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+      <csvlocale_en_us>Sort Order</csvlocale_en_us>
+      <csvlocale_en_gb>Sort Order</csvlocale_en_gb>
+      <csvlocale_fr>Ordre de tri</csvlocale_fr>
+      <csvlocale_de>Sortierreihenfolge</csvlocale_de>
+      <csvlocale_es>Orden de clasificación</csvlocale_es>
+      <csvlocale_ja>並べ替え順序</csvlocale_ja>
+      <csvlocale_it>Criterio ordinamento</csvlocale_it>
+      <csvlocale_ko>정렬 순서</csvlocale_ko>
+      <csvlocale_ru>Порядок сортировки</csvlocale_ru>
+      <csvlocale_zh_cn>排序顺序</csvlocale_zh_cn>
+      <csvlocale_zh_tw>排序順序</csvlocale_zh_tw>
+      <csvlocale_pt_br>Ordem de Classificação</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginDatatypeDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessDatatypeDefinition">
+      <csvname>com.lcs.wc.flextype.datatypes.FlexUserList</csvname>
+      <csvhandlerClass>com.lcs.wc.flextype.datatypes.FlexUserListDatatypeHandler</csvhandlerClass>
+   </csvBeginDatatypeDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>User List</csvvalue>
+      <csvlocale_en_us>User List</csvlocale_en_us>
+      <csvlocale_en_gb>User List</csvlocale_en_gb>
+      <csvlocale_fr>Liste d'utilisateurs</csvlocale_fr>
+      <csvlocale_de>Benutzerliste</csvlocale_de>
+      <csvlocale_es>Lista de usuarios</csvlocale_es>
+      <csvlocale_ja>ユーザーリスト</csvlocale_ja>
+      <csvlocale_it>Elenco utenti</csvlocale_it>
+      <csvlocale_ko>User List</csvlocale_ko>
+      <csvlocale_ru>User List</csvlocale_ru>
+      <csvlocale_zh_cn>用户列表</csvlocale_zh_cn>
+      <csvlocale_zh_tw>User List</csvlocale_zh_tw>
+      <csvlocale_pt_br>User List</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Flex User List Attribute</csvvalue>
+      <csvlocale_en_us>Flex User List Attribute</csvlocale_en_us>
+      <csvlocale_en_gb>Flex User List Attribute</csvlocale_en_gb>
+      <csvlocale_fr>Attribut de liste d'utilisateurs Flex</csvlocale_fr>
+      <csvlocale_de>Flex Benutzerliste - Attribut</csvlocale_de>
+      <csvlocale_es>Atributo de lista de usuarios Flex</csvlocale_es>
+      <csvlocale_ja>Flex ユーザーリスト属性</csvlocale_ja>
+      <csvlocale_it>Attributo elenco utenti Flex</csvlocale_it>
+      <csvlocale_ko>Flex User List Attribute</csvlocale_ko>
+      <csvlocale_ru>Flex User List Attribute</csvlocale_ru>
+      <csvlocale_zh_cn>Flex 用户列表属性</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Flex User List Attribute</csvlocale_zh_tw>
+      <csvlocale_pt_br>Flex User List Attribute</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>User List</csvvalue>
+      <csvlocale_en_us>User List</csvlocale_en_us>
+      <csvlocale_en_gb>User List</csvlocale_en_gb>
+      <csvlocale_fr>Liste d'utilisateurs</csvlocale_fr>
+      <csvlocale_de>Benutzerliste</csvlocale_de>
+      <csvlocale_es>Lista de usuarios</csvlocale_es>
+      <csvlocale_ja>ユーザーリスト</csvlocale_ja>
+      <csvlocale_it>Elenco utenti</csvlocale_it>
+      <csvlocale_ko>User List</csvlocale_ko>
+      <csvlocale_ru>User List</csvlocale_ru>
+      <csvlocale_zh_cn>用户列表</csvlocale_zh_cn>
+      <csvlocale_zh_tw>User List</csvlocale_zh_tw>
+      <csvlocale_pt_br>User List</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>icon</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>netmarkets/images/user.gif</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>guiHandlerClass</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>com.lcs.wc.flextype.guiHandlers.UserListDatatypeGuiHandler</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>typeFilter</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>!*,com.lcs.wc.flextype.FlexTyped*</csvvalue>
+   </csvPropertyValue>
+   <csvEndDatatypeDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessDatatypeDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>typeFilter</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCPropertyDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>flexAttSearchable</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCFlexAttDefinition</csvholderClass>
+      <csvdatatype>java.lang.Boolean</csvdatatype>
+      <csvsortOrder>480</csvsortOrder>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo>com.lcs.wc.flextype.datatypes.FlexUserList</csvdatatypeAppliedTo>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Searchable</csvvalue>
+      <csvlocale_en_us>Searchable</csvlocale_en_us>
+      <csvlocale_en_gb>Searchable</csvlocale_en_gb>
+      <csvlocale_fr>Possibilité de recherche</csvlocale_fr>
+      <csvlocale_de>Durchsuchbar</csvlocale_de>
+      <csvlocale_es>Válido para búsquedas</csvlocale_es>
+      <csvlocale_ja>サーチ可能</csvlocale_ja>
+      <csvlocale_it>Ricercabile</csvlocale_it>
+      <csvlocale_ko>Searchable</csvlocale_ko>
+      <csvlocale_ru>Searchable</csvlocale_ru>
+      <csvlocale_zh_cn>可搜索</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Searchable</csvlocale_zh_tw>
+      <csvlocale_pt_br>Searchable</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Searchable</csvvalue>
+      <csvlocale_en_us>Searchable</csvlocale_en_us>
+      <csvlocale_en_gb>Searchable</csvlocale_en_gb>
+      <csvlocale_fr>Possibilité de recherche</csvlocale_fr>
+      <csvlocale_de>Durchsuchbar</csvlocale_de>
+      <csvlocale_es>Válido para búsquedas</csvlocale_es>
+      <csvlocale_ja>サーチ可能</csvlocale_ja>
+      <csvlocale_it>Ricercabile</csvlocale_it>
+      <csvlocale_ko>Searchable</csvlocale_ko>
+      <csvlocale_ru>Searchable</csvlocale_ru>
+      <csvlocale_zh_cn>可搜索</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Searchable</csvlocale_zh_tw>
+      <csvlocale_pt_br>Searchable</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Searchable (When Applicable)</csvvalue>
+      <csvlocale_en_us>Searchable (When Applicable)</csvlocale_en_us>
+      <csvlocale_en_gb>Searchable (When Applicable)</csvlocale_en_gb>
+      <csvlocale_fr>Possibilité de recherche (le cas échéant)</csvlocale_fr>
+      <csvlocale_de>Durchsuchbar (wenn anwendbar)</csvlocale_de>
+      <csvlocale_es>Válido para búsquedas (en su caso)</csvlocale_es>
+      <csvlocale_ja>サーチ可能 (可能な場合)</csvlocale_ja>
+      <csvlocale_it>Ricercabile (quando applicabile)</csvlocale_it>
+      <csvlocale_ko>Searchable (When Applicable)</csvlocale_ko>
+      <csvlocale_ru>Searchable (When Applicable)</csvlocale_ru>
+      <csvlocale_zh_cn>可搜索 (可用时)</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Searchable (When Applicable)</csvlocale_zh_tw>
+      <csvlocale_pt_br>Searchable (When Applicable)</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>typeFilter</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>!*,com.lcs.wc.flextype.FlexTyped*</csvvalue>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCGroupDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Group Display Name</csvvalue>
+      <csvlocale_en_us>Group Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Group Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché du groupe</csvlocale_fr>
+      <csvlocale_de>Gruppenanzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado del grupo</csvlocale_es>
+      <csvlocale_ja>グループの表示名</csvlocale_ja>
+      <csvlocale_it>Nome gruppo visualizzato</csvlocale_it>
+      <csvlocale_ko>그룹 표시 이름</csvlocale_ko>
+      <csvlocale_ru>Отображ. наимен. группы</csvlocale_ru>
+      <csvlocale_zh_cn>组显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>群組顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome de Exibição do Grupo</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Group Display Name</csvvalue>
+      <csvlocale_en_us>Group Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Group Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché du groupe</csvlocale_fr>
+      <csvlocale_de>Gruppenanzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado del grupo</csvlocale_es>
+      <csvlocale_ja>グループの表示名</csvlocale_ja>
+      <csvlocale_it>Nome gruppo visualizzato</csvlocale_it>
+      <csvlocale_ko>그룹 표시 이름</csvlocale_ko>
+      <csvlocale_ru>Отображ. наимен. группы</csvlocale_ru>
+      <csvlocale_zh_cn>组显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>群組顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome de Exibição do Grupo</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Group Display Name</csvvalue>
+      <csvlocale_en_us>Group Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Group Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché du groupe</csvlocale_fr>
+      <csvlocale_de>Gruppenanzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado del grupo</csvlocale_es>
+      <csvlocale_ja>グループの表示名</csvlocale_ja>
+      <csvlocale_it>Nome gruppo visualizzato</csvlocale_it>
+      <csvlocale_ko>그룹 표시 이름</csvlocale_ko>
+      <csvlocale_ru>Отображ. наимен. группы</csvlocale_ru>
+      <csvlocale_zh_cn>组显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>群組顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome de Exibição do Grupo</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>col_coord</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCGroupMembership</csvholderClass>
+      <csvdatatype>java.lang.Integer</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Column Coordinate</csvvalue>
+      <csvlocale_en_us>Column Coordinate</csvlocale_en_us>
+      <csvlocale_en_gb>Column Coordinate</csvlocale_en_gb>
+      <csvlocale_fr>Coordonnée de colonne</csvlocale_fr>
+      <csvlocale_de>Spaltenkoordinate</csvlocale_de>
+      <csvlocale_es>Coordenada de columna</csvlocale_es>
+      <csvlocale_ja>コラム座標</csvlocale_ja>
+      <csvlocale_it>Coordinata colonna</csvlocale_it>
+      <csvlocale_ko>열 좌표</csvlocale_ko>
+      <csvlocale_ru>Координата столбца</csvlocale_ru>
+      <csvlocale_zh_cn>列坐标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>欄座標</csvlocale_zh_tw>
+      <csvlocale_pt_br>Coordenada da Coluna</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Column Coordinate</csvvalue>
+      <csvlocale_en_us>Column Coordinate</csvlocale_en_us>
+      <csvlocale_en_gb>Column Coordinate</csvlocale_en_gb>
+      <csvlocale_fr>Coordonnée de colonne</csvlocale_fr>
+      <csvlocale_de>Spaltenkoordinate</csvlocale_de>
+      <csvlocale_es>Coordenada de columna</csvlocale_es>
+      <csvlocale_ja>コラム座標</csvlocale_ja>
+      <csvlocale_it>Coordinata colonna</csvlocale_it>
+      <csvlocale_ko>열 좌표</csvlocale_ko>
+      <csvlocale_ru>Координата столбца</csvlocale_ru>
+      <csvlocale_zh_cn>列坐标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>欄座標</csvlocale_zh_tw>
+      <csvlocale_pt_br>Coordenada da Coluna</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Column Coordinate</csvvalue>
+      <csvlocale_en_us>Column Coordinate</csvlocale_en_us>
+      <csvlocale_en_gb>Column Coordinate</csvlocale_en_gb>
+      <csvlocale_fr>Coordonnée de colonne</csvlocale_fr>
+      <csvlocale_de>Spaltenkoordinate</csvlocale_de>
+      <csvlocale_es>Coordenada de columna</csvlocale_es>
+      <csvlocale_ja>コラム座標</csvlocale_ja>
+      <csvlocale_it>Coordinata colonna</csvlocale_it>
+      <csvlocale_ko>열 좌표</csvlocale_ko>
+      <csvlocale_ru>Координата столбца</csvlocale_ru>
+      <csvlocale_zh_cn>列坐标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>欄座標</csvlocale_zh_tw>
+      <csvlocale_pt_br>Coordenada da Coluna</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>col_span</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCGroupMembership</csvholderClass>
+      <csvdatatype>java.lang.Integer</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Column Span</csvvalue>
+      <csvlocale_en_us>Column Span</csvlocale_en_us>
+      <csvlocale_en_gb>Column Span</csvlocale_en_gb>
+      <csvlocale_fr>Plage de colonne</csvlocale_fr>
+      <csvlocale_de>Spaltenbereich</csvlocale_de>
+      <csvlocale_es>Extensión de columna</csvlocale_es>
+      <csvlocale_ja>コラム間隔</csvlocale_ja>
+      <csvlocale_it>Estensione su colonne</csvlocale_it>
+      <csvlocale_ko>열 범위</csvlocale_ko>
+      <csvlocale_ru>Перекрытие столбцов</csvlocale_ru>
+      <csvlocale_zh_cn>列跨度</csvlocale_zh_cn>
+      <csvlocale_zh_tw>欄跨距</csvlocale_zh_tw>
+      <csvlocale_pt_br>Extensão de Coluna</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Column Span</csvvalue>
+      <csvlocale_en_us>Column Span</csvlocale_en_us>
+      <csvlocale_en_gb>Column Span</csvlocale_en_gb>
+      <csvlocale_fr>Plage de colonne</csvlocale_fr>
+      <csvlocale_de>Spaltenbereich</csvlocale_de>
+      <csvlocale_es>Extensión de columna</csvlocale_es>
+      <csvlocale_ja>コラム間隔</csvlocale_ja>
+      <csvlocale_it>Estensione su colonne</csvlocale_it>
+      <csvlocale_ko>열 범위</csvlocale_ko>
+      <csvlocale_ru>Перекрытие столбцов</csvlocale_ru>
+      <csvlocale_zh_cn>列跨度</csvlocale_zh_cn>
+      <csvlocale_zh_tw>欄跨距</csvlocale_zh_tw>
+      <csvlocale_pt_br>Extensão de Coluna</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Column Span</csvvalue>
+      <csvlocale_en_us>Column Span</csvlocale_en_us>
+      <csvlocale_en_gb>Column Span</csvlocale_en_gb>
+      <csvlocale_fr>Plage de colonne</csvlocale_fr>
+      <csvlocale_de>Spaltenbereich</csvlocale_de>
+      <csvlocale_es>Extensión de columna</csvlocale_es>
+      <csvlocale_ja>コラム間隔</csvlocale_ja>
+      <csvlocale_it>Estensione su colonne</csvlocale_it>
+      <csvlocale_ko>열 범위</csvlocale_ko>
+      <csvlocale_ru>Перекрытие столбцов</csvlocale_ru>
+      <csvlocale_zh_cn>列跨度</csvlocale_zh_cn>
+      <csvlocale_zh_tw>欄跨距</csvlocale_zh_tw>
+      <csvlocale_pt_br>Extensão de Coluna</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>row_coord</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCGroupMembership</csvholderClass>
+      <csvdatatype>java.lang.Integer</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Row Coordinate</csvvalue>
+      <csvlocale_en_us>Row Coordinate</csvlocale_en_us>
+      <csvlocale_en_gb>Row Coordinate</csvlocale_en_gb>
+      <csvlocale_fr>Coordonnée de ligne</csvlocale_fr>
+      <csvlocale_de>Zeilenkoordinate</csvlocale_de>
+      <csvlocale_es>Coordenada de fila</csvlocale_es>
+      <csvlocale_ja>行座標</csvlocale_ja>
+      <csvlocale_it>Coordinata riga</csvlocale_it>
+      <csvlocale_ko>행 좌표</csvlocale_ko>
+      <csvlocale_ru>Координата строки</csvlocale_ru>
+      <csvlocale_zh_cn>行坐标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>列座標</csvlocale_zh_tw>
+      <csvlocale_pt_br>Coordenada da Linha</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Row Coordinate</csvvalue>
+      <csvlocale_en_us>Row Coordinate</csvlocale_en_us>
+      <csvlocale_en_gb>Row Coordinate</csvlocale_en_gb>
+      <csvlocale_fr>Coordonnée de ligne</csvlocale_fr>
+      <csvlocale_de>Zeilenkoordinate</csvlocale_de>
+      <csvlocale_es>Coordenada de fila</csvlocale_es>
+      <csvlocale_ja>行座標</csvlocale_ja>
+      <csvlocale_it>Coordinata riga</csvlocale_it>
+      <csvlocale_ko>행 좌표</csvlocale_ko>
+      <csvlocale_ru>Координата строки</csvlocale_ru>
+      <csvlocale_zh_cn>行坐标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>列座標</csvlocale_zh_tw>
+      <csvlocale_pt_br>Coordenada da Linha</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Row Coordinate</csvvalue>
+      <csvlocale_en_us>Row Coordinate</csvlocale_en_us>
+      <csvlocale_en_gb>Row Coordinate</csvlocale_en_gb>
+      <csvlocale_fr>Coordonnée de ligne</csvlocale_fr>
+      <csvlocale_de>Zeilenkoordinate</csvlocale_de>
+      <csvlocale_es>Coordenada de fila</csvlocale_es>
+      <csvlocale_ja>行座標</csvlocale_ja>
+      <csvlocale_it>Coordinata riga</csvlocale_it>
+      <csvlocale_ko>행 좌표</csvlocale_ko>
+      <csvlocale_ru>Координата строки</csvlocale_ru>
+      <csvlocale_zh_cn>行坐标</csvlocale_zh_cn>
+      <csvlocale_zh_tw>列座標</csvlocale_zh_tw>
+      <csvlocale_pt_br>Coordenada da Linha</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>sort_order</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCLayoutComponentDefinition</csvholderClass>
+      <csvdatatype>java.lang.Integer</csvdatatype>
+      <csvsortOrder/>
+      <csvinherited>true</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>true</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Sort Order</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>required</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCOrganizer</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>required</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>displayName</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCScreenDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>100</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Display Name</csvvalue>
+      <csvlocale_en_us>Display Name</csvlocale_en_us>
+      <csvlocale_en_gb>Display Name</csvlocale_en_gb>
+      <csvlocale_fr>Nom affiché</csvlocale_fr>
+      <csvlocale_de>Anzeigename</csvlocale_de>
+      <csvlocale_es>Nombre mostrado</csvlocale_es>
+      <csvlocale_ja>表示名</csvlocale_ja>
+      <csvlocale_it>Nome visualizzato</csvlocale_it>
+      <csvlocale_ko>디스플레이 이름</csvlocale_ko>
+      <csvlocale_ru>Отображаемое наименование</csvlocale_ru>
+      <csvlocale_zh_cn>显示名称</csvlocale_zh_cn>
+      <csvlocale_zh_tw>顯示名稱</csvlocale_zh_tw>
+      <csvlocale_pt_br>Nome da Exibição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>description</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCScreenDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>200</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>false</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Description</csvvalue>
+      <csvlocale_en_us>Description</csvlocale_en_us>
+      <csvlocale_en_gb>Description</csvlocale_en_gb>
+      <csvlocale_fr>Description</csvlocale_fr>
+      <csvlocale_de>Beschreibung</csvlocale_de>
+      <csvlocale_es>Descripción</csvlocale_es>
+      <csvlocale_ja>説明</csvlocale_ja>
+      <csvlocale_it>Descrizione</csvlocale_it>
+      <csvlocale_ko>설명</csvlocale_ko>
+      <csvlocale_ru>Описание</csvlocale_ru>
+      <csvlocale_zh_cn>说明</csvlocale_zh_cn>
+      <csvlocale_zh_tw>描述</csvlocale_zh_tw>
+      <csvlocale_pt_br>Descrição</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>tooltip</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCScreenDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>300</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>true</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Tooltip</csvvalue>
+      <csvlocale_en_us>Tooltip</csvlocale_en_us>
+      <csvlocale_en_gb>Tooltip</csvlocale_en_gb>
+      <csvlocale_fr>Info-bulle</csvlocale_fr>
+      <csvlocale_de>Tooltip</csvlocale_de>
+      <csvlocale_es>Texto de información</csvlocale_es>
+      <csvlocale_ja>ツールヒント</csvlocale_ja>
+      <csvlocale_it>Descrizione comando</csvlocale_it>
+      <csvlocale_ko>도구 설명</csvlocale_ko>
+      <csvlocale_ru>Подсказка</csvlocale_ru>
+      <csvlocale_zh_cn>工具提示</csvlocale_zh_cn>
+      <csvlocale_zh_tw>工具提示</csvlocale_zh_tw>
+      <csvlocale_pt_br>Dica de Ferramenta</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessPropertyDefinition">
+      <csvname>typeFilter</csvname>
+      <csvholderClass>com.ptc.core.lwc.server.LWCScreenDefinition</csvholderClass>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvsortOrder>500</csvsortOrder>
+      <csvinherited>false</csvinherited>
+      <csvcontentHolder>false</csvcontentHolder>
+      <csvlegalFileTypeList/>
+      <csvoverridable>false</csvoverridable>
+      <csvlocalizable>false</csvlocalizable>
+      <csvdatatypeAppliedTo/>
+      <csvhidden>true</csvhidden>
+      <csvreadOnly>false</csvreadOnly>
+      <csvminValue/>
+      <csvmaxValue/>
+      <csvmaxLength/>
+      <csvpattern/>
+      <csvenumDef/>
+      <csvtargetRoot/>
+   </csvBeginPropertyDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Type Filter</csvvalue>
+      <csvlocale_en_us>Type Filter</csvlocale_en_us>
+      <csvlocale_en_gb>Type Filter</csvlocale_en_gb>
+      <csvlocale_fr>Filtre de type</csvlocale_fr>
+      <csvlocale_de>Typfilter</csvlocale_de>
+      <csvlocale_es>Filtro de tipo</csvlocale_es>
+      <csvlocale_ja>タイプフィルタ</csvlocale_ja>
+      <csvlocale_it>Filtro tipo</csvlocale_it>
+      <csvlocale_ko>유형 필터</csvlocale_ko>
+      <csvlocale_ru>Фильтр типа</csvlocale_ru>
+      <csvlocale_zh_cn>类型筛选器</csvlocale_zh_cn>
+      <csvlocale_zh_tw>類型篩選器</csvlocale_zh_tw>
+      <csvlocale_pt_br>Filtro de Tipo</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Type Filter</csvvalue>
+      <csvlocale_en_us>Type Filter</csvlocale_en_us>
+      <csvlocale_en_gb>Type Filter</csvlocale_en_gb>
+      <csvlocale_fr>Filtre de type</csvlocale_fr>
+      <csvlocale_de>Typfilter</csvlocale_de>
+      <csvlocale_es>Filtro de tipo</csvlocale_es>
+      <csvlocale_ja>タイプフィルタ</csvlocale_ja>
+      <csvlocale_it>Filtro tipo</csvlocale_it>
+      <csvlocale_ko>유형 필터</csvlocale_ko>
+      <csvlocale_ru>Фильтр типа</csvlocale_ru>
+      <csvlocale_zh_cn>类型筛选器</csvlocale_zh_cn>
+      <csvlocale_zh_tw>類型篩選器</csvlocale_zh_tw>
+      <csvlocale_pt_br>Filtro de Tipo</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processPropertyPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Type Filter</csvvalue>
+      <csvlocale_en_us>Type Filter</csvlocale_en_us>
+      <csvlocale_en_gb>Type Filter</csvlocale_en_gb>
+      <csvlocale_fr>Filtre de type</csvlocale_fr>
+      <csvlocale_de>Typfilter</csvlocale_de>
+      <csvlocale_es>Filtro de tipo</csvlocale_es>
+      <csvlocale_ja>タイプフィルタ</csvlocale_ja>
+      <csvlocale_it>Filtro tipo</csvlocale_it>
+      <csvlocale_ko>유형 필터</csvlocale_ko>
+      <csvlocale_ru>Фильтр типа</csvlocale_ru>
+      <csvlocale_zh_cn>类型筛选器</csvlocale_zh_cn>
+      <csvlocale_zh_tw>類型篩選器</csvlocale_zh_tw>
+      <csvlocale_pt_br>Filtro de Tipo</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndPropertyDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessPropertyDefinition"/>
+   <csvBeginDatatypeDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessDatatypeDefinition">
+      <csvname>java.lang.String</csvname>
+      <csvhandlerClass>com.ptc.core.lwc.common.datatypes.StringDatatypeHandler</csvhandlerClass>
+   </csvBeginDatatypeDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>String</csvvalue>
+      <csvlocale_en_us>String</csvlocale_en_us>
+      <csvlocale_en_gb>String</csvlocale_en_gb>
+      <csvlocale_fr>Chaîne</csvlocale_fr>
+      <csvlocale_de>Zeichenfolge</csvlocale_de>
+      <csvlocale_es>Cadena</csvlocale_es>
+      <csvlocale_ja>文字列</csvlocale_ja>
+      <csvlocale_it>Stringa</csvlocale_it>
+      <csvlocale_ko>문자열</csvlocale_ko>
+      <csvlocale_ru>Строка</csvlocale_ru>
+      <csvlocale_zh_cn>字符串</csvlocale_zh_cn>
+      <csvlocale_zh_tw>字串</csvlocale_zh_tw>
+      <csvlocale_pt_br>Linha de Comando</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>String</csvvalue>
+      <csvlocale_en_us>String</csvlocale_en_us>
+      <csvlocale_en_gb>String</csvlocale_en_gb>
+      <csvlocale_fr>Chaîne</csvlocale_fr>
+      <csvlocale_de>Zeichenfolge</csvlocale_de>
+      <csvlocale_es>Cadena</csvlocale_es>
+      <csvlocale_ja>文字列</csvlocale_ja>
+      <csvlocale_it>Stringa</csvlocale_it>
+      <csvlocale_ko>문자열</csvlocale_ko>
+      <csvlocale_ru>Строка</csvlocale_ru>
+      <csvlocale_zh_cn>字符串</csvlocale_zh_cn>
+      <csvlocale_zh_tw>字串</csvlocale_zh_tw>
+      <csvlocale_pt_br>Linha de Comando</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>String</csvvalue>
+      <csvlocale_en_us>String</csvlocale_en_us>
+      <csvlocale_en_gb>String</csvlocale_en_gb>
+      <csvlocale_fr>Chaîne</csvlocale_fr>
+      <csvlocale_de>Zeichenfolge</csvlocale_de>
+      <csvlocale_es>Cadena</csvlocale_es>
+      <csvlocale_ja>文字列</csvlocale_ja>
+      <csvlocale_it>Stringa</csvlocale_it>
+      <csvlocale_ko>문자열</csvlocale_ko>
+      <csvlocale_ru>Строка</csvlocale_ru>
+      <csvlocale_zh_cn>字符串</csvlocale_zh_cn>
+      <csvlocale_zh_tw>字串</csvlocale_zh_tw>
+      <csvlocale_pt_br>Linha de Comando</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>icon</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>netmarkets/images/dtype_String.png</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>guiHandlerClass</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>com.ptc.core.lwc.client.rendering.guiHandlers.StringDatatypeGuiHandler</csvvalue>
+   </csvPropertyValue>
+   <csvEndDatatypeDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessDatatypeDefinition"/>
+   <csvBeginDatatypeDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessDatatypeDefinition">
+      <csvname>com.lcs.wc.flextype.datatypes.FlexUserList</csvname>
+      <csvhandlerClass>com.lcs.wc.flextype.datatypes.FlexUserListDatatypeHandler</csvhandlerClass>
+   </csvBeginDatatypeDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>User List</csvvalue>
+      <csvlocale_en_us>User List</csvlocale_en_us>
+      <csvlocale_en_gb>User List</csvlocale_en_gb>
+      <csvlocale_fr>Liste d'utilisateurs</csvlocale_fr>
+      <csvlocale_de>Benutzerliste</csvlocale_de>
+      <csvlocale_es>Lista de usuarios</csvlocale_es>
+      <csvlocale_ja>ユーザーリスト</csvlocale_ja>
+      <csvlocale_it>Elenco utenti</csvlocale_it>
+      <csvlocale_ko>User List</csvlocale_ko>
+      <csvlocale_ru>User List</csvlocale_ru>
+      <csvlocale_zh_cn>用户列表</csvlocale_zh_cn>
+      <csvlocale_zh_tw>User List</csvlocale_zh_tw>
+      <csvlocale_pt_br>User List</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Flex User List Attribute</csvvalue>
+      <csvlocale_en_us>Flex User List Attribute</csvlocale_en_us>
+      <csvlocale_en_gb>Flex User List Attribute</csvlocale_en_gb>
+      <csvlocale_fr>Attribut de liste d'utilisateurs Flex</csvlocale_fr>
+      <csvlocale_de>Flex Benutzerliste - Attribut</csvlocale_de>
+      <csvlocale_es>Atributo de lista de usuarios Flex</csvlocale_es>
+      <csvlocale_ja>Flex ユーザーリスト属性</csvlocale_ja>
+      <csvlocale_it>Attributo elenco utenti Flex</csvlocale_it>
+      <csvlocale_ko>Flex User List Attribute</csvlocale_ko>
+      <csvlocale_ru>Flex User List Attribute</csvlocale_ru>
+      <csvlocale_zh_cn>Flex 用户列表属性</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Flex User List Attribute</csvlocale_zh_tw>
+      <csvlocale_pt_br>Flex User List Attribute</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>User List</csvvalue>
+      <csvlocale_en_us>User List</csvlocale_en_us>
+      <csvlocale_en_gb>User List</csvlocale_en_gb>
+      <csvlocale_fr>Liste d'utilisateurs</csvlocale_fr>
+      <csvlocale_de>Benutzerliste</csvlocale_de>
+      <csvlocale_es>Lista de usuarios</csvlocale_es>
+      <csvlocale_ja>ユーザーリスト</csvlocale_ja>
+      <csvlocale_it>Elenco utenti</csvlocale_it>
+      <csvlocale_ko>User List</csvlocale_ko>
+      <csvlocale_ru>User List</csvlocale_ru>
+      <csvlocale_zh_cn>用户列表</csvlocale_zh_cn>
+      <csvlocale_zh_tw>User List</csvlocale_zh_tw>
+      <csvlocale_pt_br>User List</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>icon</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>netmarkets/images/user.gif</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>guiHandlerClass</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>com.lcs.wc.flextype.guiHandlers.UserListDatatypeGuiHandler</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDatatypePropertyValue">
+      <csvname>typeFilter</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>!*,com.lcs.wc.flextype.FlexTyped*</csvvalue>
+   </csvPropertyValue>
+   <csvEndDatatypeDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessDatatypeDefinition"/>
+   <csvBeginScreenDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessScreenDefinition">
+      <csvname>FlexPLM</csvname>
+      <csvcontainerDomain>com.ptcmscloud</csvcontainerDomain>
+      <csvoperationName>com.ptc.windchill.view</csvoperationName>
+   </csvBeginScreenDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>FlexPLM</csvvalue>
+      <csvlocale_en_us>FlexPLM</csvlocale_en_us>
+      <csvlocale_en_gb>FlexPLM</csvlocale_en_gb>
+      <csvlocale_fr>FlexPLM</csvlocale_fr>
+      <csvlocale_de>FlexPLM</csvlocale_de>
+      <csvlocale_es>FlexPLM</csvlocale_es>
+      <csvlocale_ja>FlexPLM</csvlocale_ja>
+      <csvlocale_it>FlexPLM</csvlocale_it>
+      <csvlocale_ko>FlexPLM</csvlocale_ko>
+      <csvlocale_ru>FlexPLM</csvlocale_ru>
+      <csvlocale_zh_cn>FlexPLM</csvlocale_zh_cn>
+      <csvlocale_zh_tw>FlexPLM</csvlocale_zh_tw>
+      <csvlocale_pt_br>FlexPLM</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>FlexPLM Screen</csvvalue>
+      <csvlocale_en_us>FlexPLM Screen</csvlocale_en_us>
+      <csvlocale_en_gb>FlexPLM Screen</csvlocale_en_gb>
+      <csvlocale_fr>Ecran FlexPLM</csvlocale_fr>
+      <csvlocale_de>FlexPLM Bildschirm</csvlocale_de>
+      <csvlocale_es>Pantalla de FlexPLM</csvlocale_es>
+      <csvlocale_ja>FlexPLM スクリーン</csvlocale_ja>
+      <csvlocale_it>Schermata FlexPLM</csvlocale_it>
+      <csvlocale_ko>FlexPLM Screen</csvlocale_ko>
+      <csvlocale_ru>FlexPLM Screen</csvlocale_ru>
+      <csvlocale_zh_cn>FlexPLM 屏幕</csvlocale_zh_cn>
+      <csvlocale_zh_tw>FlexPLM Screen</csvlocale_zh_tw>
+      <csvlocale_pt_br>FlexPLM Screen</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>FlexPLM Screen</csvvalue>
+      <csvlocale_en_us>FlexPLM Screen</csvlocale_en_us>
+      <csvlocale_en_gb>FlexPLM Screen</csvlocale_en_gb>
+      <csvlocale_fr>Ecran FlexPLM</csvlocale_fr>
+      <csvlocale_de>FlexPLM Bildschirm</csvlocale_de>
+      <csvlocale_es>Pantalla de FlexPLM</csvlocale_es>
+      <csvlocale_ja>FlexPLM スクリーン</csvlocale_ja>
+      <csvlocale_it>Schermata FlexPLM</csvlocale_it>
+      <csvlocale_ko>FlexPLM Screen</csvlocale_ko>
+      <csvlocale_ru>FlexPLM Screen</csvlocale_ru>
+      <csvlocale_zh_cn>FlexPLM 屏幕</csvlocale_zh_cn>
+      <csvlocale_zh_tw>FlexPLM Screen</csvlocale_zh_tw>
+      <csvlocale_pt_br>FlexPLM Screen</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>typeFilter</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>!*,com.lcs.wc.flextype.FlexTyped*,!com.lcs.wc.moa.LCSMOAObject*</csvvalue>
+   </csvPropertyValue>
+   <csvEndScreenDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessScreenDefinition"/>
+   <csvBeginScreenDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessScreenDefinition">
+      <csvname>FlexPLMSearchCriteria</csvname>
+      <csvcontainerDomain>com.ptcmscloud</csvcontainerDomain>
+      <csvoperationName>com.ptc.windchill.search</csvoperationName>
+   </csvBeginScreenDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>FlexPLM Search Criteria</csvvalue>
+      <csvlocale_en_us>FlexPLM Search Criteria</csvlocale_en_us>
+      <csvlocale_en_gb>FlexPLM Search Criteria</csvlocale_en_gb>
+      <csvlocale_fr>Critères de recherche FlexPLM</csvlocale_fr>
+      <csvlocale_de>FlexPLM Suchkriterien</csvlocale_de>
+      <csvlocale_es>Criterios de búsqueda de FlexPLM</csvlocale_es>
+      <csvlocale_ja>FlexPLM サーチ基準</csvlocale_ja>
+      <csvlocale_it>Criteri di ricerca FlexPLM</csvlocale_it>
+      <csvlocale_ko>FlexPLM Search Criteria</csvlocale_ko>
+      <csvlocale_ru>FlexPLM Search Criteria</csvlocale_ru>
+      <csvlocale_zh_cn>FlexPLM 搜索条件</csvlocale_zh_cn>
+      <csvlocale_zh_tw>FlexPLM Search Criteria</csvlocale_zh_tw>
+      <csvlocale_pt_br>FlexPLM Search Criteria</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>FlexPLM Search Criteria Screen</csvvalue>
+      <csvlocale_en_us>FlexPLM Search Criteria Screen</csvlocale_en_us>
+      <csvlocale_en_gb>FlexPLM Search Criteria Screen</csvlocale_en_gb>
+      <csvlocale_fr>Ecran Critères de recherche FlexPLM</csvlocale_fr>
+      <csvlocale_de>FlexPLM Suchkriterien - Bildschirm</csvlocale_de>
+      <csvlocale_es>Pantalla de criterios de búsqueda de FlexPLM</csvlocale_es>
+      <csvlocale_ja>FlexPLM サーチ基準スクリーン</csvlocale_ja>
+      <csvlocale_it>Schermata Criteri di ricerca FlexPLM</csvlocale_it>
+      <csvlocale_ko>FlexPLM Search Criteria Screen</csvlocale_ko>
+      <csvlocale_ru>FlexPLM Search Criteria Screen</csvlocale_ru>
+      <csvlocale_zh_cn>FlexPLM 搜索条件屏幕</csvlocale_zh_cn>
+      <csvlocale_zh_tw>FlexPLM Search Criteria Screen</csvlocale_zh_tw>
+      <csvlocale_pt_br>FlexPLM Search Criteria Screen</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>FlexPLM Search Criteria Screen</csvvalue>
+      <csvlocale_en_us>FlexPLM Search Criteria Screen</csvlocale_en_us>
+      <csvlocale_en_gb>FlexPLM Search Criteria Screen</csvlocale_en_gb>
+      <csvlocale_fr>Ecran Critères de recherche FlexPLM</csvlocale_fr>
+      <csvlocale_de>FlexPLM Suchkriterien - Bildschirm</csvlocale_de>
+      <csvlocale_es>Pantalla de criterios de búsqueda de FlexPLM</csvlocale_es>
+      <csvlocale_ja>FlexPLM サーチ基準スクリーン</csvlocale_ja>
+      <csvlocale_it>Schermata Criteri di ricerca FlexPLM</csvlocale_it>
+      <csvlocale_ko>FlexPLM Search Criteria Screen</csvlocale_ko>
+      <csvlocale_ru>FlexPLM Search Criteria Screen</csvlocale_ru>
+      <csvlocale_zh_cn>FlexPLM 搜索条件屏幕</csvlocale_zh_cn>
+      <csvlocale_zh_tw>FlexPLM Search Criteria Screen</csvlocale_zh_tw>
+      <csvlocale_pt_br>FlexPLM Search Criteria Screen</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processScreenPropertyValue">
+      <csvname>typeFilter</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>!*,com.lcs.wc.flextype.FlexTyped*,!com.lcs.wc.moa.LCSMOAObject*</csvvalue>
+   </csvPropertyValue>
+   <csvEndScreenDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessScreenDefinition"/>
+   <csvBeginDisplayStyleView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessDisplayStyle">
+      <csvname>Grid</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvisAttributeDisplayStyle>false</csvisAttributeDisplayStyle>
+   </csvBeginDisplayStyleView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDisplayStylePropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Organized in grid</csvvalue>
+      <csvlocale_en_us>Organized in grid</csvlocale_en_us>
+      <csvlocale_en_gb>Organized in grid</csvlocale_en_gb>
+      <csvlocale_fr>Disposition de grille</csvlocale_fr>
+      <csvlocale_de>Im Raster angeordnet</csvlocale_de>
+      <csvlocale_es>En rejilla</csvlocale_es>
+      <csvlocale_ja>グリッドに整列</csvlocale_ja>
+      <csvlocale_it>Formato tabellare</csvlocale_it>
+      <csvlocale_ko>격자선에 정렬</csvlocale_ko>
+      <csvlocale_ru>В виде таблицы</csvlocale_ru>
+      <csvlocale_zh_cn>以网格形式组织</csvlocale_zh_cn>
+      <csvlocale_zh_tw>在格點內組織</csvlocale_zh_tw>
+      <csvlocale_pt_br>Organizado em grade</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDisplayStylePropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Organized in grid</csvvalue>
+      <csvlocale_en_us>Organized in grid</csvlocale_en_us>
+      <csvlocale_en_gb>Organized in grid</csvlocale_en_gb>
+      <csvlocale_fr>Disposition de grille</csvlocale_fr>
+      <csvlocale_de>Im Raster angeordnet</csvlocale_de>
+      <csvlocale_es>En rejilla</csvlocale_es>
+      <csvlocale_ja>グリッドに整列</csvlocale_ja>
+      <csvlocale_it>Formato tabellare</csvlocale_it>
+      <csvlocale_ko>격자선에 정렬</csvlocale_ko>
+      <csvlocale_ru>В виде таблицы</csvlocale_ru>
+      <csvlocale_zh_cn>以网格形式组织</csvlocale_zh_cn>
+      <csvlocale_zh_tw>在格點內組織</csvlocale_zh_tw>
+      <csvlocale_pt_br>Organizado em grade</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processDisplayStylePropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Organized in grid</csvvalue>
+      <csvlocale_en_us>Organized in grid</csvlocale_en_us>
+      <csvlocale_en_gb>Organized in grid</csvlocale_en_gb>
+      <csvlocale_fr>Disposition de grille</csvlocale_fr>
+      <csvlocale_de>Im Raster angeordnet</csvlocale_de>
+      <csvlocale_es>En rejilla</csvlocale_es>
+      <csvlocale_ja>グリッドに整列</csvlocale_ja>
+      <csvlocale_it>Formato tabellare</csvlocale_it>
+      <csvlocale_ko>격자선에 정렬</csvlocale_ko>
+      <csvlocale_ru>В виде таблицы</csvlocale_ru>
+      <csvlocale_zh_cn>以网格形式组织</csvlocale_zh_cn>
+      <csvlocale_zh_tw>在格點內組織</csvlocale_zh_tw>
+      <csvlocale_pt_br>Organizado em grade</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndDisplayStyleView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessDisplayStyle"/>
+   <csvBeginOrganizerView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessOrganizer">
+      <csvname>Product</csvname>
+      <csvcontainerDomain>com.ptcmscloud</csvcontainerDomain>
+      <csvparent/>
+   </csvBeginOrganizerView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processOrganizerPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Product</csvvalue>
+   </csvPropertyValue>
+   <csvEndOrganizerView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessOrganizer"/>
+   <csvBeginEnumDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumerationDefinition">
+      <csvname>scAeroMilestoneCreated_Dropped</csvname>
+      <csvcontainerDomain/>
+      <csvmaster/>
+      <csvsystem>false</csvsystem>
+      <csvorganizer>Product</csvorganizer>
+      <csvdomainRef>/System</csvdomainRef>
+   </csvBeginEnumDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumerationPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Aero Milestone Created Dropped</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumerationPropertyValue">
+      <csvname>autoSort</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scHighLevelEditss</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>HIGH LEVEL EDITS</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>2</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scInvestmentReview</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>INVESTMENT REVIEW</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>3</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scLineReview</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>LINE REVIEW</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>1</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scSeasonStart</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>SEASON START</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>0</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvEndEnumDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumerationDefinition"/>
+   <csvBeginEnumDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumerationDefinition">
+      <csvname>scDropreason</csvname>
+      <csvcontainerDomain/>
+      <csvmaster/>
+      <csvsystem>false</csvsystem>
+      <csvorganizer>Product</csvorganizer>
+      <csvdomainRef>/System</csvdomainRef>
+   </csvBeginEnumDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumerationPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Drop Reason</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumerationPropertyValue">
+      <csvname>autoSort</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfDevelopmentfactoryconcern</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>DEVELOPMENT/FACTORY CONCERN</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>8</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfExplorationplaceholder</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>EXPLORATION / PLACEHOLDER</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>6</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfHorizontalalignmentbrandguidelines</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>HORIZONTAL ALIGNMENT / BRAND GUIDELINES</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>5</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfLeadershipdirective</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>LEADERSHIP DIRECTIVE</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>4</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfLownoforecast</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>LOW / NO FORECAST</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>0</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfMarketaccountfeedback</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>MARKET / ACCOUNT FEEDBACK</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>2</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfRidseasonchange</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>RID / SEASON CHANGE</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>1</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfUsererror</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>USER ERROR</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>7</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>sfXfunctcreationteamdecision</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>X-FUNCT. CREATION TEAM DECISION</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>3</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvEndEnumDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumerationDefinition"/>
+   <csvBeginEnumDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumerationDefinition">
+      <csvname>scMilestoneCreated_Dropped</csvname>
+      <csvcontainerDomain/>
+      <csvmaster/>
+      <csvsystem>false</csvsystem>
+      <csvorganizer>Product</csvorganizer>
+      <csvdomainRef>/System</csvdomainRef>
+   </csvBeginEnumDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumerationPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Milestone Created_Dropped</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumerationPropertyValue">
+      <csvname>autoSort</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scAssortmentReview</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>ASSORTMENT REVIEW</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>2</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scCR1</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>CR1</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>4</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scCR2</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>CR2</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>5</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scDesignBoard</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Design Board</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>0</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scDesignReview</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>DESIGN REVIEW</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>0</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scFastTrack</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Fast Track</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>1</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scInitialProductReview</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Initial Product Review</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>2</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scInvestmentReview</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>INVESTMENT REVIEW</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>3</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scpostcrt</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>POST CR2</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>6</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scseasonstart</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>SEASON START</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>true</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>1</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvBeginEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessEnumMembership">
+      <csvname>scTHO</csvname>
+   </csvBeginEnumMemberView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>THO</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumEntryPropertyValue">
+      <csvname>selectable</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>false</csvvalue>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processEnumMembershipPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>3</csvvalue>
+   </csvPropertyValue>
+   <csvEndEnumMemberView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumMembership"/>
+   <csvEndEnumDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessEnumerationDefinition"/>
+   <csvBeginConstraintRuleDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessConstraintRuleDefinition">
+      <csvruleClassname>com.ptc.core.meta.container.common.impl.DiscreteSetConstraint</csvruleClassname>
+      <csvdefClassname>com.ptc.core.lwc.server.LWCEnumerationBasedConstraint</csvdefClassname>
+      <csvdatatype>java.lang.String</csvdatatype>
+      <csvdefQualifier/>
+      <csvrenderer/>
+      <csvdisableable>true</csvdisableable>
+      <csvcanBeCondition>true</csvcanBeCondition>
+   </csvBeginConstraintRuleDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processConstraintRuleDefinitionPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Enumerated Value List</csvvalue>
+      <csvlocale_en_us>Enumerated Value List</csvlocale_en_us>
+      <csvlocale_en_gb>Enumerated Value List</csvlocale_en_gb>
+      <csvlocale_fr>Liste de valeurs énumérées</csvlocale_fr>
+      <csvlocale_de>Aufzählungswertliste</csvlocale_de>
+      <csvlocale_es>Lista de valores enumerados</csvlocale_es>
+      <csvlocale_ja>列挙値リスト</csvlocale_ja>
+      <csvlocale_it>Elenco di valori enumerati</csvlocale_it>
+      <csvlocale_ko>열거 값 목록</csvlocale_ko>
+      <csvlocale_ru>Список перечисленных значений</csvlocale_ru>
+      <csvlocale_zh_cn>枚举值列表</csvlocale_zh_cn>
+      <csvlocale_zh_tw>列舉值清單</csvlocale_zh_tw>
+      <csvlocale_pt_br>Lista de Valores Enumerados</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processConstraintRuleDefinitionPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Enumerated Value List</csvvalue>
+      <csvlocale_en_us>Enumerated Value List</csvlocale_en_us>
+      <csvlocale_en_gb>Enumerated Value List</csvlocale_en_gb>
+      <csvlocale_fr>Liste de valeurs énumérées</csvlocale_fr>
+      <csvlocale_de>Aufzählungswertliste</csvlocale_de>
+      <csvlocale_es>Lista de valores enumerados</csvlocale_es>
+      <csvlocale_ja>列挙値リスト</csvlocale_ja>
+      <csvlocale_it>Elenco di valori enumerati</csvlocale_it>
+      <csvlocale_ko>열거 값 목록</csvlocale_ko>
+      <csvlocale_ru>Список перечисленных значений</csvlocale_ru>
+      <csvlocale_zh_cn>枚举值列表</csvlocale_zh_cn>
+      <csvlocale_zh_tw>列舉值清單</csvlocale_zh_tw>
+      <csvlocale_pt_br>Lista de Valores Enumerados</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processConstraintRuleDefinitionPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Enumerated Value List</csvvalue>
+      <csvlocale_en_us>Enumerated Value List</csvlocale_en_us>
+      <csvlocale_en_gb>Enumerated Value List</csvlocale_en_gb>
+      <csvlocale_fr>Liste de valeurs énumérées</csvlocale_fr>
+      <csvlocale_de>Aufzählungswertliste</csvlocale_de>
+      <csvlocale_es>Lista de valores enumerados</csvlocale_es>
+      <csvlocale_ja>列挙値リスト</csvlocale_ja>
+      <csvlocale_it>Elenco di valori enumerati</csvlocale_it>
+      <csvlocale_ko>열거 값 목록</csvlocale_ko>
+      <csvlocale_ru>Список перечисленных значений</csvlocale_ru>
+      <csvlocale_zh_cn>枚举值列表</csvlocale_zh_cn>
+      <csvlocale_zh_tw>列舉值清單</csvlocale_zh_tw>
+      <csvlocale_pt_br>Lista de Valores Enumerados</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processConstraintRuleDefinitionPropertyValue">
+      <csvname>sort_order</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>1</csvvalue>
+   </csvPropertyValue>
+   <csvEndConstraintRuleDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessConstraintRuleDefinition"/>
+   <csvBeginConstraintRuleDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.beginProcessConstraintRuleDefinition">
+      <csvruleClassname>com.ptc.core.meta.container.common.impl.ValueRequiredConstraint</csvruleClassname>
+      <csvdefClassname>com.ptc.core.lwc.server.LWCBasicConstraint</csvdefClassname>
+      <csvdatatype>com.lcs.wc.flextype.datatypes.FlexUserList</csvdatatype>
+      <csvdefQualifier/>
+      <csvrenderer/>
+      <csvdisableable>true</csvdisableable>
+      <csvcanBeCondition>false</csvcanBeCondition>
+   </csvBeginConstraintRuleDefView>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processConstraintRuleDefinitionPropertyValue">
+      <csvname>displayName</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Required</csvvalue>
+      <csvlocale_en_us>Required</csvlocale_en_us>
+      <csvlocale_en_gb>Required</csvlocale_en_gb>
+      <csvlocale_fr>Requis</csvlocale_fr>
+      <csvlocale_de>Erforderlich</csvlocale_de>
+      <csvlocale_es>Obligatorio</csvlocale_es>
+      <csvlocale_ja>必須</csvlocale_ja>
+      <csvlocale_it>Obbligatorio</csvlocale_it>
+      <csvlocale_ko>Required</csvlocale_ko>
+      <csvlocale_ru>Required</csvlocale_ru>
+      <csvlocale_zh_cn>必需的</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Required</csvlocale_zh_tw>
+      <csvlocale_pt_br>Required</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processConstraintRuleDefinitionPropertyValue">
+      <csvname>description</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Required</csvvalue>
+      <csvlocale_en_us>Required</csvlocale_en_us>
+      <csvlocale_en_gb>Required</csvlocale_en_gb>
+      <csvlocale_fr>Requis</csvlocale_fr>
+      <csvlocale_de>Erforderlich</csvlocale_de>
+      <csvlocale_es>Obligatorio</csvlocale_es>
+      <csvlocale_ja>必須</csvlocale_ja>
+      <csvlocale_it>Obbligatorio</csvlocale_it>
+      <csvlocale_ko>Required</csvlocale_ko>
+      <csvlocale_ru>Required</csvlocale_ru>
+      <csvlocale_zh_cn>必需的</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Required</csvlocale_zh_tw>
+      <csvlocale_pt_br>Required</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvPropertyValue handler="com.ptc.core.lwc.server.BaseDefinitionLoader.processConstraintRuleDefinitionPropertyValue">
+      <csvname>tooltip</csvname>
+      <csvisDefault>false</csvisDefault>
+      <csvvalue>Required</csvvalue>
+      <csvlocale_en_us>Required</csvlocale_en_us>
+      <csvlocale_en_gb>Required</csvlocale_en_gb>
+      <csvlocale_fr>Requis</csvlocale_fr>
+      <csvlocale_de>Erforderlich</csvlocale_de>
+      <csvlocale_es>Obligatorio</csvlocale_es>
+      <csvlocale_ja>必須</csvlocale_ja>
+      <csvlocale_it>Obbligatorio</csvlocale_it>
+      <csvlocale_ko>Required</csvlocale_ko>
+      <csvlocale_ru>Required</csvlocale_ru>
+      <csvlocale_zh_cn>必需的</csvlocale_zh_cn>
+      <csvlocale_zh_tw>Required</csvlocale_zh_tw>
+      <csvlocale_pt_br>Required</csvlocale_pt_br>
+   </csvPropertyValue>
+   <csvEndConstraintRuleDefView handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessConstraintRuleDefinition"/>
+   <csvEndBaseDefsRbInfos handler="com.ptc.core.lwc.server.BaseDefinitionLoader.endProcessRbInfos"/>
+</NmLoader>

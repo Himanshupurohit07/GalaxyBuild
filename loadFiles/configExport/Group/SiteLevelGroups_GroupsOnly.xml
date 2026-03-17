@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standard11_2.dtd">
+<NmLoader>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Administrators</csvgroupName>
+      <csvdescription>Site Administrators</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>LOG_VIEWER_ADMIN</csvgroupName>
+      <csvdescription/>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>VENDORS</csvgroupName>
+      <csvdescription>Vendor Group for Vendor Portal</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>SIZEDEF_TEMPLATE_ADMIN</csvgroupName>
+      <csvdescription>Size Administrators</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>View Administrators</csvgroupName>
+      <csvdescription>View Administrators</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>MEASUREMENTS_TEMPLATE_ADMIN</csvgroupName>
+      <csvdescription>Measurements Administrators</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Filter Administrators</csvgroupName>
+      <csvdescription>Filter Administrators</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Attribute Administrators</csvgroupName>
+      <csvdescription>Those who can create Attributes and Units</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Type Administrators</csvgroupName>
+      <csvdescription>Those who can create and manage Types</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Replication Managers</csvgroupName>
+      <csvdescription>Those who can initiate replication</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Business Report Author</csvgroupName>
+      <csvdescription>Business Report Author</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Business Report Monitor</csvgroupName>
+      <csvdescription>Business Report Monitor</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Project Synchronization Users</csvgroupName>
+      <csvdescription>Synchronization Users for the projects enrolled in scheduled sharing synchronization</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC View and Print Only License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC View and Print Only License was purchased. This license group is associated with the PTC View and Print Only License profile, which limits users to viewing and printing objects.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PLM Connector Importable Package</csvgroupName>
+      <csvdescription>License group for authorizing creation of package importable ZIP files</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Contributor License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Contributor License was purchased. This license group is associated with the PTC Contributor License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Author License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Author License was purchased. This license group is associated with the PTC Author License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Project Management License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Project Management License was purchased. This license group is associated with the PTC Project Management License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Mechanical Design I License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Mechanical Design I License was purchased. This license group is associated with the PTC Mechanical Design I License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Mechanical Design II License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Mechanical Design II License was purchased. This license group is associated with the PTC Mechanical Design II License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC BOM Transformation License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC BOM Transformation License was purchased. This license group is associated with the PTC BOM Transformation License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Manufacturing License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Manufacturing License was purchased. This license group is associated with the PTC Manufacturing License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC EBOM Management License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC EBOM Management License was purchased. This license group is associated with the PTC EBOM Management License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Quality License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Quality License was purchased. This license group is associated with the PTC Quality License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Design Control License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Design Control License was purchased. This license group is associated with the PTC Design Control License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PDMUsers</csvgroupName>
+      <csvdescription>User group for PDMLink users</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Retail</csvgroupName>
+      <csvdescription>User group for retail users</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Audit Management License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Audit Management License was purchased. This license group is associated with the PTC Audit Management License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Document Control License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Document Control License was purchased. This license group is associated with the PTC Document Control License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Regulatory Master License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Regulatory Master License was purchased. This license group is associated with the PTC Regulatory Master License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC IP Protection License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC IP Protection License was purchased. This license group is associated with the PTC IP Protection License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Supplier Management License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Supplier Management License was purchased. This license group is associated with the PTC Supplier Management License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC PartsLink License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC PartsLink License was purchased. This license group is associated with the PTC PartsLink License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Platform Structures License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Platform Structures License was purchased. This license group is associated with the PTC Platform Structures License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Service Information Manager License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Service Information Manager License was purchased. This license group is associated with the PTC Service Information Manager License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Service Information Manager S1000D License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Service Information Manager S1000D License was purchased. This license group is associated with the PTC Service Information Manager S1000D License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Service Information Manager Standard License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Service Information Manager Standard License was purchased. This license group is associated with the PTC Service Information Manager Standard License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Service Information Manager Reviewer License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Service Information Manager Reviewer License was purchased. This license group is associated with the PTC Service Information Manager Reviewer License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Service Parts License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Service Parts License was purchased. This license group is associated with the PTC Service Parts License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Service Parts S1000D License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Service Parts S1000D License was purchased. This license group is associated with the PTC Service Parts S1000D License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Navigate View - Active Daily User License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Navigate View - Active Daily User License was purchased. This license group is associated with the PTC View and Print Only License profile, which limits users to viewing and printing objects.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Navigate Contributor - Active Daily User License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Navigate Contributor - Active Daily User License was purchased. This license group is associated with the PTC Contributor License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Platform Structures - Active Daily User License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Platform Structures - Active Daily User License was purchased. This license group is associated with the PTC Platform Structures License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC PDMLink Module License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC PDMLink Module License was purchased. This license group is associated with the PTC PDMLink Module License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC ProjectLink Module License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC ProjectLink Module License was purchased. This license group is associated with the PTC ProjectLink Module License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC MPMLink Module License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC MPMLink Module License was purchased. This license group is associated with the PTC MPMLink Module License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Supplier Management Module License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Supplier Management Module License was purchased. This license group is associated with the PTC Supplier Management Module License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC PartsLink Module License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC PartsLink Module License was purchased. This license group is associated with the PTC PartsLink Module License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM Internal License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC FlexPLM Internal License was purchased.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC FlexPLM External License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC FlexPLM External License was purchased.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Creo Data Management and Visualization License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Creo Data Management and Visualization License was purchased. This license group is associated with the PTC Creo Data Management and Visualization License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Service Information Manager Translation License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Service Information Service Translation License was purchased. This license group is associated with the PTC Service Information Manager Translation profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Windchill Base License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Windchill Base License was purchased.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Windchill Advanced License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Windchill Advanced License was purchased.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Windchill Premium License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Windchill Premium License was purchased.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Windchill PDF Collaboration License</csvgroupName>
+      <csvdescription>Windchill PDF Collaboration License. This license group is associated with the PTC Windchill PDF Collaboration License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Platform Visualization and Design License</csvgroupName>
+      <csvdescription>Platform Visualization and Design License. This license group is associated with the PTC Platform Visualization and Design License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>License Exclusion</csvgroupName>
+      <csvdescription>A license exclusion group for test or admin users</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Quality Medical Device License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Quality Medical Device License was purchased. This license group is associated with the PTC Quality Medical Device License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Windchill PDF Collaboration - Active Daily User License</csvgroupName>
+      <csvdescription>Populate this license group with all users for whom a PTC Windchill PDF Collaboration - Active Daily User License was purchased. This license group is associated with the PTC Windchill PDF Collaboration License profile.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>PTC Smart Platforms License</csvgroupName>
+      <csvdescription>PTC Smart Platforms License. This license group is associated with the PTC Smart Platforms License.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>WorkflowAdministrators</csvgroupName>
+      <csvdescription>workflow administrators</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>WorkflowAuthors</csvgroupName>
+      <csvdescription>Creators who can create or update workflow templates containing java expressions.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>LifeCycleAdministrators</csvgroupName>
+      <csvdescription>life cycle administrators</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Replication Package Administrators</csvgroupName>
+      <csvdescription>Members can create and manage replication packages.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Gateway Administrator</csvgroupName>
+      <csvdescription>Administrative users group for Publishing Process</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Gateway Publisher</csvgroupName>
+      <csvdescription>Publishing users Group for Publishing Process</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Gateway Default Application</csvgroupName>
+      <csvdescription>Default Gateway Group for common Applications</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Business Administrative Change Package Creator</csvgroupName>
+      <csvdescription>Members can create and export BAC Packages.</csvdescription>
+   </csvGroup>
+   <csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>Business Administrative Change Package Importer</csvgroupName>
+      <csvdescription>Members can import BAC Packages.</csvdescription>
+   </csvGroup>
+</NmLoader>
