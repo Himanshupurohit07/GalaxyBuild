@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ********************************************************************** --><!-- Desc: Simple Change Installer                                          --><!--                                                                        --><!-- Date:   31 January 2019                                                --><!-- Author: OLIVIER FRANCHET                                               --><!--                                                                        --><!-- Changes                                                                --><!-- =============                                                          --><!-- Reason for Change         |  Date		          |  Author             --><!-- =====================================================================  --><!-- Document Creation	       | December 20, 2018    | OLIVIER FRANCHET    --><!-- Update for Simple Change  | January  31, 2019    | OLIVIER FRANCHET    --><!-- V0.12 provide task to delete files | Oct 4, 2019 | NATASCHA SCHWARZ    --><!-- V0.13 task to import Preferences  | Feb 10, 2020 | NATASCHA SCHWARZ    --><!-- V1.0  Add pre/post hooks  | April 1, 2020        | Olivier Franchet    --><!--                                                                        --><!--                                                                        --><!-- ********************************************************************** --><project default="install" name="Simple Change Installer">
 
-
 	<!-- Do not Remove these import lines -->
 	<import file="${basedir}/ant/deployutils.xml"/>
 	  <import file="${basedir}/ant/extensions/preAndPostOperations.xml"/>
@@ -119,7 +118,7 @@
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroWashInstructions_20250728-062408/scAeroWashInstructions_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20250728-062715/scbrandassetpartner_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250728-062154/scsizerangeFTW_LoadSet.xml"/>	
-		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20250729-051050/sccreationtrackcust_LoadSet.xml"/>	
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20250729-051050/sccreationtrackcust_LoadSet.xml"/>		
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scdistchannel_20250929-052631/scdistchannel_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scShippingPort_20250929-052951/scShippingPort_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250929-053222/scsizerangeFTW_LoadSet.xml"/>
@@ -127,6 +126,11 @@
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroDepartment_20250929-055011/scAeroDepartment_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroSubDepartment_20250929-055029/scAeroSubDepartment_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAdditionalBuy_20251003-044801/scAdditionalBuy_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20251230-091624/sccreationtrackcust_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrack_20251230-092041/sccreationtrack_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20251230-092236/scbrandassetpartner_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scOutsole_20251230-092426/scOutsole_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scDevelopmentSeason_20251230-092712/scDevelopmentSeason_LoadSet.xml"/>
 		-->
 		
 		
@@ -151,10 +155,12 @@
 		<!-- <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/types/FullConfig_LoadSet.xml" /> 
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20250626-060257/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.product.LCSProduct_20250728-070442/com.lcs.wc.product.LCSProduct_LoadSet.xml"/>
-     	<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
+     		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20251003-044714/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.material.LCSMaterial_20250929-054732/com.lcs.wc.material.LCSMaterial_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.foundation.LCSLifecycleManaged_20251212-094843/com.lcs.wc.foundation.LCSLifecycleManaged_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20251212-094341/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_LoadSet.xml"/>
 		-->
 	</target>
 
@@ -220,7 +226,10 @@
            name="load.files">
 		<!--   Enumerations, Types, Workflows, Lifecycles and OIR loaders have their respective Target  -->
 		<!-- ADD Other Configuration Load Files here after -->	
-		<!-- <loadFromFile loadfile="${wt.loadfiles.dir}/sic/group/Catalyst_AeroAccess.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/> -->
+		<loadFromFile loadfile="${wt.loadfiles.dir}/sic/group/Catalyst_AeroAccess.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
+		<loadFromFile contpath="/wt.inf.container.OrgContainer=${org.name}" loadfile="${wt.loadfiles.dir}/sic/group/BO_TariffByCountry.xml"/>
+		
+		  -->
 				
 		<!-- Groups -->
 		
@@ -252,11 +261,7 @@
 			 contpath="/wt.inf.container.OrgContainer=${org.name}"/>
 
 		<!-- Site Level Policy Rules -->
-		   
-		 <loadFromFile loadfile="${wt.loadfiles.dir}/configExport/acl/TAG-0.xml"
-			 contpath="/wt.inf.container.OrgContainer=${org.name}"/>		
-					
-			
+		<loadFromFile contpath="/wt.inf.container.OrgContainer=${org.name}/wt.inf.library.WTLibrary=FlexPLM" loadfile="${wt.loadfiles.dir}/sic/acl/TAG-0.xml"/>
 	</target>
 
 </project>

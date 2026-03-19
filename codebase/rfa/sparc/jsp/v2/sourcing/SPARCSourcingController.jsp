@@ -743,7 +743,11 @@ String copyCostSheetPgTle = WTMessage.getLocalizedMessage ( RB.SOURCING, "copyCo
 
         } else if("SAVE".equals(action)){
             try{
-
+				
+				 if(FormatHelper.hasContent(request.getParameter("csTypeId"))){
+					type = request.getParameter("csTypeId");
+					}
+			
                 String cs_Verid = "";
                 csheetModel.setTypeId(request.getParameter("csTypeId"));
                 AttributeValueSetter.setAllAttributes(csheetModel, RequestHelper.hashRequest(request));

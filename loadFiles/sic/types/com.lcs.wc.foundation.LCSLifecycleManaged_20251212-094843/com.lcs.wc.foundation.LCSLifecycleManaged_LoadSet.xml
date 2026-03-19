@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.lcs.wc.foundation.LCSLifecycleManaged_20251212-094843/com.lcs.wc.foundation.LCSLifecycleManaged_0.xml"/>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.lcs.wc.foundation.LCSLifecycleManaged_20251212-094843/com.lcs.wc.foundation.LCSLifecycleManaged_1.xml"/>
+</loadFileList>
