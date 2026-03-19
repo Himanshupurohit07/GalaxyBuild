@@ -610,12 +610,21 @@ public class SPARCProductLockingAttLogic {
 					Iterator<?> itr = skusVector.iterator();
 					while(itr.hasNext()) {
 						FlexObject flexObject = (FlexObject) itr.next();
+						log.debug("flexObject @@@@@@ "+flexObject);
 						String objectId = flexObject.getString("LCSSKUSEASONLINK.IDA2A2");
 						LCSSKUSeasonLink colorwayLink = (LCSSKUSeasonLink) LCSQuery
 								.findObjectById("OR:com.lcs.wc.season.LCSSKUSeasonLink:" + objectId);
+						
+						log.debug("getSkuMaster @@@@####"+colorwayLink.getSkuMaster());
+						LCSPartMaster skuMaster = colorwayLink.getSkuMaster();
+						log.debug("Skumaster getName @@@@####"+skuMaster.getName());
+						
 						if(colorwayLink == null) {return;}
+						if(colorwayLink.isSeasonRemoved()){continue;}
 						String sentToS4Val = (String) colorwayLink.getValue(SENT_TO_S4);
 						String clrwayLifeCycle = (String) colorwayLink.getValue(COLORWAY_LIFECYCLE);
+						
+						log.debug("colorwayLifecycleList >>>"+colorwayLifecycleList);
 						colorwayLifecycleList.add(clrwayLifeCycle);
 						
 						boolean isSentToS4 = false;
@@ -676,6 +685,7 @@ public class SPARCProductLockingAttLogic {
 								String lockedKeys = null;
 								try {
 									
+									log.debug("colorwayLifecycleList >>>"+colorwayLifecycleList);
 									//Adding below logic for locking the attributes properly across seasons
 									log.debug("validate >>>> ");
 									if(colorwayLifecycleList.contains(BUY_READY) || (oldColorwayLifeCycle.equals(BUY_READY) && lifeCycle.equals(DROPPED) )) {
