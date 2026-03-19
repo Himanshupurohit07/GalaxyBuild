@@ -9,19 +9,24 @@ import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_COST_SHEET_NUMBER_ATTR;
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_SOURCING_CONFIG_NUMBER_ATTR;
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.FLEX_COST_SHEET_TYPE_PRODUCT;
+import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR;
+import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_COST_SHEET_PRICING_DATE_ATTR;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Date;
 
 import org.apache.logging.log4j.Logger;
 
 import com.lcs.wc.flextype.FlexTyped;
+import com.lcs.wc.flextype.FlexType;
 import com.lcs.wc.product.LCSProduct;
 import com.lcs.wc.season.LCSSeason;
 import com.lcs.wc.sourcing.LCSCostSheet;
+import com.lcs.wc.sourcing.LCSCostSheetLogic;
 import com.lcs.wc.sourcing.LCSCostSheetQuery;
 import com.lcs.wc.sourcing.LCSProductCostSheet;
 import com.lcs.wc.sourcing.LCSSourceToSeasonLink;
@@ -29,6 +34,7 @@ import com.lcs.wc.sourcing.LCSSourcingConfig;
 import com.lcs.wc.sourcing.LCSSourcingConfigQuery;
 import com.lcs.wc.util.LCSException;
 import com.lcs.wc.util.VersionHelper;
+import com.lcs.wc.country.LCSCountry;
 import com.sparc.wc.integration.aero.domain.AeroCustomPluginException;
 import com.sparc.wc.integration.aero.domain.AeroPayloadAttribute;
 import com.sparc.wc.integration.aero.domain.AeroPayloadAttributeDefinitions;
@@ -36,6 +42,7 @@ import com.sparc.wc.integration.aero.repository.AeroCostingRepository;
 import com.sparc.wc.integration.aero.util.AeroIntegrationPluginUtil;
 import com.sparc.wc.integration.aero.util.AeroPayloadAttributeUtil;
 import com.sparc.wc.integration.util.SparcIntegrationUtil;
+import com.sparc.wc.util.SparcCostingConstants;
 
 import wt.fc.WTObject;
 import wt.log4j.LogR;
@@ -434,4 +441,52 @@ public class AeroCostingIntegrationPlugin {
     	return SparcIntegrationUtil.divergenceCheck(prevColorwayNames, currColorwayNames);    	
     }
 
+	/**
+	 * Main entry point for this plugin to set the Tariff based on the Country Of Origin and CostSheet PricingDate.<br> .
+	 * @param obj The Flex object updated.
+	 * @throws WTException If an error occurs while setting attribute from PLM or
+	 */
+	public static void setTariff(WTObject obj) throws LCSException {
+		if (!(obj instanceof LCSProductCostSheet)) {
+			return;
+		}
+		LOGGER.debug("setTariff :" + obj);
+		LCSProductCostSheet objCostSheet = null;
+		LCSCountry objCountry = null;
+		String countryName;
+		double TariffByCountrypercentage = 0.00;
+		FlexType boType = null;
+		Date objCostDate = null;
+		
+		
+        try {
+            	objCostSheet = (LCSProductCostSheet) obj;
+				LOGGER.debug("scCountryofOrigin >>>>>>"+objCostSheet.getValue(AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR));
+				LOGGER.debug("scCotSheetPricingDate >>>>>>"+objCostSheet.getValue(AERO_COST_SHEET_PRICING_DATE_ATTR));
+				
+				if(null != objCostSheet && null != objCostSheet.getValue(AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR)){
+					objCountry = (LCSCountry)objCostSheet.getValue(AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR);
+					countryName = objCountry.getName();
+					System.out.println("countryName >>>>>>"+countryName);
+				}else{
+					System.out.println("CountryofOrigin is Null at costsheet.");
+					objCostSheet.setValue("scTariffByCountry",TariffByCountrypercentage);
+					return;
+				}
+				
+				if(null != countryName && null != objCostSheet.getValue(AERO_COST_SHEET_PRICING_DATE_ATTR)){
+					boType = AeroIntegrationPluginUtil.getFlexType(SparcCostingConstants.TARIFF_BY_COUNTRY);
+					objCostDate = (Date) objCostSheet.getValue(AERO_COST_SHEET_PRICING_DATE_ATTR);
+					TariffByCountrypercentage = AeroIntegrationPluginUtil.populateTariffByCountryPercentage(objCostSheet, objCostDate, boType, objCountry);
+					
+					objCostSheet.setValue("scTariffByCountry",TariffByCountrypercentage);
+				}
+ 
+        	
+        } catch (Exception e) {
+        	LOGGER.error("The Aero Costing Plugin for Tariff failed to process the flex object.", e);
+        }
+        
+        }
+		
 }

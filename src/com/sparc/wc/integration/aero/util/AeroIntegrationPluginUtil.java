@@ -9,12 +9,23 @@ import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Date;
+import java.util.Collection;
+import com.lcs.wc.db.*;
+import com.lcs.wc.flextype.FlexTypeCache;
+import java.sql.Timestamp;
+
 
 import org.apache.logging.log4j.Logger;
 
 import com.lcs.wc.flextype.FlexTyped;
+import com.lcs.wc.foundation.LCSQuery;
+import com.lcs.wc.flextype.FlexType;
 import com.lcs.wc.product.LCSProduct;
 import com.lcs.wc.product.LCSSKU;
+import com.lcs.wc.country.LCSCountry;
+import com.lcs.wc.foundation.LCSLifecycleManaged;
 import com.lcs.wc.season.LCSSeason;
 import com.lcs.wc.sourcing.LCSProductCostSheet;
 import com.lcs.wc.util.FormatHelper;
@@ -22,11 +33,12 @@ import com.lcs.wc.util.VersionHelper;
 import com.sparc.wc.integration.aero.domain.AeroCustomPluginException;
 import com.sparc.wc.integration.aero.domain.AeroPayloadAttribute;
 import com.sparc.wc.integration.util.SparcIntegrationUtil;
+import com.lcs.wc.db.SearchResults;
+import java.text.SimpleDateFormat;
 
 import wt.log4j.LogR;
 import wt.method.MethodContext;
 import wt.util.WTException;
-
 /**
  * Provides utility functions intended to be used by Aero related Flex Plugins.<br>
  * 
@@ -379,5 +391,137 @@ public class AeroIntegrationPluginUtil {
 	public static boolean isTaggedAsIntegrationApiOrigin(FlexTyped flexTypedObj) {
 		return (flexTypedObj != null && MethodContext.getContext().containsKey(generateMethodContextKey(flexTypedObj)));
 	}
+	
+	 /**
+     * 
+     * @param costsheet object, CostsheetPricingdate, BusinessObject Type, Country Object.
+     */
+	public static double populateTariffByCountryPercentage(final LCSProductCostSheet objCostSheet, Date ObjCostDate, FlexType boType,
+	final LCSCountry countryObj) {
+		double tariffByCountryPercentage = 0;
+		try{
+			 LCSLifecycleManaged tariffBO = AeroIntegrationPluginUtil.fetchTariffBO(ObjCostDate, countryObj, boType);
+			 LOGGER.debug("tariffByCountryPercentage >>>>>>>>before null check"+tariffBO);
+			 if(null != tariffBO){
+				 LOGGER.debug("tariffByCountryPercentage >>>>>>>>"+tariffBO);
+				 LOGGER.debug("tariffByCountryPercentage >>>>>>>>"+tariffBO.getValue("scTariffPerc"));
+				 tariffByCountryPercentage = (Double)tariffBO.getValue("scTariffPerc");
+				 LOGGER.debug("tariffByCountryPercentage >>>>>>>>"+tariffByCountryPercentage);
+			 }
+			 
+		}catch (Exception e) {
+            e.printStackTrace();
+		}
+		
+		return tariffByCountryPercentage;
+	}
+								
+
+
+	 public static LCSLifecycleManaged fetchTariffBO(Date ObjCostDate, LCSCountry objCountry, FlexType boType) {
+		LCSLifecycleManaged tariffBO = null;
+        PreparedQueryStatement query = new PreparedQueryStatement();
+		PreparedQueryStatement subQuery = new PreparedQueryStatement();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yy");
+			SimpleDateFormat  sdf1 = new SimpleDateFormat("dd-MMM-yy");
+			String subQueryDate = "";
+
+        try { 
+			String formatted = sdf.format(ObjCostDate);
+					
+			subQuery.appendFromTable("LCSLIFECYCLEMANAGED");
+			QueryColumn startDateColumn = new QueryColumn("LCSLIFECYCLEMANAGED", boType.getAttribute("scStartDate").getColumnName());
+			subQuery.appendSelectColumn(startDateColumn, "MAX");
+			subQuery.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scStartDate").getColumnName(), formatted, Criteria.LESS_THAN_EQUAL));
+			subQuery.appendAndIfNeeded();
+			subQuery.appendOpenParen();
+			subQuery.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scEndDate").getColumnName(), "", Criteria.IS_NULL));
+			subQuery.appendOrIfNeeded();
+			subQuery.appendOrIfNeeded();
+			subQuery.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scEndDate").getColumnName(),formatted, Criteria.GREATER_THAN_EQUAL));
+			subQuery.appendClosedParen();
+			subQuery.appendAndIfNeeded();
+			subQuery.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scCountry").getColumnName(), FormatHelper.getNumericVersionIdFromObject(objCountry), Criteria.EQUALS));
+			
+			LOGGER.debug("** subQuery:" + subQuery);
+			SearchResults objSubQueryResults = LCSQuery.runDirectQuery(subQuery);
+			LOGGER.debug("** objSubQueryResults :" + objSubQueryResults);
+			
+			if(objSubQueryResults.getResults() != null && objSubQueryResults.getResults().size() > 0){
+				LOGGER.debug("** No of  :" + objSubQueryResults.getResults().size());
+				for (FlexObject dateObj : (Collection<FlexObject>) objSubQueryResults.getResults()) {
+					 LOGGER.debug("** dateObj:" + dateObj);
+					 subQueryDate = dateObj.getString("MAX(LCSLIFECYCLEMANAGED.PTC_TMS_2TYPEINFOLCSLIFECYCL)");
+					 SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); 
+								
+						if (subQueryDate != null && !subQueryDate.trim().isEmpty()) {
+							LOGGER.debug("Raw subQueryDate: [" + subQueryDate + "]");
+							LOGGER.debug("Length: " + subQueryDate.length());
+
+								 Date parsedDate = inputFormat.parse(subQueryDate);
+								 subQueryDate = sdf1.format(parsedDate);
+								 LOGGER.debug("** subQueryDate:" + subQueryDate);
+							} else {
+								// Handle missing or invalid date string
+								LOGGER.debug("Date string is empty or null");
+							}
+				}
+				
+			}
+			
+			query.appendFromTable("LCSLIFECYCLEMANAGED");
+			query.appendSelectColumn("LCSLIFECYCLEMANAGED", "IDA2A2");
+			
+			query.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scStartDate").getColumnName(), formatted, Criteria.LESS_THAN_EQUAL));
+			query.appendAndIfNeeded();
+			query.appendOpenParen();
+			query.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scEndDate").getColumnName(), "", Criteria.IS_NULL));
+			query.appendOrIfNeeded();
+			query.appendOrIfNeeded();
+			query.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scEndDate").getColumnName(),formatted, Criteria.GREATER_THAN_EQUAL));
+			query.appendClosedParen();
+			query.appendAndIfNeeded();
+			query.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scCountry").getColumnName(), FormatHelper.getNumericVersionIdFromObject(objCountry), Criteria.EQUALS));
+			query.appendAndIfNeeded();
+			
+
+			query.appendCriteria(new Criteria("LCSLifecycleManaged", boType.getAttribute("scStartDate").getColumnName(),subQueryDate,  Criteria.EQUALS));
+
+			LCSQuery.printStatement(query);
+			
+			LOGGER.debug("fetchTariffBO query is >>"+query);
+			LOGGER.debug("FormatHelper is >>"+FormatHelper.getNumericVersionIdFromObject(objCountry));
+			
+			SearchResults objResults = LCSQuery.runDirectQuery(query);
+			LOGGER.debug("** objResults :" + objResults);
+			
+			if(objResults.getResults() != null && objResults.getResults().size() > 0){
+				LOGGER.debug("** No of  :" + objResults.getResults().size());
+				for (FlexObject boObj : (Collection<FlexObject>) objResults.getResults()) {
+					LOGGER.debug("** boObj:" + boObj);
+					tariffBO =(LCSLifecycleManaged) LCSQuery.findObjectById("OR:com.lcs.wc.foundation.LCSLifecycleManaged:" + boObj.getString("LCSLIFECYCLEMANAGED.IDA2A2"));
+				}
+				
+			}
+			return tariffBO;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        LOGGER.debug("tariffBO-----------------------------_tariffBO");
+        return tariffBO;
+    }
+	
+								
+	public static FlexType getFlexType(String typePath){
+        FlexType boType = null;
+        try {
+             boType = FlexTypeCache.getFlexTypeFromPath(typePath);
+        } catch (WTException e) {
+            e.printStackTrace();
+        }
+        return boType;
+    }											  
     
 }

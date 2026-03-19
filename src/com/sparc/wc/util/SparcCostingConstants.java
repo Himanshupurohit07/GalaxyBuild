@@ -69,6 +69,8 @@ public class SparcCostingConstants {
     public static final String OTHER_LOOKUP_ATTRIBUTES = LCSProperties.get("com.sparc.wc.costing.OtherLoadAttributes");
 
     public static final String INTERNAL_LOOKUP_TYPE = LCSProperties.get("com.sparc.wc.costing.InternalLoadFlexType");
+	
+	public static final String TARIFF_BY_COUNTRY = LCSProperties.get("com.sparc.wc.costing.TariffByCountry");
 
     public static final String OTHER_LOOKUP_TYPE = LCSProperties.get("com.sparc.wc.costing.OtherBOFlexType");
 

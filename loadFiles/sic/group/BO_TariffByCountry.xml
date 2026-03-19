@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standard11_2.dtd">
+<NmLoader>
+<!-- 	BO_TARIFFBYCOUNTRY_CREATE,BO_TARIFFBYCOUNTRY_READ,BO_TARIFFBYCOUNTRY_UPDATE,BO_TARIFFBYCOUNTRY_DELETE  -> These are new roles. Providing access to other roles for the Business Object\Aero IP Fabric-->
+ 
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>BO_TARIFFBYCOUNTRY_CREATE</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>BO_TARIFFBYCOUNTRY_READ</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>BO_TARIFFBYCOUNTRY_UPDATE</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>BO_TARIFFBYCOUNTRY_DELETE</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_CREATE</csvparentGroupName>
+    <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_UPDATE</csvparentGroupName>
+    <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_DELETE</csvparentGroupName>
+    <csvchildGroupName>RBK_ITADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_CREATE</csvparentGroupName>
+    <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_UPDATE</csvparentGroupName>
+    <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_DELETE</csvparentGroupName>
+    <csvchildGroupName>RBK_BUSINESSADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_APPARELPATTERNADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_SPARC_APPAREL_PATTERN_ADMIN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_SPARC_READ_ONLY</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_CREATE</csvparentGroupName>
+    <csvchildGroupName>LUCKY_SPARC_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_SPARC_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_UPDATE</csvparentGroupName>
+    <csvchildGroupName>LUCKY_SPARC_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_APPARELDESIGNER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_FOOTWEARDESIGNER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_APPARELPATTERNUSER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_APP_FW_DEVELOPER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_APPARELDEVELOPER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_FOOTWEARDEVELOPER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_SOURCINGMANAGER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_MATERIALDEVELOPER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_APP_FTW_MAT_DEVELOPER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_APPARELMARKETING</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_FOOTWEARMARKETING</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_CREATE</csvparentGroupName>
+    <csvchildGroupName>RBK_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_UPDATE</csvparentGroupName>
+    <csvchildGroupName>RBK_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_SUPPLYPLANNING</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_CREATE</csvparentGroupName>
+    <csvchildGroupName>RBK_CUSTOMS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_CUSTOMS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_UPDATE</csvparentGroupName>
+    <csvchildGroupName>RBK_CUSTOMS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>RBK_READONLYPRODUCTWITHCOSTING</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_APPAREL_DESIGN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_MERCHANDISING</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_PD_AND_PRODUCTION</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_HYBRID</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_HYBRID_NO_CAP</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_PRODUCTION_OPERATIONS</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_TECH_DESIGNER</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>LUCKY_LIFESTYLE_BRANDS_NON_APPAREL</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_APPAREL_DESIGN</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_GRAPHICS_TREND</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_APPAREL_MERCHANDISING_BUYING</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_NONAPPAREL_MERCHANDISING_BUYING</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_FIT_AND_TECH</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_APPAREL_PD</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_NON_APPAREL_PD</csvchildGroupName>
+</csvGroupGroup>
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>BO_TARIFFBYCOUNTRY_READ</csvparentGroupName>
+    <csvchildGroupName>F21_SOURCING_AND_PRODUCTION</csvchildGroupName>
+</csvGroupGroup>
+</NmLoader>
