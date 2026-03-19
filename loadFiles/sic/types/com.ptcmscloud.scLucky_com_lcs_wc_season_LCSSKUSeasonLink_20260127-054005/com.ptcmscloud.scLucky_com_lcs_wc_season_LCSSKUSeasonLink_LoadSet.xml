@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="sic/types/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_20260127-054005/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_0.xml"/>
+   <loadFile filename="sic/types/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_20260127-054005/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_1.xml"/>
+</loadFileList>

@@ -159,6 +159,9 @@ response.setDateHeader("Expires",
 
     public static final String SIDE_WORKLIST_MENU = PageManager.getPageURL("SIDE_WORKLIST_MENU", null);
     public static final String WORKITEMS_LISTING = PageManager.getPageURL("WORKITEMS_LISTING", null);
+	
+	public static final String REPORTS_MASTER_GROUP = LCSProperties.get("jsp.main.reportsMasterGroup", "SPARC MASTER GROUPS");
+
 
     public static final String getClass(boolean active, String test, String value){
 
@@ -238,6 +241,9 @@ String reportsLabel = WTMessage.getLocalizedMessage ( RB.MAIN, "reports_LBL", RB
 String listAttributesOpt = WTMessage.getLocalizedMessage ( RB.MAIN, "listAttributes_OPT", RB.objA ) ;
 String manageProcessesLabel = WTMessage.getLocalizedMessage ( RB.MAIN, "manageProcesses_OPT", RB.objA ) ;
 String userAccessLogStatsOpt = WTMessage.getLocalizedMessage ( RB.MAIN, "userAccessLogStats_OPT", RB.objA ) ;
+
+String customReports = "VIEW CATALYST REPORTS";
+
 String manageUsersLabel = WTMessage.getLocalizedMessage ( RB.MAIN, "manageUsers_OPT", RB.objA ) ;
 String manageLocksLabel = WTMessage.getLocalizedMessage ( RB.MAIN, "manageLocks_OPT", RB.objA ) ;
 String manageAttributeValueListsLabel = WTMessage.getLocalizedMessage ( RB.MAIN, "manageAttributeValueLists_OPT", RB.objA ) ;
@@ -736,10 +742,6 @@ function addSuppliers(ids){
       if(USE_PRODUCT && ACLHelper.hasViewAccess(FlexTypeCache.getFlexTypeRoot("Palette")) && ACLHelper.hasViewAccess(FlexTypeCache.getFlexTypeRoot("Season")) && ACLHelper.hasViewAccess(FlexTypeCache.getFlexTypeRoot("Product"))){
         scripts.put("Palette","findPalette()");
       }
-	  
-	  System.out.println("USE_PRODUCT--------------"+USE_PRODUCT);
-	  
-	  System.out.println("hasSupplierLinks--------------"+hasSupplierLinks);
 
       if(USE_PRODUCT &&  ACLHelper.hasViewAccess(FlexTypeCache.getFlexTypeRoot("Product")) && hasSupplierLinks) {
         scripts.put("SKU","findSKU()");
@@ -855,6 +857,9 @@ function addSuppliers(ids){
             <a href="javascript:viewAllAttributes()"><%= listAttributesOpt %></a><br>
             <a href="javascript:viewLCSAccessLogStats()"><%= userAccessLogStatsOpt %></a><br>
         <% } %>
+		<% if(lcsContext.inGroup(REPORTS_MASTER_GROUP.toUpperCase())){%>
+		<a href="javascript:viewAllSparcReports()"><%= customReports %></a><br>
+		<% } %>
   </div>
 </div>
 <%}%>
@@ -1443,6 +1448,13 @@ if(!lcsContext.isVendor &&
 function changeSelectedSeason(id){
     var seasonList = document.MAINFORM.seasonSelectList;
     setSelectedValueOfListFromValue(seasonList, id);
+}
+
+function viewAllSparcReports()
+{
+		document.MAINFORM.activity.value = 'QML_CUSTOM_REPORTS';
+		document.MAINFORM.action.value = 'INIT';
+        submitForm();
 }
 
     function go(goAct){
