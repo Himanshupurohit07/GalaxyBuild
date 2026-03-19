@@ -1,0 +1,25 @@
+<methods>
+   <method class="java.lang.Object" name="toString"/>
+   <method class="java.lang.String" name="concat"/>
+   <method class="java.lang.String" name="contains"/>
+   <method class="java.lang.String" name="indexOf"/>
+   <method class="java.lang.String" name="lastIndexOf"/>
+   <method class="java.lang.String" name="length"/>
+   <method class="java.lang.String" name="substring"/>
+   <method class="java.lang.String" name="toLowerCase"/>
+   <method class="java.lang.String" name="toUpperCase"/>
+   <method class="java.lang.String" name="trim"/>
+   <method class="wt.folder.FolderHelper" name="getLocation" static="true"/>
+   <method class="wt.folder.FolderHelper" name="getCabinetBasedToLocationMap" static="true"/>
+   <method class="wt.pds.ConversionHelper" name="deserialize"/>
+   <method class="com.ptc.windchill.wp.WPHelper" name="getVersionIdentifier" static="true"/>
+   <method class="com.ptc.windchill.wp.WPHelper" name="getOrgDisplayIdentifier" static="true"/>
+   <method class="com.ptc.core.query.report.common.ReportAttributeHelper" name="calculate" static="true"/>
+   <method class="com.ptc.core.query.report.common.ReportAttributeHelper" name="concatenateGlobalAttributes" static="true"/>
+   <method class="com.ptc.windchill.enterprise.queryBuilder.methods.AgingBracketDisplayHelper" name="getAgingBracket" static="true"/>
+   <method class="com.ptc.windchill.enterprise.queryBuilder.methods.RecursionDisplayHelper" name="level" static="true"/>
+   <method class="com.ptc.windchill.enterprise.queryBuilder.methods.RecursionDisplayHelper" name="levelDisplay" static="true"/>
+   
+    <method class="com.sparc.wc.report.SparcReportHelper" name="getDisplayValueForAtts" static="true"/>
+   
+</methods>

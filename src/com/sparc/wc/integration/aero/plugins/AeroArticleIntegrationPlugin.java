@@ -29,6 +29,7 @@ import static com.sparc.wc.integration.constants.SparcIntegrationConstants.COLOR
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_PLM_COLORWAY_STATUS_DEVELOPMENT_VALUE;
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.COLORWAY_TO_SEASON_SENT_TO_CAP_INTERNAL_NAME;
 
+import wt.vc.VersionIdentifier;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
@@ -55,6 +56,7 @@ import com.lcs.wc.sourcing.LCSSourcingConfig;
 import com.lcs.wc.sourcing.LCSSourcingConfigQuery;
 import com.lcs.wc.util.LCSException;
 import com.lcs.wc.util.VersionHelper;
+import com.lcs.wc.foundation.LCSQuery;
 import com.sparc.wc.integration.aero.domain.AeroCustomPluginException;
 import com.sparc.wc.integration.aero.domain.AeroPayloadAttribute;
 import com.sparc.wc.integration.aero.domain.AeroPayloadAttributeDefinitions;
@@ -129,7 +131,17 @@ public class AeroArticleIntegrationPlugin {
         	if (obj instanceof LCSSourceToSeasonLink) {
             	validateSourceToSeasonLink((LCSSourceToSeasonLink)obj);
             } else if (obj instanceof LCSProduct) {
-            	validateProduct((LCSProduct)obj);
+				LCSProduct prodObj = (LCSProduct)obj;
+				VersionIdentifier productVersion = prodObj.getVersionIdentifier();
+				System.out.println("productVersion>>>> "+productVersion);
+				if(!(productVersion.getValue().equals("A"))){
+					long productARevId = (long)prodObj.getProductARevId();
+					System.out.println("productARevId>>>> "+productARevId);
+					prodObj = (LCSProduct)LCSQuery.findObjectById("VR:com.lcs.wc.product.LCSProduct:"+productARevId);
+				}
+
+				validateProduct(prodObj);
+		
             } else if (obj instanceof LCSSKU) {
             	validateColorway((LCSSKU)obj);
             } else if (obj instanceof LCSSeasonProductLink) {

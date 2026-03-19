@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.lcs.wc.sourcing.LCSProductCostSheet_20260127-071904/com.lcs.wc.sourcing.LCSProductCostSheet_0.xml"/>
+   <loadFile filename="../../../Windchill/Windchill/loadFiles/sic/types/com.lcs.wc.sourcing.LCSProductCostSheet_20260127-071904/com.lcs.wc.sourcing.LCSProductCostSheet_1.xml"/>
+</loadFileList>

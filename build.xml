@@ -10,8 +10,6 @@
 		
 		<import file="${basedir}/ant/extensions/MyCustomOperations.xml"/>   
 	-->
-
-
 	<!-- ================================= 
         Copy to Windchill all Files provided with this distribution
               ================================= -->
@@ -40,7 +38,7 @@
 		-->
 		<!-- ADD The specific copyFile declarations here after -->
 		
-
+		<copy file="${wt.loadfiles.dir}/sic/conf/queryBuilderMethods.xml" todir="${wt.home}/conf" overwrite="true"/>
 	</target>
 
 	  <!-- ================================= 
@@ -91,7 +89,6 @@
 		<xconf.s property="com.sparc.webservice" 
        		 value="ext.addcolumn.RestUtil,com.sparc.wc.integration.SparcRestIntegration" 	
        		 targetfile="codebase/com/ptc/windchill/rest/rest.properties"/>
-
 	</target>
 
 	  <!-- ================================= 
@@ -109,8 +106,9 @@
                <loadFromFile loadfile="${wt.loadfiles.dir}/sic/enumerations/MaterialGroup_yyyymmdd-hhmmss_sicsample/MaterialGroup_0.xml" contpath="/wt.inf.container.OrgContainer=${org.name}" />
 		-->
 		<!-- ADD The Global Enumerations loadFromFile here after -->
-		<!-- <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/Enums/AllEnums_0.xml" />
-	    <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/typeManager/FullConfig_LoadSet.xml" />
+		<!--
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/Enums/AllEnums_0.xml" />
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/typeManager/FullConfig_LoadSet.xml" />
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20250624-065707/scbrandassetpartner_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20250624-065749/sccreationtrackcust_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250701-014625/scsizerangeFTW_LoadSet.xml"/>
@@ -118,12 +116,13 @@
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroWashInstructions_20250728-062408/scAeroWashInstructions_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20250728-062715/scbrandassetpartner_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250728-062154/scsizerangeFTW_LoadSet.xml"/>	
-		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20250729-051050/sccreationtrackcust_LoadSet.xml"/>		
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20250729-051050/sccreationtrackcust_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scdistchannel_20250929-052631/scdistchannel_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scShippingPort_20250929-052951/scShippingPort_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20250929-053222/scsizerangeFTW_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20250929-053457/scbrandassetpartner_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroDepartment_20250929-055011/scAeroDepartment_LoadSet.xml"/>
+		-->
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAeroSubDepartment_20250929-055029/scAeroSubDepartment_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scAdditionalBuy_20251003-044801/scAdditionalBuy_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sccreationtrackcust_20251230-091624/sccreationtrackcust_LoadSet.xml"/>
@@ -131,9 +130,7 @@
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20251230-092236/scbrandassetpartner_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scOutsole_20251230-092426/scOutsole_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scDevelopmentSeason_20251230-092712/scDevelopmentSeason_LoadSet.xml"/>
-		-->
-		
-		
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20260127-071237/scsizerangeFTW_LoadSet.xml"/>
    </target>
 
 	  <!-- ================================= 
@@ -154,13 +151,16 @@
 		<!-- ADD The SoftTypes loadFileSet here after -->	
 		<!-- <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/types/FullConfig_LoadSet.xml" /> 
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20250626-060257/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
-		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.product.LCSProduct_20250728-070442/com.lcs.wc.product.LCSProduct_LoadSet.xml"/>
+	<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.product.LCSProduct_20250728-070442/com.lcs.wc.product.LCSProduct_LoadSet.xml"/>
      		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20251003-044714/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.material.LCSMaterial_20250929-054732/com.lcs.wc.material.LCSMaterial_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.foundation.LCSLifecycleManaged_20251212-094843/com.lcs.wc.foundation.LCSLifecycleManaged_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20251212-094341/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.season.LCSProductSeasonLink_20260127-053746/com.lcs.wc.season.LCSProductSeasonLink_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_20260127-054005/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.sourcing.LCSProductCostSheet_20260127-071904/com.lcs.wc.sourcing.LCSProductCostSheet_LoadSet.xml"/>
 		-->
 	</target>
 
@@ -228,15 +228,12 @@
 		<!-- ADD Other Configuration Load Files here after -->	
 		<loadFromFile loadfile="${wt.loadfiles.dir}/sic/group/Catalyst_AeroAccess.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
 		<loadFromFile contpath="/wt.inf.container.OrgContainer=${org.name}" loadfile="${wt.loadfiles.dir}/sic/group/BO_TariffByCountry.xml"/>
+		<loadFromFile contpath="/wt.inf.container.OrgContainer=${org.name}" loadfile="${wt.loadfiles.dir}/sic/group/QMLReportsGroup.xml" enforce="true"/>
 		
-		  -->
-				
 		<!-- Groups -->
-		
 			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SiteLevelGroups_GroupsOnly.xml" />
 			<echo message="SUCCESS: Site level loaded successfully."/>
 
-		 
 			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SparcOrgLevelGroups_GroupsOnly.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
 			<echo message="SUCCESS: SparcOrgLevelGroups GroupsOnly loaded successfully."/>
 			
@@ -249,7 +246,6 @@
 			<loadFromFile loadfile="${wt.loadfiles.dir}/configExport/Group/SparcSiteLevelGroups_GroupLinks.xml" contpath="/wt.inf.container.OrgContainer=${org.name}"/>
 			<echo message="SUCCESS: Org level loaded successfully."/>
 
-				
 		<!-- AGVR -->
 			<loadAGVR loadfile="${wt.loadfiles.dir}/configExport/agvr_nd_absr/agvr_export.txt"/>
 		
@@ -263,5 +259,16 @@
 		<!-- Site Level Policy Rules -->
 		<loadFromFile contpath="/wt.inf.container.OrgContainer=${org.name}/wt.inf.library.WTLibrary=FlexPLM" loadfile="${wt.loadfiles.dir}/sic/acl/TAG-0.xml"/>
 	</target>
+	
+	<target name="post.load" description="Actions to be Executed Post-Load" >
+		<echo>Executing Post-Load Actions</echo>
+			<windchillCommand commandline="com.sparc.wc.util.SparcCustomReportsLoader">
+				<extra-args>
+					<arg value="${wt.loadfiles.dir}/sic/qml" />
+					<arg value="/wt.inf.container.OrgContainer=${org.name}" />
+				</extra-args>
+			</windchillCommand>
+	</target>
+
 
 </project>

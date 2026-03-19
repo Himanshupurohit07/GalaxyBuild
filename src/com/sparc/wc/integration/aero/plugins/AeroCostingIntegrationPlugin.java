@@ -11,6 +11,8 @@ import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.FLEX_COST_SHEET_TYPE_PRODUCT;
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR;
 import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_COST_SHEET_PRICING_DATE_ATTR;
+import static com.sparc.wc.integration.constants.SparcIntegrationConstants.AERO_COST_SHEET_INCOTERMS_ATTR;
+
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -463,6 +465,7 @@ public class AeroCostingIntegrationPlugin {
             	objCostSheet = (LCSProductCostSheet) obj;
 				LOGGER.debug("scCountryofOrigin >>>>>>"+objCostSheet.getValue(AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR));
 				LOGGER.debug("scCotSheetPricingDate >>>>>>"+objCostSheet.getValue(AERO_COST_SHEET_PRICING_DATE_ATTR));
+				System.out.println("scIncoterms >>>>>>"+objCostSheet.getValue(AERO_COST_SHEET_INCOTERMS_ATTR));
 				
 				if(null != objCostSheet && null != objCostSheet.getValue(AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR)){
 					objCountry = (LCSCountry)objCostSheet.getValue(AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR);
@@ -475,15 +478,18 @@ public class AeroCostingIntegrationPlugin {
 				}
 				
 				if(null != countryName && null != objCostSheet.getValue(AERO_COST_SHEET_PRICING_DATE_ATTR)){
-					boType = AeroIntegrationPluginUtil.getFlexType(SparcCostingConstants.TARIFF_BY_COUNTRY);
-					objCostDate = (Date) objCostSheet.getValue(AERO_COST_SHEET_PRICING_DATE_ATTR);
-					TariffByCountrypercentage = AeroIntegrationPluginUtil.populateTariffByCountryPercentage(objCostSheet, objCostDate, boType, objCountry);
-					
-					objCostSheet.setValue("scTariffByCountry",TariffByCountrypercentage);
+					if(null != objCostSheet.getValue(AERO_COST_SHEET_INCOTERMS_ATTR) && ("FOB".equalsIgnoreCase(objCostSheet.getValue(AERO_COST_SHEET_INCOTERMS_ATTR).toString()) || "scFca".equalsIgnoreCase(objCostSheet.getValue(AERO_COST_SHEET_INCOTERMS_ATTR).toString()))){
+						boType = AeroIntegrationPluginUtil.getFlexType(SparcCostingConstants.TARIFF_BY_COUNTRY);
+						objCostDate = (Date) objCostSheet.getValue(AERO_COST_SHEET_PRICING_DATE_ATTR);
+						TariffByCountrypercentage = AeroIntegrationPluginUtil.populateTariffByCountryPercentage(objCostSheet, objCostDate, boType, objCountry);
+						
+						objCostSheet.setValue("scTariffByCountry",TariffByCountrypercentage);
+					}else{
+						objCostSheet.setValue("scTariffByCountry",TariffByCountrypercentage);
 				}
  
-        	
-        } catch (Exception e) {
+        } 
+		}catch (Exception e) {
         	LOGGER.error("The Aero Costing Plugin for Tariff failed to process the flex object.", e);
         }
         

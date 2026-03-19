@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standard11_2.dtd">
+<NmLoader>
+ 
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>SPARC MASTER GROUPS</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+
+ 
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>SPARC MASTER GROUPS</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+ 
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>AERO BOM REPORT</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+
+ 
+<csvGroup handler="wt.load.LoadUser.createGroup">
+      <csvuser/>
+      <csvgroupName>LUCKY BOM REPORT</csvgroupName>
+      <csvdescription></csvdescription>
+</csvGroup>
+
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>SPARC MASTER GROUPS</csvparentGroupName>
+    <csvchildGroupName>AERO BOM REPORT</csvchildGroupName>
+</csvGroupGroup>
+
+<csvGroupGroup handler="wt.org.LoadPrincipal.createGroupGroup">
+    <csvuser/>
+    <csvparentGroupName>SPARC MASTER GROUPS</csvparentGroupName>
+    <csvchildGroupName>LUCKY BOM REPORT</csvchildGroupName>
+</csvGroupGroup>
+
+
+</NmLoader>
