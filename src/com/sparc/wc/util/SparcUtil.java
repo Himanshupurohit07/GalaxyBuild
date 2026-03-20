@@ -16,7 +16,6 @@ import com.lcs.wc.foundation.LCSLifecycleManaged;
 import com.lcs.wc.product.LCSProduct;
 import com.lcs.wc.sizing.ProductSizeCategory;
 import com.lcs.wc.supplier.LCSSupplier;
-import com.lcs.wc.util.FlexContainerHelper;
 import com.lcs.wc.util.FormatHelper;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,16 +24,6 @@ import java.util.function.Predicate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import wt.inf.container.ExchangeContainer;
-import wt.inf.container.WTContainerHelper;
-import wt.inf.container.WTContainerRef;
-import wt.org.DirectoryContextProvider;
-import wt.org.OrganizationServicesHelper;
-import wt.org.WTOrganization;
-import wt.query.template.ReportTemplate;
-import wt.query.template.ReportTemplateHelper;
-import wt.query.template.ReportTemplateQueryHelper;
-import wt.session.SessionHelper;
 import wt.util.WTException;
 import static com.sparc.wc.util.SparcConstants.CHOICE;
 import static com.sparc.wc.util.SparcConstants.DRIVEN;
@@ -277,27 +266,5 @@ public class SparcUtil {
 	        return attValue;
 	    }
 
-	/**
-	 *
- 	 * @param reportName
-	 * @return
-	 */
-	public static String fetchQMLURLForReport(String reportName){
-		try {
-			SessionHelper.getPrincipal();
-			WTContainerRef exchangeConRef = WTContainerHelper.service.getExchangeRef();
-			ExchangeContainer container = (ExchangeContainer)exchangeConRef.getObject();
-			DirectoryContextProvider dcp = container.getContextProvider();
-			WTOrganization org = OrganizationServicesHelper.manager.getOrganization (FlexContainerHelper.getOrganizationContainerName(), dcp);
-			WTContainerRef containerRef = WTContainerHelper.service.getOrgContainerRef(org);
-			ReportTemplate reportTem = ReportTemplateQueryHelper.find(reportName, containerRef, true);
-			String url = ReportTemplateHelper.getGenerateFormURL(null, reportTem).toString().replace("adhocReportCriteria.jsp", "runReportTemplate.jsp");
-			System.out.println("URL is ----> "+url);
-			return url;
-		} catch (WTException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 }

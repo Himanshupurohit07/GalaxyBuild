@@ -93,7 +93,7 @@ public class BomLinkLoader implements RemoteAccess {
             remoteMethodServer.setAuthenticator(auth);
 
             remoteMethodServer.invoke("processBomLinkData", "com.galaxy.wc.bomlink.loader.BomLinkLoader", null,
-                    new Class[]{String.class,String.class}, new Object[]{args[0],args[1],args[2]});
+                    new Class[]{String.class,String.class,String.class}, new Object[]{args[0],args[1],args[2]});
         } catch (Exception e) {
             e.printStackTrace();
         }

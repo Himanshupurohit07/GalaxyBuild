@@ -89,8 +89,6 @@ public class FCCostingDetailsPayload {
 			private String scDutyPercentUS;
 			private String scTotalDutyDollarsUS;
 			private String scInternalLoadPercentUS;
-			private String scTariffByCountryDollarUS;
-			private String scTariffByCountry;
 			private String scHTSCode;
 			private String sclCLR_CDE;
 
@@ -364,22 +362,6 @@ public class FCCostingDetailsPayload {
 				this.scInternalLoadPercentUS = scInternalLoadPercentUS;
 			}
 			
-			public String getScTariffByCountryDollarUS() {
-				return scTariffByCountryDollarUS;
-			}
-			
-			public void setScTariffByCountryDollarUS(String scTariffByCountryDollarUS) {
-				this.scTariffByCountryDollarUS = scTariffByCountryDollarUS;
-			}
-			
-			public String getScTariffByCountry() {
-				return scTariffByCountry;
-			}
-			
-			public void setScTariffByCountry(String scTariffByCountry) {
-				this.scTariffByCountry = scTariffByCountry;
-			}
-			
 			public String getScTotalDutyDollarsUS() {
 				return scTotalDutyDollarsUS;
 			}
@@ -416,10 +398,7 @@ public class FCCostingDetailsPayload {
 						+ ", scAgentCommissionPercentUS=" + scAgentCommissionPercentUS + ", scAgentCommissionDollarsUS="
 						+ scAgentCommissionDollarsUS + ", scFreightDollarsUS=" + scFreightDollarsUS
 						+ ", scDutyPercentUS=" + scDutyPercentUS + ", scTotalDutyDollarsUS=" + scTotalDutyDollarsUS
-						+ ", scHTSCode=" + scHTSCode +", scInternalLoadPercentUS="+ scInternalLoadPercentUS 
-						+", scTariffByCountryDollarUS="+ scTariffByCountryDollarUS 
-						+", scTariffByCountry="+ scTariffByCountry 
-						+", sclCLR_CDE=" + sclCLR_CDE + "]";
+						+ ", scHTSCode=" + scHTSCode +", scInternalLoadPercentUS="+ scInternalLoadPercentUS +", sclCLR_CDE=" + sclCLR_CDE + "]";
 			}
 			
 		}
