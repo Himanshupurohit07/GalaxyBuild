@@ -131,6 +131,9 @@
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scOutsole_20251230-092426/scOutsole_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scDevelopmentSeason_20251230-092712/scDevelopmentSeason_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20260127-071237/scsizerangeFTW_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scbrandassetpartner_20260227-060844/scbrandassetpartner_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/scsizerangeFTW_20260227-060144/scsizerangeFTW_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/enumerations/sctechnologyconcept_20260227-061221/sctechnologyconcept_LoadSet.xml"/>
    </target>
 
 	  <!-- ================================= 
@@ -149,10 +152,10 @@
                <loadFromFile loadfile="${wt.loadfiles.dir}/sic/types/wt.part.WTPart_yyyymmdd-hhmmss_sicsample/wt.part.WTPart_3.xml" />
         -->
 		<!-- ADD The SoftTypes loadFileSet here after -->	
-		<!-- <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/types/FullConfig_LoadSet.xml" /> 
+		<!-- <loadFileSet loadfileset="${wt.loadfiles.dir}/configExport/types/FullConfig_LoadSet.xml" />  -->
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20250626-060257/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
-	<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.product.LCSProduct_20250728-070442/com.lcs.wc.product.LCSProduct_LoadSet.xml"/>
-     		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.product.LCSProduct_20250728-070442/com.lcs.wc.product.LCSProduct_LoadSet.xml"/>
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_20251003-044714/com.ptcmscloud.scSparc_com_lcs_wc_sourcing_LCSProductCostSheet_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.material.LCSMaterial_20250929-054732/com.lcs.wc.material.LCSMaterial_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_20251003-041920/com.ptcmscloud.scFootwear_com_lcs_wc_season_LCSProductSeasonLink_LoadSet.xml"/>
@@ -161,7 +164,8 @@
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.season.LCSProductSeasonLink_20260127-053746/com.lcs.wc.season.LCSProductSeasonLink_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_20260127-054005/com.ptcmscloud.scLucky_com_lcs_wc_season_LCSSKUSeasonLink_LoadSet.xml"/>
 		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.sourcing.LCSProductCostSheet_20260127-071904/com.lcs.wc.sourcing.LCSProductCostSheet_LoadSet.xml"/>
-		-->
+		<loadFileSet loadfileset="${wt.loadfiles.dir}/sic/types/com.lcs.wc.sourcing.LCSSourceToSeasonLink_20260227-063247/com.lcs.wc.sourcing.LCSSourceToSeasonLink_LoadSet.xml"/>
+		
 	</target>
 
 	  <!-- ================================= 
