@@ -224,7 +224,6 @@ public class SparcIntegrationConstants {
     public static final String LUCKY_COSTING_COST_SHEET_MILESTONE_ATTR          = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.cost_sheet_milestone.attr.name", "scMilestoneStatus");
     public static final String LUCKY_COSTING_COST_SHEET_INCOTERMS_ATTR          = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.cost_sheet_incoterms.attr.name", "scIncoterms");
     public static final String LUCKY_COSTING_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR  = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.country_of_origin.attr.name", "scCountryofOrigin");
-	
     public static final String LUCKY_COSTING_COST_SHEET_VENDOR_TOTAL_COST_ATTR  = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.vendor_total_cost.attr.name", "scTotalVendorCost");
     public static final String LUCKY_COSTING_COST_SHEET_VENDOR_PROD_COST_ATTR   = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.vendor_product_cost.attr.name", "scVendorProductCost");
     public static final String LUCKY_COSTING_COST_SHEET_OTHER_VENDOR_COSTS_ATTR = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.other_vendor_costs.attr.name", "scUnitsOtherCosts");
@@ -234,8 +233,6 @@ public class SparcIntegrationConstants {
     public static final String LUCKY_COSTING_COST_SHEET_DUTY_PERCENT_ATTR       = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.duty_percent.attr.name", "scDutyPercentUS");
     public static final String LUCKY_COSTING_COST_SHEET_TOTAL_DUTY_DOLLARS_ATTR = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.total_duty_dollars.attr.name", "scTotalDutyDollarsUS");
 	public static final String LUCKY_COSTING_COST_SHEET_INTERNAL_LOAD_PERCENT_US_ATTR = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.internal_load_percent_us.attr.name", "scInternalLoadPercentUS");
-	public static final String LUCKY_COSTING_COST_SHEET_TARIFF_BY_COUNTRY_DOLLAR_US_ATTR = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.tariff_by_country_dollar_us.attr.name", "scTariffByCountryDollarUS");
-	public static final String LUCKY_COSTING_COST_SHEET_TARIFF_BY_COUNTRY_PERCENT_US_ATTR = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.tariff_by_country_percent_us.attr.name", "scTariffByCountry");
     public static final String LUCKY_COSTING_COST_SHEET_LANDED_COST_ATTR        = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.landed_cost.attr.name", "scLandedCostUS");
     public static final String LUCKY_COSTING_COST_SHEET_SHIP_MODE_ATTR          = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.cost_sheet.ship_mode.attr.name", "scShipMode");
     public static final String LUCKY_COSTING_COST_SENT_TO_FC_ATTR               = LCSProperties.get(PROPERTY_PATH_PREFIX + ".lucky.costing.sourcing_config.colorway_season.cost_sent_to_fc.attr.name", "scCostSentToFC");
@@ -531,8 +528,6 @@ public class SparcIntegrationConstants {
     public static final String AERO_SOURCING_CONFIG_NUMBER_ATTR      = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.sourcing_config.sourcing_no.attr.name", "scSourcingNo");
     public static final String AERO_COST_SHEET_NAME_ATTR             = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.cost_sheet.cost_sheet_name.attr.name", "name");
     public static final String AERO_COST_SHEET_NUMBER_ATTR           = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.cost_sheet.cost_sheet_number.attr.name", "scCostSheetNumber");
-	public static final String AERO_COST_SHEET_COUNTRY_OF_ORIGIN_ATTR  = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.cost_sheet.country_of_origin.attr.name", "scCountryofOrigin");
-	public static final String AERO_COST_SHEET_PRICING_DATE_ATTR  = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.cost_sheet.pricing_date.attr.name", "scCotSheetPricingDate");
     public static final String AERO_PRODUCT_NUMBER_ATTR              = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.product.product_no.attr.name", "scPLMProductNo");
     public static final String AERO_PRODUCT_NAME_ATTR                = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.product.product_name.attr.name", "productName");
     public static final String AERO_PRODUCT_SUB_DEPT_ATTR            = LCSProperties.get(PROPERTY_PATH_PREFIX + ".aero.product.sub_department.attr.name", "scAeroSubDepartment");

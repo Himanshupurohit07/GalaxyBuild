@@ -31,8 +31,6 @@ import com.lcs.wc.util.LCSProperties;
 import com.lcs.wc.util.MOAHelper;
 import com.lcs.wc.util.VersionHelper;
 import com.sparc.wc.util.SparcConstants;
-import com.lcs.wc.country.LCSCountry;
-import com.sparc.wc.integration.aero.plugins.AeroCostingIntegrationPlugin;
 
 import wt.fc.ObjectIdentifier;
 import wt.fc.PersistInfo;
@@ -343,8 +341,6 @@ public static LCSSKU overrideSKUFromMethodContext(LCSProductCostSheet costSheet,
 		String sourceAttKey="";
 		String targetAttKey="";
 		LCSSupplier tempSupplier= null;
-		LCSCountry countryOfOrigin = null;
-		
 		if(sourcing2ndLevelAttsCol!=null && sourcing2ndLevelAttsCol.size()>0) {
 			stringIterator = sourcing2ndLevelAttsCol.iterator();
 			while(stringIterator.hasNext()) {
@@ -355,25 +351,14 @@ public static LCSSKU overrideSKUFromMethodContext(LCSProductCostSheet costSheet,
 						tempSupplier = (LCSSupplier) sourcingConfig.getValue(tempArray[1]);
 						if(tempSupplier!=null) {
 							LOGGER.debug("***Source - SourcingConfig 2nd Level - sourceAttValue:"+tempSupplier.getValue(tempArray[2]));
-							if(tempSupplier.getValue(tempArray[2])!=null){
+							if(tempSupplier.getValue(tempArray[2])!=null)
 								costSheetObj.setValue(targetAttKey, tempSupplier.getValue(tempArray[2]));
-								countryOfOrigin = (LCSCountry)tempSupplier.getValue(tempArray[2]);
-							}
 							else
 								costSheetObj.setValue(targetAttKey, "");
 							}
 						else
 							costSheetObj.setValue(targetAttKey, "");
 			}
-			
-			if(null != countryOfOrigin){
-				 countryOfOrigin = (LCSCountry)VersionHelper.latestIterationOf(countryOfOrigin);
-						LOGGER.debug("countryOfOrigin in setCSAttributesFromSourcing>>>"+countryOfOrigin);	
-						AeroCostingIntegrationPlugin.setTariff(costSheetObj);
-						LOGGER.debug("scTariffByCountry = "+costSheetObj.getValue("scTariffByCountry"));
-						LOGGER.debug("scTariffByCountryDollarUS = "+costSheetObj.getValue("scTariffByCountryDollarUS"));
-			}
-			
 		}
 	}
 	

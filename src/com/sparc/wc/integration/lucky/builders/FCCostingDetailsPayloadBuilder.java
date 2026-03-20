@@ -168,18 +168,6 @@ public class FCCostingDetailsPayloadBuilder {
 			costSheetDataPayload.setScInternalLoadPercentUS(Double.toString(internalLoadPercentUS));
 		}
 		
-		Double tariffByCountryDollarsUS = (Double)SparcIntegrationUtil.getValueFrom(flexCostSheet, LUCKY_COSTING_COST_SHEET_TARIFF_BY_COUNTRY_DOLLAR_US_ATTR);
-
-		if (tariffByCountryDollarsUS != null) {
-			costSheetDataPayload.setScTariffByCountryDollarUS(Double.toString(tariffByCountryDollarsUS));
-		}
-		
-		Double tariffByCountryPercentage = (Double)SparcIntegrationUtil.getValueFrom(flexCostSheet, LUCKY_COSTING_COST_SHEET_TARIFF_BY_COUNTRY_PERCENT_US_ATTR);
-		System.out.println("tariffByCountryPercentage >>>>>"+tariffByCountryPercentage);
-		if (tariffByCountryPercentage != null) {
-			costSheetDataPayload.setScTariffByCountry(Double.toString(tariffByCountryPercentage));
-		}
-		
 		costSheetDataPayload.setScMilestoneStatus(lookupEnumDisplayValue(flexCostSheet, LUCKY_COSTING_COST_SHEET_MILESTONE_ATTR));
 		costSheetDataPayload.setScCostSheetStatus(lookupEnumDisplayValue(flexCostSheet, LUCKY_COSTING_COST_SHEET_STATUS_ATTR));
 

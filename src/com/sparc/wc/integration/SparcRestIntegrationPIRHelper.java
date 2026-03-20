@@ -35,7 +35,7 @@ public class SparcRestIntegrationPIRHelper {
 
 			pirPOJO.setScColorwayNo(restHelper.getDisplayValue(skuARev, SparcConstants.SKU_NUMBER));
 			pirPOJO.setScFGFactory(restHelper.getDisplayValue(source, SparcConstants.SOURCING_FACTORY));
-			//pirPOJO.setScFactoryCountryOrigin(restHelper.getDisplayValue(source, SparcConstants.SOURCING_FACTORY_COUNTRY_ORIGIN));
+			pirPOJO.setScFactoryCountryOrigin(restHelper.getDisplayValue(source, SparcConstants.SOURCING_FACTORY_COUNTRY_ORIGIN));
 			//pirPOJO.setScRegion(restHelper.getDisplayValue(source, SparcConstants.SOURCING_REGION));
 			pirPOJO.setScprodleadtime(restHelper.getDisplayValue(sourceseasLink, SparcConstants.SOURCING_PRODUCTION_LEAD_TIME));
 			//pirPOJO.setSctransleadtime(restHelper.getDisplayValue(sourceseasLink, SparcConstants.SOURCING_TRANSCATION_LEAD_TIME));
